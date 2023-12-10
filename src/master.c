@@ -25,7 +25,9 @@ int main(int argc, char *argv[]) {
     strcpy(programs[1], "./drone");
     strcpy(programs[2], "./input");
     strcpy(programs[3], "./map");
-    strcpy(programs[4], "./WD");
+    strcpy(programs[4], "./target");
+    strcpy(programs[5], "./obstacles");
+    strcpy(programs[6], "./WD");
 
     // Pids for all children
     pid_t child[NUM_PROCESSES];
@@ -41,12 +43,16 @@ int main(int argc, char *argv[]) {
     int input_server[2];
     int map_server[2];
     int server_map[2];
+    int target_server[2];
+    int obstacles_server[2];
     Pipe(input_drone);
     Pipe(drone_server);
     Pipe(server_input);
     Pipe(input_server);
     Pipe(map_server);
     Pipe(server_map);
+    Pipe(target_server);
+    Pipe(obstacles_server);
 
     for (int i = 0; i < NUM_PROCESSES; i++) {
         child[i] = Fork();
@@ -62,6 +68,8 @@ int main(int argc, char *argv[]) {
             char input_server_str[10];
             char map_server_str[10];
             char server_map_str[10];
+            char target_server_str[10];
+            char obstacles_server_str[10];
 
             switch (i) {
                 case 0:
@@ -71,16 +79,22 @@ int main(int argc, char *argv[]) {
                     sprintf(server_input_str, "%d", server_input[1]);
                     sprintf(map_server_str, "%d", map_server[0]);
                     sprintf(server_map_str, "%d", server_map[1]);
+                    sprintf(target_server_str, "%d", target_server[0]);
+                    sprintf(obstacles_server_str, "%d", obstacles_server[0]);
                     arg_list[1] = drone_server_str;
                     arg_list[2] = input_server_str;
                     arg_list[3] = server_input_str;
                     arg_list[4] = map_server_str;
                     arg_list[5] = server_map_str;
+                    arg_list[6] = target_server_str;
+                    arg_list[7] = obstacles_server_str;
                     Close(drone_server[1]);
                     Close(input_server[1]);
                     Close(server_input[0]);
                     Close(map_server[1]);
                     Close(server_map[0]);
+                    Close(target_server[1]);
+                    Close(obstacles_server[1]);
                     spawn(arg_list);
                     break;
                 case 1:
@@ -118,6 +132,20 @@ int main(int argc, char *argv[]) {
                     Execvp("konsole", konsole_arg_list);
                     exit(EXIT_FAILURE);
                     break;
+                case 4:
+                    // Target
+                    sprintf(target_server_str, "%d", target_server[1]);
+                    arg_list[1] = target_server_str;
+                    Close(target_server[0]);
+                    spawn(arg_list);
+                    break;
+                case 5:
+                    // Obstacles
+                    sprintf(obstacles_server_str, "%d", obstacles_server[1]);
+                    arg_list[1] = obstacles_server_str;
+                    Close(obstacles_server[0]);
+                    spawn(arg_list);
+                    break;
             }
             // spawn the last program, so the WD, which needs all the processes
             // PIDs
@@ -128,7 +156,7 @@ int main(int argc, char *argv[]) {
                 // Sending as arguments to the WD all the processes PIDs
                 char *arg_list[] = {programs[i],       child_pids_str[0],
                                     child_pids_str[1], child_pids_str[2],
-                                    child_pids_str[3], NULL};
+                                    child_pids_str[3], child_pids_str[4], child_pids_str[5], NULL};
                 spawn(arg_list);
             }
         }
@@ -139,7 +167,9 @@ int main(int argc, char *argv[]) {
     printf("Drone pid is %d\n", child[1]);
     printf("Konsole of Input pid is %d\n", child[2]);
     printf("Konsole of Map pid is %d\n", child[3]);
-    printf("WD pid is %d\n", child[4]);
+    printf("Target pid is %d\n", child[4]);
+    printf("Obstacles pid is %d\n", child[5]);
+    printf("WD pid is %d\n", child[6]);
 
     // Value for waiting for the children to terminate
     int res;

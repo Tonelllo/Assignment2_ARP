@@ -349,3 +349,40 @@
 [INFO] - WD sending signal to 7835
 [INFO] - WD sending signal to 7836
 [WARN] - WD killed all processes because of process with pid 7836
+[INFO] - WD sending signal to 12357
+[INFO] - WD sending signal to 12355
+[INFO] - WD sending signal to 12292
+[WARN] - WD killed all processes because of process with pid 12292
+[INFO] - WD sending signal to 12642
+[INFO] - WD sending signal to 12644
+[INFO] - WD sending signal to 12580
+[INFO] - WD sending signal to 12581
+[INFO] - WD sending signal to 12584
+[WARN] - WD killed all processes because of process with pid 12584
+[INFO] - WD sending signal to 12991
+[INFO] - WD sending signal to 12993
+[INFO] - WD sending signal to 12925
+[WARN] - WD killed all processes because of process with pid 12925
+[INFO] - Target process generated a new set of targets
+[INFO] - WD sending signal to 13351
+[INFO] - WD sending signal to 13352
+[INFO] - WD sending signal to 13289
+[WARN] - WD killed all processes because of process with pid 13289
+[INFO] - Target process generated a new set of targets
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - WD sending signal to 13660
+[INFO] - WD sending signal to 13658
+[INFO] - WD sending signal to 13596
+[WARN] - WD killed all processes because of process with pid 13596
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - Target process generated a new set of targets
+[INFO] - WD sending signal to 13762
+[INFO] - WD sending signal to 13760
+[INFO] - WD sending signal to 13691
+[WARN] - WD killed all processes because of process with pid 13691
+[INFO] - Target process generated a new set of targets
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - WD sending signal to 14106
+[INFO] - WD sending signal to 14108
+[INFO] - WD sending signal to 14040
+[WARN] - WD killed all processes because of process with pid 14040

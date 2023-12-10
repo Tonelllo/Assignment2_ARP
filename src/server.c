@@ -29,15 +29,16 @@ void signal_handler(int signo, siginfo_t *info, void *context) {
 
 int main(int argc, char *argv[]) {
     // Specifying that argc and argv are unused variables
-    int from_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
-        to_map_pipe;
+    int from_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe, to_map_pipe, from_target_pipe, from_obstacles_pipe;
 
-    if (argc == 6) {
+    if (argc == 8) {
         sscanf(argv[1], "%d", &from_drone_pipe);
         sscanf(argv[2], "%d", &from_input_pipe);
         sscanf(argv[3], "%d", &to_input_pipe);
         sscanf(argv[4], "%d", &from_map_pipe);
         sscanf(argv[5], "%d", &to_map_pipe);
+        sscanf(argv[6], "%d", &from_target_pipe);
+        sscanf(argv[7], "%d", &from_obstacles_pipe);
     } else {
         printf("Wrong number of arguments in input\n");
         getchar();
