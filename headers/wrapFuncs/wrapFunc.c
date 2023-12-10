@@ -280,6 +280,14 @@ void Sigaction(int signum, const struct sigaction *act,
     }
 }
 
+void Sigprocmask(int type, const sigset_t *mask, sigset_t *oldset) {
+    int ret = sigprocmask(type, mask, oldset);
+    if (ret < 0) {
+	perror("Error on executing sigprocmask");
+	exit(EXIT_FAILURE);
+    }
+}
+
 void Fclose(FILE *stream) {
     int ret = fclose(stream);
     if (ret == EOF) {

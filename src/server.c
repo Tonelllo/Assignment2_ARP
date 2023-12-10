@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
     // Specifying that argc and argv are unused variables
     int from_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
         to_map_pipe;
+
     if (argc == 6) {
         sscanf(argv[1], "%d", &from_drone_pipe);
         sscanf(argv[2], "%d", &from_input_pipe);
@@ -97,12 +98,27 @@ int main(int argc, char *argv[]) {
     FD_SET(from_drone_pipe, &master);
     FD_SET(from_input_pipe, &master);
     FD_SET(from_map_pipe, &master);
-    int maxfd =
-        (from_drone_pipe > from_input_pipe) ? from_drone_pipe : from_input_pipe;
+    
+    int maxfd = (from_drone_pipe > from_input_pipe) ? from_drone_pipe : from_input_pipe;
     maxfd = (from_map_pipe > maxfd) ? from_map_pipe : maxfd;
+    
     while (1) {
+        //Temporarily blocking the SIGUSR1 signal to correctly perform the select() syscall without being interrupted
+        //Since the time taken from the select to execute is significantly lower than the WD period for sending signals,
+        //this mask should not affect the WD behaviour
+        sigset_t block_mask;
+        sigemptyset(&block_mask);
+        sigaddset(&block_mask, SIGUSR1);
+        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
+
+        //perform the select
         reader = master;
         Select(maxfd + 1, &reader, NULL, NULL, NULL);
+
+        //unblock SIGUSR1
+        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+
+        //check the value returned by the select and perform actions consequently
         for (int i = 0; i <= maxfd; i++) {
             if (FD_ISSET(i, &reader)) {
                 int ret = Read(i, received, MAX_STR_LEN);
@@ -120,7 +136,7 @@ int main(int argc, char *argv[]) {
                                &drone_current_pos.y,
                                &drone_current_velocity.x_component,
                                &drone_current_velocity.y_component);
-                    }else if(i == from_map_pipe){
+                    } else if(i == from_map_pipe){
                         sprintf(to_send, "%f|%f", drone_current_pos.x, drone_current_pos.y);
                         Write(to_map_pipe, to_send, MAX_STR_LEN);
                     }
