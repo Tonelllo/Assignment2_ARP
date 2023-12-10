@@ -35,6 +35,7 @@ int Kill2(int pid, int signal);
 void Mkfifo(const char *fifo_path, int permit);
 void Sigaction(int signum, const struct sigaction *act,
                struct sigaction *oldact);
+void Sigprocmask(int type, const sigset_t *mask, sigset_t *oldset);
 void Fclose(FILE *stream);
 void Shm_unlink(const char *name);
 void Munmap(void *addr, size_t len);
