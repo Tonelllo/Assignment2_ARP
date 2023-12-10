@@ -54,14 +54,26 @@ int main(int argc, char *argv[]) {
     Pipe(target_server);
     Pipe(obstacles_server);
 
+    // strings to pass pipe values as args
+    char input_drone_str[10];
+    char drone_server_str[10];
+    char server_input_str[10];
+    char input_server_str[10];
+    char map_server_str[10];
+    char server_map_str[10];
+    char target_server_str[10];
+    char obstacles_server_str[10];
+
     for (int i = 0; i < NUM_PROCESSES; i++) {
         child[i] = Fork();
         if (!child[i]) {
+            
             // Spawn the input and map process using konsole
             char *arg_list[]         = {programs[i], NULL, NULL, NULL,
-                                        NULL,        NULL, NULL, NULL};
+                                        NULL,        NULL, NULL, NULL, NULL};
             char *konsole_arg_list[] = {"konsole", "-e", programs[i], NULL,
                                         NULL,      NULL, NULL};
+            /*
             char input_drone_str[10];
             char drone_server_str[10];
             char server_input_str[10];
@@ -70,6 +82,7 @@ int main(int argc, char *argv[]) {
             char server_map_str[10];
             char target_server_str[10];
             char obstacles_server_str[10];
+            */
 
             switch (i) {
                 case 0:

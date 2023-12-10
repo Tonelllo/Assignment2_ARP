@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
         sscanf(argv[6], "%d", &from_target_pipe);
         sscanf(argv[7], "%d", &from_obstacles_pipe);
     } else {
-        printf("Wrong number of arguments in input\n");
+        printf("Server: wrong number of arguments in input\n");
         getchar();
         exit(1);
     }

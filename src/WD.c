@@ -16,7 +16,7 @@
 
 // Defining the amount to sleep between any two consequent signals to the
 // processes
-#define SLEEP_FOR 2
+#define SLEEP_FOR 1
 
 // Array for processes' pids
 int p_pids[NUM_PROCESSES];
