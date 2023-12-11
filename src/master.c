@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
     int server_map[2];
     int target_server[2];
     int obstacles_server[2];
+
     Pipe(input_drone);
     Pipe(drone_server);
     Pipe(server_input);

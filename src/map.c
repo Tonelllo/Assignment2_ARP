@@ -63,16 +63,6 @@ void destroy_map_win(WINDOW *local_win) {
 }
 
 int main(int argc, char *argv[]) {
-    int to_server, from_server;
-    if (argc == 3) {
-        sscanf(argv[1], "%d", &to_server);
-        sscanf(argv[2], "%d", &from_server);
-    } else {
-        printf("Wrong number of arguments in map\n");
-        getchar();
-        exit(1);
-    }
-
     // Signal declaration
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
@@ -87,6 +77,16 @@ int main(int argc, char *argv[]) {
 
     // Enabling the handler with the specified flags
     Sigaction(SIGUSR1, &sa, NULL);
+
+    int to_server, from_server;
+    if (argc == 3) {
+        sscanf(argv[1], "%d", &to_server);
+        sscanf(argv[2], "%d", &from_server);
+    } else {
+        printf("Wrong number of arguments in map\n");
+        getchar();
+        exit(1);
+    }
 
     // Named pipe (fifo) to send the pid to the WD
     Mkfifo(FIFO1_PATH, 0666);
@@ -106,7 +106,9 @@ int main(int argc, char *argv[]) {
 
     // Setting up the struct in which to store the position of the drone
     // in order to calculate the current position on the screen of the drone
-    struct pos drone_pos;
+    struct pos drone_pos = {0, 0};
+    struct pos targets_pos[N_TARGETS];
+    struct pos obstacles_pos[N_OBSTACLES];
 
     // Setting up ncurses
     initscr();
@@ -118,18 +120,55 @@ int main(int argc, char *argv[]) {
     WINDOW *map_window =
         create_map_win(getmaxy(stdscr) - 2, getmaxx(stdscr), 1, 0);
 
-    char received[MAX_STR_LEN];
+    char received[MAX_MSG_LEN];
     // Setting up structures needed for terminal resizing
+
+    char *aux_ptr;
+    char *token;
     while (1) {
         // Updating the drone position by reading from the shared memory, and
         // taking the semaphors
 
         Write(to_server, "U", 2);
-        Read(from_server, received, MAX_STR_LEN);
-        sscanf(received, "%f|%f", &drone_pos.x, &drone_pos.y);
+
+        Read(from_server, received, MAX_MSG_LEN);
+        sscanf(received, "D%f|%f", &drone_pos.x, &drone_pos.y);
+
+        Read(from_server, received, MAX_MSG_LEN);
+        token = strtok_r(received + 1, ")", &aux_ptr);
+        if (token != NULL) {
+            float aux_x, aux_y;
+            int index = 1;
+            sscanf(token, "(%f,%f", &aux_x, &aux_y);
+            targets_pos[0].x = aux_x;
+            targets_pos[0].y = aux_y;
+            while ((token = strtok_r(NULL, ")", &aux_ptr)) != NULL) {
+                sscanf(token, "(%f,%f", &aux_x, &aux_y);
+                targets_pos[index].x = aux_x;
+                targets_pos[index].y = aux_y;
+                index++;
+            }
+        }
+
+        Read(from_server, received, MAX_MSG_LEN);
+        token = strtok_r(received + 1, ")", &aux_ptr);
+        if (token != NULL) {
+            float aux_x, aux_y;
+            int index = 1;
+            sscanf(token, "(%f,%f", &aux_x, &aux_y);
+            obstacles_pos[0].x = aux_x;
+            obstacles_pos[0].y = aux_y;
+            while ((token = strtok_r(NULL, ")", &aux_ptr)) != NULL) {
+                sscanf(token, "(%f,%f", &aux_x, &aux_y);
+                obstacles_pos[index].x = aux_x;
+                obstacles_pos[index].y = aux_y;
+                index++;
+            }
+        }
 
         // Displaying the title of the window.
         mvprintw(0, 0, "MAP DISPLAY");
+
         // Display the menu text
         refresh();
 
@@ -160,6 +199,22 @@ int main(int argc, char *argv[]) {
 
         // The drone is now displayed on the screen
         mvwprintw(map_window, y, x, "+");
+        int aux_x, aux_y;
+        for(int i = 0; i < N_TARGETS; i++){
+            aux_x = round(1 + targets_pos[i].x * (getmaxx(map_window) - 3) /
+                                  SIMULATION_WIDTH);
+            aux_y = round(1 + targets_pos[i].y * (getmaxy(map_window) - 3) /
+                              SIMULATION_HEIGHT);
+            mvwprintw(map_window, aux_y, aux_x, "T");
+        }
+
+        for(int i = 0; i < N_OBSTACLES; i++){
+            aux_x = round(1 + obstacles_pos[i].x * (getmaxx(map_window) - 3) /
+                                  SIMULATION_WIDTH);
+            aux_y = round(1 + obstacles_pos[i].y * (getmaxy(map_window) - 3) /
+                              SIMULATION_HEIGHT);
+            mvwprintw(map_window, aux_y, aux_x, "O");
+        }
 
         // The map_window is refreshed
         wrefresh(map_window);

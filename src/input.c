@@ -216,17 +216,6 @@ bool update_force(struct force *to_update, int input, float step,
 }
 
 int main(int argc, char *argv[]) {
-    // Specifying that argc and argv are unused variables
-    int to_drone_pipe, to_server_pipe, from_server_pipe;
-    if (argc == 4) {
-        sscanf(argv[1], "%d", &to_drone_pipe);
-        sscanf(argv[2], "%d", &to_server_pipe);
-        sscanf(argv[3], "%d", &from_server_pipe);
-    } else {
-        printf("Wrong number of arguments in input\n");
-        getchar();
-        exit(1);
-    }
 
     // Signal declaration
     struct sigaction sa;
@@ -242,6 +231,18 @@ int main(int argc, char *argv[]) {
 
     // Enabling the handler with the specified flags
     Sigaction(SIGUSR1, &sa, NULL);
+
+    // Specifying that argc and argv are unused variables
+    int to_drone_pipe, to_server_pipe, from_server_pipe;
+    if (argc == 4) {
+        sscanf(argv[1], "%d", &to_drone_pipe);
+        sscanf(argv[2], "%d", &to_server_pipe);
+        sscanf(argv[3], "%d", &from_server_pipe);
+    } else {
+        printf("Wrong number of arguments in input\n");
+        getchar();
+        exit(1);
+    }
 
     // Named pipe (fifo) to send the pid to the WD
     int fd;

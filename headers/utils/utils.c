@@ -188,3 +188,9 @@ void logging(char *type, char *message) {
     Flock(fileno(F), LOCK_UN);
     Fclose(F);
 }
+
+int max(int a, int b) {
+    if (a >= b)
+        return a;
+    return b;
+}

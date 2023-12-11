@@ -40,18 +40,6 @@ float repulsive_force(float distance, float function_scale,
 }
 
 int main(int argc, char *argv[]) {
-    // Specifying that argc and argv are unused variables
-    int from_input_pipe, to_server_pipe;
-
-    if (argc == 3) {
-        sscanf(argv[1], "%d", &from_input_pipe);
-        sscanf(argv[2], "%d", &to_server_pipe);
-    } else {
-        printf("Wrong number of arguments in drone\n");
-        getchar();
-        exit(1);
-    }
-
     // Signal declaration
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
@@ -66,6 +54,19 @@ int main(int argc, char *argv[]) {
     sa.sa_flags = SA_SIGINFO | SA_RESTART;
 
     Sigaction(SIGUSR1, &sa, NULL);
+
+    // Specifying that argc and argv are unused variables
+    int from_input_pipe, to_server_pipe;
+
+    if (argc == 3) {
+        sscanf(argv[1], "%d", &from_input_pipe);
+        sscanf(argv[2], "%d", &to_server_pipe);
+    } else {
+        printf("Wrong number of arguments in drone\n");
+        getchar();
+        exit(1);
+    }
+
 
     // Initializing structs to store data gotten and given by this process
     // drone_force as every other of these structs has a x and a y component

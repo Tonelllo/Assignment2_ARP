@@ -26,6 +26,7 @@
 #define LOG_ERROR "ERROR"
 
 #define MAX_STR_LEN 100
+#define MAX_MSG_LEN 1024
 
 #define N_TARGETS 20
 #define N_OBSTACLES 10
