@@ -28,7 +28,7 @@
 #define MAX_STR_LEN 100
 #define MAX_MSG_LEN 1024
 
-#define N_TARGETS 20
+#define N_TARGETS 1
 #define N_OBSTACLES 10
 #define MAX_NUMBER 500
 

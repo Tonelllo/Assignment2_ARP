@@ -57,39 +57,40 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-
     // coordinates of obstacles
     float obstacle_x, obstacle_y;
     // string for the communication with server
     char to_send[MAX_MSG_LEN] = "O";
     // String to compose the message for the server
-    char aux_to_send[MAX_STR_LEN] = {0};
-    // string for logging
-    char logmsg[100];
+    char aux_to_send[MAX_MSG_LEN] = {0};
 
     // seeding the random nymber generator with the current time, so that it
     // starts with a different state every time the programs is executed
-    srandom((unsigned int)time(NULL));
+    srandom((unsigned int)time(NULL)*33);
 
     while (1) {
         // spawn random coordinates in map field range and send it to the
         // server, so that they can be spawned in the map
+        sprintf(aux_to_send, "[%d]", N_TARGETS);
+        strcat(to_send, aux_to_send);
         for (int i = 0; i < N_OBSTACLES; i++) {
+            if(i != 0){
+                strcat(to_send,"|");
+            }
             obstacle_x = random() % SIMULATION_WIDTH;
             obstacle_y = random() % SIMULATION_HEIGHT;
-            sprintf(aux_to_send, "(%.3f,%.3f)", obstacle_x, obstacle_y);
+            sprintf(aux_to_send, "%.3f,%.3f", obstacle_x, obstacle_y);
             strcat(to_send, aux_to_send);
         }
-        Write(to_server_pipe, to_send, MAX_STR_LEN);
+        Write(to_server_pipe, to_send, MAX_MSG_LEN);
 
         // Resetting to_send string
-        to_send[0] = 'O';
-        to_send[1] = '\0';
+        sprintf(to_send, "O");
 
-        sprintf(logmsg, "Obstacles process generated a new set of obstacles");
-        logging(LOG_INFO, logmsg);
+        logging(LOG_INFO, "Obstacles process generated a new set of obstacles");
         int sleep_for = PERIOD;
-        while((sleep_for = sleep(sleep_for)));
+        while ((sleep_for = sleep(sleep_for)))
+            ;
     }
 
     // Cleaning up

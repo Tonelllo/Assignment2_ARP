@@ -131,7 +131,7 @@ int main(int argc, char *argv[]) {
     select_timeout.tv_sec  = 0;
     select_timeout.tv_usec = 0;
 
-    char to_send[MAX_STR_LEN];
+    char to_send[MAX_MSG_LEN];
 
     while (1) {
         // If reading_params_interval is equal to 0 is time to read again from
@@ -159,13 +159,13 @@ int main(int argc, char *argv[]) {
         // given by the user in the input process
         // get drone current x and y
 
-        char aux[MAX_STR_LEN];
+        char aux[MAX_MSG_LEN];
         reader = master;
         Select(from_input_pipe + 1, &reader, NULL, NULL, &select_timeout);
         select_timeout.tv_sec  = 0;
         select_timeout.tv_usec = 0;
         if (FD_ISSET(from_input_pipe, &reader)) {
-            int ret = Read(from_input_pipe, aux, MAX_STR_LEN);
+            int ret = Read(from_input_pipe, aux, MAX_MSG_LEN);
             if (ret == 0) {
                 logging(LOG_WARN, "Input drone pipe has been closed");
                 Close(from_input_pipe);
@@ -281,7 +281,7 @@ int main(int argc, char *argv[]) {
         sprintf(to_send, "%f,%f|%f,%f", drone_current_position.x,
                 drone_current_position.y, drone_current_velocity.x_component,
                 drone_current_velocity.y_component);
-        Write(to_server_pipe, to_send, MAX_STR_LEN);
+        Write(to_server_pipe, to_send, MAX_MSG_LEN);
 
         // velocity
 

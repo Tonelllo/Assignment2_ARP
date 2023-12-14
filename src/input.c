@@ -337,7 +337,7 @@ int main(int argc, char *argv[]) {
     FD_ZERO(&master);
     FD_SET(from_server_pipe, &master);
 
-    char aux[MAX_STR_LEN];
+    char aux[MAX_MSG_LEN];
 
     while (1) {
         // Updating values to show in the interface. First the position
@@ -391,7 +391,7 @@ int main(int argc, char *argv[]) {
 
         // Send update request to server
         Write(to_server_pipe, "U", 2);
-        Read(from_server_pipe, aux, MAX_STR_LEN);
+        Read(from_server_pipe, aux, MAX_MSG_LEN);
         sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x, &drone_current_pos.y,
                &drone_current_velocity.x_component,
                &drone_current_velocity.y_component);

@@ -45,16 +45,17 @@ int main(int argc, char *argv[]) {
 
     // Specifying that argc and argv are unused variables
     int from_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
-        to_map_pipe, from_target_pipe, from_obstacles_pipe;
+        to_map_pipe, from_target_pipe, to_target_pipe, from_obstacles_pipe;
 
-    if (argc == 8) {
+    if (argc == 9) {
         sscanf(argv[1], "%d", &from_drone_pipe);
         sscanf(argv[2], "%d", &from_input_pipe);
         sscanf(argv[3], "%d", &to_input_pipe);
         sscanf(argv[4], "%d", &from_map_pipe);
         sscanf(argv[5], "%d", &to_map_pipe);
         sscanf(argv[6], "%d", &from_target_pipe);
-        sscanf(argv[7], "%d", &from_obstacles_pipe);
+        sscanf(argv[7], "%d", &to_target_pipe);
+        sscanf(argv[8], "%d", &from_obstacles_pipe);
     } else {
         printf("Server: wrong number of arguments in input\n");
         getchar();
@@ -78,13 +79,12 @@ int main(int argc, char *argv[]) {
     FD_SET(from_map_pipe, &master);
     FD_SET(from_obstacles_pipe, &master);
     FD_SET(from_target_pipe, &master);
+    FD_SET(from_map_pipe, &master);
 
     int maxfd = max(max(max(from_drone_pipe, from_input_pipe),
                         max(from_map_pipe, from_obstacles_pipe)),
-                    from_target_pipe);
+                    max(from_target_pipe, from_map_pipe));
 
-    char targets_str[MAX_MSG_LEN]   = "T";
-    char obstacles_str[MAX_MSG_LEN] = "O";
     while (1) {
         // Temporarily blocking the SIGUSR1 signal to correctly perform the
         // select() syscall without being interrupted Since the time taken from
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
         // consequently
         for (int i = 0; i <= maxfd; i++) {
             if (FD_ISSET(i, &reader)) {
-                int ret = Read(i, received, MAX_STR_LEN);
+                int ret = Read(i, received, MAX_MSG_LEN);
                 if (ret == 0) {
                     logging(LOG_WARN, "Pipe to server closed");
                 } else {
@@ -115,23 +115,24 @@ int main(int argc, char *argv[]) {
                                 drone_current_pos.y,
                                 drone_current_velocity.x_component,
                                 drone_current_velocity.y_component);
-                        Write(to_input_pipe, to_send, MAX_STR_LEN);
+                        Write(to_input_pipe, to_send, MAX_MSG_LEN);
                     } else if (i == from_drone_pipe) {
                         sscanf(received, "%f,%f|%f,%f", &drone_current_pos.x,
                                &drone_current_pos.y,
                                &drone_current_velocity.x_component,
                                &drone_current_velocity.y_component);
-                    } else if (i == from_map_pipe) {
                         sprintf(to_send, "D%f|%f", drone_current_pos.x,
                                 drone_current_pos.y);
-                        Write(to_map_pipe, to_send, MAX_STR_LEN);
-                        printf("tsnehu: %s\n", obstacles_str);
-                        Write(to_map_pipe, targets_str, MAX_MSG_LEN);
-                        Write(to_map_pipe, obstacles_str, MAX_MSG_LEN);
+                        Write(to_map_pipe, to_send, MAX_MSG_LEN);
+                    } else if (i == from_map_pipe) {
+                        logging(LOG_INFO, received);
+                        if (!strcmp(received, "GE")) {
+                            Write(to_target_pipe, "GE", MAX_MSG_LEN);
+                        }
                     } else if (i == from_obstacles_pipe) {
-                        strcpy(obstacles_str, received);
+                        Write(to_map_pipe, received, MAX_MSG_LEN);
                     } else if (i == from_target_pipe) {
-                        strcpy(targets_str, received);
+                        Write(to_map_pipe, received, MAX_MSG_LEN);
                     }
                 }
             }
