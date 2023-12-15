@@ -44,18 +44,19 @@ int main(int argc, char *argv[]) {
     Sigaction(SIGUSR1, &sa, NULL);
 
     // Specifying that argc and argv are unused variables
-    int from_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
+    int from_drone_pipe, to_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
         to_map_pipe, from_target_pipe, to_target_pipe, from_obstacles_pipe;
 
-    if (argc == 9) {
+    if (argc == 10) {
         sscanf(argv[1], "%d", &from_drone_pipe);
-        sscanf(argv[2], "%d", &from_input_pipe);
-        sscanf(argv[3], "%d", &to_input_pipe);
-        sscanf(argv[4], "%d", &from_map_pipe);
-        sscanf(argv[5], "%d", &to_map_pipe);
-        sscanf(argv[6], "%d", &from_target_pipe);
-        sscanf(argv[7], "%d", &to_target_pipe);
-        sscanf(argv[8], "%d", &from_obstacles_pipe);
+        sscanf(argv[2], "%d", &to_drone_pipe);
+        sscanf(argv[3], "%d", &from_input_pipe);
+        sscanf(argv[4], "%d", &to_input_pipe);
+        sscanf(argv[5], "%d", &from_map_pipe);
+        sscanf(argv[6], "%d", &to_map_pipe);
+        sscanf(argv[7], "%d", &from_target_pipe);
+        sscanf(argv[8], "%d", &to_target_pipe);
+        sscanf(argv[9], "%d", &from_obstacles_pipe);
     } else {
         printf("Server: wrong number of arguments in input\n");
         getchar();
@@ -128,11 +129,16 @@ int main(int argc, char *argv[]) {
                         logging(LOG_INFO, received);
                         if (!strcmp(received, "GE")) {
                             Write(to_target_pipe, "GE", MAX_MSG_LEN);
+                        }else if(received[0] == 'T' && received[1] == 'H'){
+                            logging(LOG_INFO, received);
+                            Write(to_drone_pipe, received, MAX_MSG_LEN);
                         }
                     } else if (i == from_obstacles_pipe) {
                         Write(to_map_pipe, received, MAX_MSG_LEN);
+                        Write(to_drone_pipe, received, MAX_MSG_LEN);
                     } else if (i == from_target_pipe) {
                         Write(to_map_pipe, received, MAX_MSG_LEN);
+                        Write(to_drone_pipe, received, MAX_MSG_LEN);
                     }
                 }
             }

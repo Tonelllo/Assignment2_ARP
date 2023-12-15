@@ -386,11 +386,11 @@ int main(int argc, char *argv[]) {
             char aux_force[MAX_STR_LEN];
             sprintf(aux_force, "%f|%f", drone_current_force.x_component,
                     drone_current_force.y_component);
-            Write(to_drone_pipe, aux_force, strlen(aux_force) + 1);
+            Write(to_drone_pipe, aux_force, MAX_MSG_LEN);
         }
 
         // Send update request to server
-        Write(to_server_pipe, "U", 2);
+        Write(to_server_pipe, "U", MAX_MSG_LEN);
         Read(from_server_pipe, aux, MAX_MSG_LEN);
         sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x, &drone_current_pos.y,
                &drone_current_velocity.x_component,

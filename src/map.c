@@ -244,6 +244,7 @@ int main(int argc, char *argv[]) {
 
         int target_x, target_y;
         bool to_decrease = false;
+        char to_send[MAX_MSG_LEN];
         for (int i = 0; i < target_num; i++) {
             target_x = round(1 + targets_pos[i].x * (getmaxx(map_window) - 3) /
                                      SIMULATION_WIDTH);
@@ -252,6 +253,8 @@ int main(int argc, char *argv[]) {
             if (target_x == drone_x && target_y == drone_y) {
                 score++;
                 remove_target(i, targets_pos, target_num);
+                sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,targets_pos[i].y);
+                Write(to_server, to_send, MAX_MSG_LEN);
                 to_decrease = true;
             } else {
                 mvwprintw(map_window, target_y, target_x, "T");
