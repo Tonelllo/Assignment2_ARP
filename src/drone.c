@@ -261,20 +261,20 @@ int main(int argc, char *argv[]) {
             if (distance < area_of_effect) {
                 double x_distance = obstacles_arr[i].x - xt_1;
                 double y_distance = obstacles_arr[i].y - yt_1;
-                double force      = -repulsive_force(distance, 1000, 100);
+                double force      = -repulsive_force(distance, 100000, 200);
                 double angle      = atan2(y_distance, x_distance);
 
-                total_obstacles_forces.x_component += cos(angle)*force;
-                total_obstacles_forces.y_component += sin(angle)*force;
+                total_obstacles_forces.x_component += cos(angle) * force;
+                total_obstacles_forces.y_component += sin(angle) * force;
 
-                if (total_obstacles_forces.x_component > 500)
-                    total_obstacles_forces.x_component = 500;
-                if (total_obstacles_forces.x_component < -500)
-                    total_obstacles_forces.x_component = -500;
-                if (total_obstacles_forces.y_component > 500)
-                    total_obstacles_forces.y_component = 500;
-                if (total_obstacles_forces.y_component < -500)
-                    total_obstacles_forces.y_component = -500;
+                if (total_obstacles_forces.x_component > 1000)
+                    total_obstacles_forces.x_component = 1000;
+                if (total_obstacles_forces.x_component < -1000)
+                    total_obstacles_forces.x_component = -1000;
+                if (total_obstacles_forces.y_component > 1000)
+                    total_obstacles_forces.y_component = 1000;
+                if (total_obstacles_forces.y_component < -1000)
+                    total_obstacles_forces.y_component = -1000;
             }
         }
 
@@ -288,19 +288,19 @@ int main(int argc, char *argv[]) {
             if (distance < target_of_effect) {
                 double x_distance = targets_arr[i].x - xt_1;
                 double y_distance = targets_arr[i].y - yt_1;
-                double force      = repulsive_force(distance, 10, target_of_effect);
-                double angle      = atan2(y_distance, x_distance);
+                double force = repulsive_force(distance, 10, target_of_effect);
+                double angle = atan2(y_distance, x_distance);
                 // printf("X: %f, Y: %f\n", cosf(angle) * force,
                 //        sinf(angle) * force);
-                total_obstacles_forces.x_component += cos(angle)*force;
-                total_obstacles_forces.y_component += sin(angle)*force;
-                if(total_obstacles_forces.x_component > 100)
+                total_obstacles_forces.x_component += cos(angle) * force;
+                total_obstacles_forces.y_component += sin(angle) * force;
+                if (total_obstacles_forces.x_component > 100)
                     total_obstacles_forces.x_component = 100;
-                if(total_obstacles_forces.x_component < -100)
+                if (total_obstacles_forces.x_component < -100)
                     total_obstacles_forces.x_component = -100;
-                if(total_obstacles_forces.y_component > 100)
+                if (total_obstacles_forces.y_component > 100)
                     total_obstacles_forces.y_component = 100;
-                if(total_obstacles_forces.y_component < -100)
+                if (total_obstacles_forces.y_component < -100)
                     total_obstacles_forces.y_component = -100;
             }
         }
@@ -347,31 +347,35 @@ int main(int argc, char *argv[]) {
         // set velocity to 0 so instead the current position is set equal to
         // the previous one
 
-        // if (drone_current_velocity.x_component < ZERO_THRESHOLD &&
-        //     drone_current_velocity.x_component > -ZERO_THRESHOLD &&
-        //     walls.x_component == 0 && drone_force.x_component == 0)
-        //     drone_current_position.x = xt_1;
-        // else {
-        drone_current_position.x =
-            (walls.x_component + drone_force.x_component +
-             total_obstacles_forces.x_component +
-             total_targets_forces.x_component -
-             (M / (T * T)) * (xt_2 - 2 * xt_1) + (K / T) * xt_1) /
-            ((M / (T * T)) + K / T);
-        // }
+        if (drone_current_velocity.x_component < ZERO_THRESHOLD &&
+            drone_current_velocity.x_component > -ZERO_THRESHOLD &&
+            walls.x_component == 0 && drone_force.x_component == 0 &&
+            total_obstacles_forces.x_component == 0 &&
+            total_targets_forces.x_component == 0)
+            drone_current_position.x = xt_1;
+        else {
+            drone_current_position.x =
+                (walls.x_component + drone_force.x_component +
+                 total_obstacles_forces.x_component +
+                 total_targets_forces.x_component -
+                 (M / (T * T)) * (xt_2 - 2 * xt_1) + (K / T) * xt_1) /
+                ((M / (T * T)) + K / T);
+        }
 
-        // if (drone_current_velocity.y_component < ZERO_THRESHOLD &&
-        //     drone_current_velocity.y_component > -ZERO_THRESHOLD &&
-        //     walls.y_component == 0 && drone_force.y_component == 0)
-        //     drone_current_position.y = yt_1;
-        // else {
-        drone_current_position.y =
-            (walls.y_component + drone_force.y_component +
-             total_obstacles_forces.y_component +
-             total_targets_forces.y_component -
-             (M / (T * T)) * (yt_2 - 2 * yt_1) + (K / T) * yt_1) /
-            ((M / (T * T)) + K / T);
-        // }
+        if (drone_current_velocity.y_component < ZERO_THRESHOLD &&
+            drone_current_velocity.y_component > -ZERO_THRESHOLD &&
+            walls.y_component == 0 && drone_force.y_component == 0 &&
+            total_obstacles_forces.y_component == 0 &&
+            total_targets_forces.y_component == 0)
+            drone_current_position.y = yt_1;
+        else {
+            drone_current_position.y =
+                (walls.y_component + drone_force.y_component +
+                 total_obstacles_forces.y_component +
+                 total_targets_forces.y_component -
+                 (M / (T * T)) * (yt_2 - 2 * yt_1) + (K / T) * yt_1) /
+                ((M / (T * T)) + K / T);
+        }
 
         // These ifs enforce the boundary of the simulation. These are
         // needed because if the force is set too high it's possible that
