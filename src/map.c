@@ -170,11 +170,23 @@ int main(int argc, char *argv[]) {
     FD_ZERO(&master);
     FD_SET(from_server, &master);
     while (1) {
-        // Updating the drone position by reading from the shared memory, and
-        // taking the semaphors
+        // Temporarily blocking the SIGUSR1 signal to correctly perform the
+        // select() syscall without being interrupted Since the time taken from
+        // the select to execute is significantly lower than the WD period for
+        // sending signals, this mask should not affect the WD behaviour
+        sigset_t block_mask;
+        sigemptyset(&block_mask);
+        sigaddset(&block_mask, SIGUSR1);
+        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
 
+        // Updating the drone position by reading from the shared memory, and
+        // taking the semaphores
         reader = master;
         Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
+        
+        // unblock SIGUSR1
+        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+
         select_timeout.tv_sec  = 5;
         select_timeout.tv_usec = 0;
         if (FD_ISSET(from_server, &reader)) {

@@ -205,9 +205,23 @@ int main(int argc, char *argv[]) {
         // given by the user in the input process
         // get drone current x and y
 
+        // Temporarily blocking the SIGUSR1 signal to correctly perform the
+        // select() syscall without being interrupted Since the time taken from
+        // the select to execute is significantly lower than the WD period for
+        // sending signals, this mask should not affect the WD behaviour
+        sigset_t block_mask;
+        sigemptyset(&block_mask);
+        sigaddset(&block_mask, SIGUSR1);
+        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
+
+        //perform the select
         char received[MAX_MSG_LEN];
         reader = master;
         Select(max_fd + 1, &reader, NULL, NULL, &select_timeout);
+
+        // unblock SIGUSR1
+        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+        
         select_timeout.tv_sec  = 0;
         select_timeout.tv_usec = 0;
         for (int i = 0; i <= max_fd; i++) {
