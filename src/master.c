@@ -14,7 +14,37 @@ static void spawn(char **arg_list) {
     exit(EXIT_FAILURE);
 }
 
+// Pids for all children
+pid_t child[NUM_PROCESSES];
+
+// Signal handler for when 'p' is pressed
+void signal_handler(int signo, siginfo_t *info, void *context) {
+    // Specifying that context is unused
+    (void)(context);
+
+    if (signo == SIGINT) {
+        for(int i = 0; i < NUM_PROCESSES; i++)
+            Kill(child[i], SIGKILL);
+        exit(EXIT_SUCCESS);
+    }
+}
+
 int main(int argc, char *argv[]) {
+    // Signal declaration
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+
+    // Setting the signal handler
+    sa.sa_sigaction = signal_handler;
+    sigemptyset(&sa.sa_mask);
+    // Setting flags
+    // The SA_RESTART flag is used to restart all those syscalls that can get
+    // interrupted by signals
+    sa.sa_flags = SA_SIGINFO | SA_RESTART;
+
+    // Enabling the handler with the specified flags
+    Sigaction(SIGINT, &sa, NULL);
+    
     // Specifying that argc and argv are unused variables
     (void)(argc);
     (void)(argv);
@@ -28,9 +58,6 @@ int main(int argc, char *argv[]) {
     strcpy(programs[4], "./target");
     strcpy(programs[5], "./obstacles");
     strcpy(programs[6], "./WD");
-
-    // Pids for all children
-    pid_t child[NUM_PROCESSES];
 
     // String to contain all che children pids (except WD)
     char child_pids_str[NUM_PROCESSES - 1][80];

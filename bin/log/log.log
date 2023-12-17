@@ -1795,3 +1795,158 @@
 [INFO] - WD sending signal to 20749
 [INFO] - WD sending signal to 20806
 [WARN] - WD killed all processes because of process with pid 20806
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 84.000,106.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 84.000,23.000
+[INFO] - 244.000,48.000
+[INFO] - 235.000,23.000
+[INFO] - 293.000,124.000
+[INFO] - 188.000,240.000
+[INFO] - 367.000,390.000
+[INFO] - 417.000,101.000
+[INFO] - 356.000,435.000
+[INFO] - 393.000,56.000
+[INFO] - 71.000,134.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21492
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 84.000,106.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 84.000,23.000
+[INFO] - 244.000,48.000
+[INFO] - 235.000,23.000
+[INFO] - 293.000,124.000
+[INFO] - 188.000,240.000
+[INFO] - 367.000,390.000
+[INFO] - 417.000,101.000
+[INFO] - 356.000,435.000
+[INFO] - 393.000,56.000
+[INFO] - 71.000,134.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - TH|0|84.000,106.000
+[INFO] - TH|0|84.000,106.000
+[INFO] - GE
+[INFO] - Received GE
+[INFO] - Target process generated a new set of targets
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 459.000,314.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 459.000,314.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 21494
+[INFO] - WD sending signal to 21430
+[INFO] - WD sending signal to 21431
+[INFO] - WD sending signal to 21434
+[INFO] - WD sending signal to 21435
+[INFO] - WD sending signal to 21492
+[INFO] - WD sending signal to 21494
+[INFO] - WD sending signal to 21430
+[INFO] - WD sending signal to 21431
+[INFO] - WD sending signal to 21434
+[INFO] - WD sending signal to 21435
+[INFO] - TH|0|459.000,314.000
+[INFO] - TH|0|459.000,314.000
+[INFO] - GE
+[INFO] - Received GE
+[INFO] - Target process generated a new set of targets
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 253.000,133.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 253.000,133.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 21492
+[INFO] - WD sending signal to 21494
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21430
+[INFO] - WD sending signal to 21431
+[INFO] - WD sending signal to 21434
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21435
+[INFO] - WD sending signal to 21492
+[INFO] - TH|0|253.000,133.000
+[INFO] - TH|0|253.000,133.000
+[INFO] - GE
+[INFO] - Received GE
+[INFO] - Target process generated a new set of targets
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 235.000,16.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 235.000,16.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 21494
+[INFO] - WD sending signal to 21430
+[INFO] - WD sending signal to 21431
+[INFO] - WD sending signal to 21434
+[INFO] - WD sending signal to 21435
+[INFO] - TH|0|235.000,16.000
+[INFO] - TH|0|235.000,16.000
+[INFO] - GE
+[INFO] - Received GE
+[INFO] - Target process generated a new set of targets
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 10.000,470.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 10.000,470.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 21492
+[INFO] - WD sending signal to 21494
+[INFO] - WD sending signal to 21430
+[INFO] - WD sending signal to 21431
+[INFO] - WD sending signal to 21434
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21435
+[INFO] - WD sending signal to 21492
+[WARN] - WD killed all processes because of process with pid 21492
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 198.000,140.000
+[INFO] - 13.000,361.000
+[INFO] - 191.000,423.000
+[INFO] - 61.000,444.000
+[INFO] - 29.000,435.000
+[INFO] - 82.000,199.000
+[INFO] - 350.000,373.000
+[INFO] - 460.000,144.000
+[INFO] - 97.000,481.000
+[INFO] - 370.000,124.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 436.000,129.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 21845
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 198.000,140.000
+[INFO] - 13.000,361.000
+[INFO] - 191.000,423.000
+[INFO] - 61.000,444.000
+[INFO] - 29.000,435.000
+[INFO] - 82.000,199.000
+[INFO] - 350.000,373.000
+[INFO] - 460.000,144.000
+[INFO] - 97.000,481.000
+[INFO] - 370.000,124.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 436.000,129.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 1
+[INFO] - WD sending signal to 21843
+[INFO] - WD sending signal to 21780
+[INFO] - WD sending signal to 21781
+[INFO] - WD sending signal to 21784
+[INFO] - WD sending signal to 21785
