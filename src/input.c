@@ -31,9 +31,6 @@ void signal_handler(int signo, siginfo_t *info, void *context) {
     }
 }
 
-//global function to save the master pid
-int master_pid;
-
 // Create the outer border of the window
 WINDOW *input_display_setup(int height, int width, int starty, int startx) {
     WINDOW *local_win;
@@ -200,10 +197,6 @@ bool update_force(struct force *to_update, int input, float step,
             to_update->x_component = slow_down();
             to_update->y_component = slow_down();
             break;
-        case 'p':
-            exit(EXIT_SUCCESS);
-            //Kill(master_pid, SIGINT);
-            break;
         default:
             ret = false;
             break;
@@ -241,11 +234,10 @@ int main(int argc, char *argv[]) {
 
     // Specifying that argc and argv are unused variables
     int to_drone_pipe, to_server_pipe, from_server_pipe;
-    if (argc == 5) {
+    if (argc == 4) {
         sscanf(argv[1], "%d", &to_drone_pipe);
         sscanf(argv[2], "%d", &to_server_pipe);
         sscanf(argv[3], "%d", &from_server_pipe);
-        sscanf(argv[4], "%d", &master_pid);
     } else {
         printf("Wrong number of arguments in input\n");
         getchar();

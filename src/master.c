@@ -35,10 +35,6 @@ int main(int argc, char *argv[]) {
     // String to contain all che children pids (except WD)
     char child_pids_str[NUM_PROCESSES - 1][80];
 
-    //string for the master pid
-    char master_pid_str[10];
-    sprintf(master_pid_str, "%d", getpid());
-
     // Cycle neeeded to fork the correct number of childs
 
     int input_drone[2];
@@ -83,7 +79,7 @@ int main(int argc, char *argv[]) {
             char *arg_list[]         = {programs[i], NULL, NULL, NULL,
                                         NULL,        NULL, NULL, NULL, NULL, NULL, NULL};
             char *konsole_arg_list[] = {"konsole", "-e", programs[i], NULL,
-                                        NULL,      NULL, NULL, NULL};
+                                        NULL,      NULL, NULL};
 
 
             switch (i) {
@@ -139,7 +135,6 @@ int main(int argc, char *argv[]) {
                     konsole_arg_list[3] = input_drone_str;
                     konsole_arg_list[4] = input_server_str;
                     konsole_arg_list[5] = server_input_str;
-                    konsole_arg_list[6] = master_pid_str;
                     Close(input_drone[0]);
                     Close(input_server[0]);
                     Close(server_input[1]);
