@@ -201,8 +201,8 @@ bool update_force(struct force *to_update, int input, float step,
             to_update->y_component = slow_down();
             break;
         case 'p':
-            //exit(EXIT_SUCCESS);
-            Kill(master_pid, SIGINT);
+            exit(EXIT_SUCCESS);
+            //Kill(master_pid, SIGINT);
             break;
         default:
             ret = false;
