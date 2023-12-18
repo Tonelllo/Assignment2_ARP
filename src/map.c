@@ -196,6 +196,9 @@ int main(int argc, char *argv[]) {
                 ;
             } else {
                 char aux[100];
+                if(!strcmp(received, "STOP")){
+                    break;
+                }
                 switch (received[0]) {
                     case 'D':
                         sscanf(received, "D%f|%f", &drone_pos.x, &drone_pos.y);

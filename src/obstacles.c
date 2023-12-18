@@ -31,6 +31,8 @@ void signal_handler(int signo, siginfo_t *info, void *context) {
     }
 }
 
+char received[MAX_MSG_LEN];
+
 int main(int argc, char *argv[]) {
     // Signal declaration
     struct sigaction sa;
@@ -47,10 +49,11 @@ int main(int argc, char *argv[]) {
     Sigaction(SIGUSR1, &sa, NULL);
 
     // Specifying that argc and argv are unused variables
-    int to_server_pipe;
+    int to_server_pipe, from_server_pipe;
 
-    if (argc == 2) {
+    if (argc == 3) {
         sscanf(argv[1], "%d", &to_server_pipe);
+        sscanf(argv[2], "%d", &from_server_pipe);
     } else {
         printf("Wrong number of arguments in obstacles\n");
         getchar();
@@ -68,6 +71,14 @@ int main(int argc, char *argv[]) {
     // starts with a different state every time the programs is executed
     srandom((unsigned int)time(NULL)*33);
 
+    fd_set reader, master;
+    FD_ZERO(&reader);
+    FD_ZERO(&master);
+    FD_SET(from_server_pipe, &master);
+
+    struct timeval select_timeout;
+    select_timeout.tv_sec = PERIOD;
+    select_timeout.tv_usec = 0;
     while (1) {
         // spawn random coordinates in map field range and send it to the
         // server, so that they can be spawned in the map
@@ -88,9 +99,15 @@ int main(int argc, char *argv[]) {
         sprintf(to_send, "O");
 
         logging(LOG_INFO, "Obstacles process generated a new set of obstacles");
-        int sleep_for = PERIOD;
-        while ((sleep_for = sleep(sleep_for)))
-            ;
+
+        reader = master;
+        Select(from_server_pipe+1, &reader, NULL, NULL, &select_timeout);
+        if(FD_ISSET(from_server_pipe, &reader)){
+            Read(from_server_pipe, received, MAX_MSG_LEN);
+            if(!strcmp(received, "STOP")){
+                break;
+            }
+        }
     }
 
     // Cleaning up

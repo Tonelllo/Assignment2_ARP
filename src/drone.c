@@ -178,6 +178,7 @@ int main(int argc, char *argv[]) {
     struct pos obstacles_arr[N_OBSTACLES];
     int targets_num   = 0;
     int obstacles_num = 0;
+    bool to_exit      = false;
 
     while (1) {
         // If reading_params_interval is equal to 0 is time to read again from
@@ -214,14 +215,14 @@ int main(int argc, char *argv[]) {
         sigaddset(&block_mask, SIGUSR1);
         Sigprocmask(SIG_BLOCK, &block_mask, NULL);
 
-        //perform the select
+        // perform the select
         char received[MAX_MSG_LEN];
         reader = master;
         Select(max_fd + 1, &reader, NULL, NULL, &select_timeout);
 
         // unblock SIGUSR1
         Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
-        
+
         select_timeout.tv_sec  = 0;
         select_timeout.tv_usec = 0;
         for (int i = 0; i <= max_fd; i++) {
@@ -230,6 +231,10 @@ int main(int argc, char *argv[]) {
                 if (ret == 0) {
                     logging(LOG_WARN, "Pipe closed in drone");
                     Close(i);
+                }
+                if (!strcmp(received, "STOP")) {
+                    to_exit = true;
+                    break;
                 }
                 switch (received[0]) {
                     case 'T':
@@ -265,6 +270,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        if (to_exit)
+            break;
 
         // Calculating repulsive force for every obstacle
         total_obstacles_forces.x_component = 0;

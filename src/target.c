@@ -90,6 +90,8 @@ int main(int argc, char *argv[]) {
         Read(from_server_pipe, received, MAX_MSG_LEN);
         if (!strcmp(received, "GE")) {
             logging(LOG_INFO, "Received GE");
+        }else if(!strcmp(received, "STOP")){
+            break;
         }
 
         logging(LOG_INFO, "Target process generated a new set of targets");

@@ -4,6 +4,7 @@
 #include "wrapFuncs/wrapFunc.h"
 #include <fcntl.h>
 #include <signal.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,10 +45,11 @@ int main(int argc, char *argv[]) {
     Sigaction(SIGUSR1, &sa, NULL);
 
     // Specifying that argc and argv are unused variables
-    int from_drone_pipe, to_drone_pipe, from_input_pipe, to_input_pipe, from_map_pipe,
-        to_map_pipe, from_target_pipe, to_target_pipe, from_obstacles_pipe;
+    int from_drone_pipe, to_drone_pipe, from_input_pipe, to_input_pipe,
+        from_map_pipe, to_map_pipe, from_target_pipe, to_target_pipe,
+        from_obstacles_pipe, to_obstacle_pipe;
 
-    if (argc == 10) {
+    if (argc == 11) {
         sscanf(argv[1], "%d", &from_drone_pipe);
         sscanf(argv[2], "%d", &to_drone_pipe);
         sscanf(argv[3], "%d", &from_input_pipe);
@@ -57,6 +59,7 @@ int main(int argc, char *argv[]) {
         sscanf(argv[7], "%d", &from_target_pipe);
         sscanf(argv[8], "%d", &to_target_pipe);
         sscanf(argv[9], "%d", &from_obstacles_pipe);
+        sscanf(argv[10], "%d", &to_obstacle_pipe);
     } else {
         printf("Server: wrong number of arguments in input\n");
         getchar();
@@ -86,6 +89,8 @@ int main(int argc, char *argv[]) {
                         max(from_map_pipe, from_obstacles_pipe)),
                     max(from_target_pipe, from_map_pipe));
 
+
+    bool to_exit = false;
     while (1) {
         // Temporarily blocking the SIGUSR1 signal to correctly perform the
         // select() syscall without being interrupted Since the time taken from
@@ -109,14 +114,24 @@ int main(int argc, char *argv[]) {
             if (FD_ISSET(i, &reader)) {
                 int ret = Read(i, received, MAX_MSG_LEN);
                 if (ret == 0) {
-                    logging(LOG_WARN, "Pipe to server closed");
+                    // TODO does not work
+                    printf("Pipe to server closed\n");
                 } else {
                     if (i == from_input_pipe) {
-                        sprintf(to_send, "%f,%f|%f,%f", drone_current_pos.x,
-                                drone_current_pos.y,
-                                drone_current_velocity.x_component,
-                                drone_current_velocity.y_component);
-                        Write(to_input_pipe, to_send, MAX_MSG_LEN);
+                        if (!strcmp(received, "STOP")) {
+                            Write(to_drone_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_map_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_obstacle_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_target_pipe, "STOP", MAX_MSG_LEN);
+                            to_exit = true;
+                            break;
+                        } else {
+                            sprintf(to_send, "%f,%f|%f,%f", drone_current_pos.x,
+                                    drone_current_pos.y,
+                                    drone_current_velocity.x_component,
+                                    drone_current_velocity.y_component);
+                            Write(to_input_pipe, to_send, MAX_MSG_LEN);
+                        }
                     } else if (i == from_drone_pipe) {
                         sscanf(received, "%f,%f|%f,%f", &drone_current_pos.x,
                                &drone_current_pos.y,
@@ -129,7 +144,7 @@ int main(int argc, char *argv[]) {
                         logging(LOG_INFO, received);
                         if (!strcmp(received, "GE")) {
                             Write(to_target_pipe, "GE", MAX_MSG_LEN);
-                        }else if(received[0] == 'T' && received[1] == 'H'){
+                        } else if (received[0] == 'T' && received[1] == 'H') {
                             logging(LOG_INFO, received);
                             Write(to_drone_pipe, received, MAX_MSG_LEN);
                         }
@@ -143,6 +158,19 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+        if(to_exit)
+            break;
     }
+    // TODO close pipes
+    Close(from_drone_pipe);
+    Close(from_input_pipe);
+    Close(from_map_pipe);
+    Close(from_obstacles_pipe);
+    Close(from_target_pipe);
+    Close(to_drone_pipe);
+    Close(to_map_pipe);
+    Close(to_obstacle_pipe);
+    Close(to_target_pipe);
+    Close(to_input_pipe);
     return EXIT_SUCCESS;
 }

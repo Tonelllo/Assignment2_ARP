@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 // WD pid
-pid_t WD_pid;
+pid_t WD_pid = -1;
 
 // Once the SIGUSR1 is received send back the SIGUSR2 signal
 void signal_handler(int signo, siginfo_t *info, void *context) {
@@ -372,8 +372,15 @@ int main(int argc, char *argv[]) {
 
         // Getting user input if present
         input = getch();
-        if (input == '?')
-            logging(LOG_INFO, "banana");
+        if (input == 'p'){
+            // TEMPORARY TODO
+            if(WD_pid != -1)
+                Kill(WD_pid, SIGKILL);
+            // TEMPORARY TODO
+            
+            Write(to_server_pipe, "STOP", MAX_MSG_LEN);
+            break;
+        }
 
         // Calculate the currently acting force on the drone by sending the
         // currently pressed key to the update_force function
