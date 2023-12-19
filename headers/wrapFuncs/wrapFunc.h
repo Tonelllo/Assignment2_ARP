@@ -16,6 +16,8 @@ int Write(int fd, void *buf, size_t nbytes);
 int Fork(void);
 int Select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
            struct timeval *timeout);
+int Select_wmask(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
+           struct timeval *timeout);
 int Open(const char *file, int oflag);
 int Pipe(int *pipedes);
 int Close(int fd);

@@ -92,21 +92,9 @@ int main(int argc, char *argv[]) {
 
     bool to_exit = false;
     while (1) {
-        // Temporarily blocking the SIGUSR1 signal to correctly perform the
-        // select() syscall without being interrupted Since the time taken from
-        // the select to execute is significantly lower than the WD period for
-        // sending signals, this mask should not affect the WD behaviour
-        sigset_t block_mask;
-        sigemptyset(&block_mask);
-        sigaddset(&block_mask, SIGUSR1);
-        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
-
         // perform the select
         reader = master;
-        Select(maxfd + 1, &reader, NULL, NULL, NULL);
-
-        // unblock SIGUSR1
-        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+        Select_wmask(maxfd + 1, &reader, NULL, NULL, NULL);
 
         // check the value returned by the select and perform actions
         // consequently
@@ -116,6 +104,8 @@ int main(int argc, char *argv[]) {
                 if (ret == 0) {
                     // TODO does not work
                     printf("Pipe to server closed\n");
+                    Close(i);
+                    FD_CLR(i, &master);
                 } else {
                     if (i == from_input_pipe) {
                         if (!strcmp(received, "STOP")) {

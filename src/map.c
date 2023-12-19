@@ -170,33 +170,29 @@ int main(int argc, char *argv[]) {
     FD_ZERO(&master);
     FD_SET(from_server, &master);
     while (1) {
-        // Temporarily blocking the SIGUSR1 signal to correctly perform the
-        // select() syscall without being interrupted Since the time taken from
-        // the select to execute is significantly lower than the WD period for
-        // sending signals, this mask should not affect the WD behaviour
-        sigset_t block_mask;
-        sigemptyset(&block_mask);
-        sigaddset(&block_mask, SIGUSR1);
-        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
-
         // Updating the drone position by reading from the shared memory, and
         // taking the semaphores
         reader = master;
-        Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
-        
-        // unblock SIGUSR1
-        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+        int ret;
+        do {
+            ret = Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
+            // The only reason to get an erorr is if Select gets interrupted by
+            // a signal. In that case the function should be restarted if the
+            // SA_RESTART flag didn't do its job
+        } while (ret == -1);
 
         select_timeout.tv_sec  = 5;
         select_timeout.tv_usec = 0;
+
         if (FD_ISSET(from_server, &reader)) {
-            int ret = Read(from_server, received, MAX_MSG_LEN);
-            if (ret == 0) {
-                // TODO
-                ;
+            int read_ret = Read(from_server, received, MAX_MSG_LEN);
+            if (read_ret == 0) {
+                Close(from_server);
+                FD_CLR(from_server, &master);
+                logging(LOG_WARN, "Pipe to map closed");
             } else {
                 char aux[100];
-                if(!strcmp(received, "STOP")){
+                if (!strcmp(received, "STOP")) {
                     break;
                 }
                 switch (received[0]) {
@@ -223,13 +219,12 @@ int main(int argc, char *argv[]) {
             }
         }
 
+        // Display the menu text
+        refresh();
         // Displaying the title of the window.
         mvprintw(0, 0, "MAP DISPLAY");
 
         mvprintw(0, COLS / 3, "Score: %d", score);
-
-        // Display the menu text
-        refresh();
 
         // Deleting the old window that is encapsulating the map in order to
         // create the animation, and to allow the resizing of the window in case
@@ -268,7 +263,8 @@ int main(int argc, char *argv[]) {
             if (target_x == drone_x && target_y == drone_y) {
                 score++;
                 remove_target(i, targets_pos, target_num);
-                sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,targets_pos[i].y);
+                sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,
+                        targets_pos[i].y);
                 Write(to_server, to_send, MAX_MSG_LEN);
                 to_decrease = true;
             } else {
@@ -276,10 +272,10 @@ int main(int argc, char *argv[]) {
             }
         }
         // check whether all the targets have been hit
-        if (to_decrease && !--target_num){
+        if (to_decrease && !--target_num) {
             Write(to_server, "GE", MAX_MSG_LEN);
         }
-        
+
         int obst_x, obst_y;
         for (int i = 0; i < obstacles_num; i++) {
             obst_x = round(1 + obstacles_pos[i].x * (getmaxx(map_window) - 3) /

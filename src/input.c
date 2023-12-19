@@ -340,24 +340,6 @@ int main(int argc, char *argv[]) {
     char aux[MAX_MSG_LEN];
 
     while (1) {
-        // Updating values to show in the interface. First the position
-        // is updated
-        // reader = master;
-        // struct timeval select_timeout;
-        // select_timeout.tv_sec  = 0;
-        // select_timeout.tv_usec = 0;
-        // Select(from_server_pipe + 1, &reader, NULL, NULL, &select_timeout);
-        // if (FD_ISSET(from_server_pipe, &reader)) {
-        //     int ret = Read(from_server_pipe, aux, MAX_STR_LEN);
-        //     if (ret == 0) {
-        //         logging(LOG_WARN, "Server input pipe has been closed");
-        //         Close(from_server_pipe);
-        //     }
-        //     sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x,
-        //            &drone_current_pos.y, &drone_current_velocity.x_component,
-        //            &drone_current_velocity.y_component);
-        // }
-
         // Updating constants at runtime when the reading_params_interval goes
         // to 0
         if (!reading_params_interval--) {
@@ -398,7 +380,9 @@ int main(int argc, char *argv[]) {
 
         // Send update request to server
         Write(to_server_pipe, "U", MAX_MSG_LEN);
-        Read(from_server_pipe, aux, MAX_MSG_LEN);
+        int read_ret = Read(from_server_pipe, aux, MAX_MSG_LEN);
+        if(read_ret == 0)
+            break;
         sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x, &drone_current_pos.y,
                &drone_current_velocity.x_component,
                &drone_current_velocity.y_component);

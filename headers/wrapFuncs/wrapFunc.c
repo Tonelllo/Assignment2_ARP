@@ -81,12 +81,40 @@ int Select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
            struct timeval *timeout) {
     int ret = select(nfds, readfds, writefds, exceptfds, timeout);
     if (ret < 0) {
+        // TODO temporary
+        // char aux[100];
+        // sprintf(aux, "Error on executing select %d", getpid());
+        // perror(aux);
+        // fflush(stdout);
+        // getchar();
+        // exit(EXIT_FAILURE);
+    }
+    return ret;
+}
+
+int Select_wmask(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
+                 struct timeval *timeout) {
+    // Temporarily blocking the SIGUSR1 signal to correctly perform the
+    // select() syscall without being interrupted Since the time taken from
+    // the select to execute is significantly lower than the WD period for
+    // sending signals, this mask should not affect the WD behaviour
+    // Block SIGUSR1
+    sigset_t block_mask;
+    sigemptyset(&block_mask);
+    sigaddset(&block_mask, SIGUSR1);
+    Sigprocmask(SIG_BLOCK, &block_mask, NULL);
+
+    int ret = select(nfds, readfds, writefds, exceptfds, timeout);
+    // unblock SIGUSR1
+    Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
+
+    if (ret < 0) {
         char aux[100];
         sprintf(aux, "Error on executing select %d", getpid());
         perror(aux);
         fflush(stdout);
-        // getchar();
-        // exit(EXIT_FAILURE);
+        getchar();
+        exit(EXIT_FAILURE);
     }
     return ret;
 }
@@ -283,8 +311,8 @@ void Sigaction(int signum, const struct sigaction *act,
 void Sigprocmask(int type, const sigset_t *mask, sigset_t *oldset) {
     int ret = sigprocmask(type, mask, oldset);
     if (ret < 0) {
-	perror("Error on executing sigprocmask");
-	exit(EXIT_FAILURE);
+        perror("Error on executing sigprocmask");
+        exit(EXIT_FAILURE);
     }
 }
 

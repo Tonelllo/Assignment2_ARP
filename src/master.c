@@ -77,13 +77,12 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < NUM_PROCESSES; i++) {
         child[i] = Fork();
         if (!child[i]) {
-            
+
             // Spawn the input and map process using konsole
-            char *arg_list[]         = {programs[i], NULL, NULL, NULL,
-                                        NULL,        NULL, NULL, NULL, NULL, NULL, NULL, NULL};
+            char *arg_list[] = {programs[i], NULL, NULL, NULL, NULL, NULL,
+                                NULL,        NULL, NULL, NULL, NULL, NULL};
             char *konsole_arg_list[] = {"konsole", "-e", programs[i], NULL,
                                         NULL,      NULL, NULL};
-
 
             switch (i) {
                 case 0:
@@ -98,15 +97,15 @@ int main(int argc, char *argv[]) {
                     sprintf(server_target_str, "%d", server_target[1]);
                     sprintf(obstacles_server_str, "%d", obstacles_server[0]);
                     sprintf(server_obstacles_str, "%d", server_obstacles[1]);
-                    arg_list[1] = drone_server_str;
-                    arg_list[2] = server_drone_str;
-                    arg_list[3] = input_server_str;
-                    arg_list[4] = server_input_str;
-                    arg_list[5] = map_server_str;
-                    arg_list[6] = server_map_str;
-                    arg_list[7] = target_server_str;
-                    arg_list[8] = server_target_str;
-                    arg_list[9] = obstacles_server_str;
+                    arg_list[1]  = drone_server_str;
+                    arg_list[2]  = server_drone_str;
+                    arg_list[3]  = input_server_str;
+                    arg_list[4]  = server_input_str;
+                    arg_list[5]  = map_server_str;
+                    arg_list[6]  = server_map_str;
+                    arg_list[7]  = target_server_str;
+                    arg_list[8]  = server_target_str;
+                    arg_list[9]  = obstacles_server_str;
                     arg_list[10] = server_obstacles_str;
                     Close(drone_server[1]);
                     Close(server_drone[0]);
@@ -118,6 +117,8 @@ int main(int argc, char *argv[]) {
                     Close(server_target[0]);
                     Close(obstacles_server[1]);
                     Close(server_obstacles[0]);
+                    Close(input_drone[0]);
+                    Close(input_drone[1]);
                     spawn(arg_list);
                     break;
                 case 1:
@@ -131,6 +132,23 @@ int main(int argc, char *argv[]) {
                     Close(input_drone[1]);
                     Close(server_drone[1]);
                     Close(drone_server[0]);
+
+                    Close(server_input[0]);
+                    Close(server_input[1]);
+                    Close(input_server[0]);
+                    Close(input_server[1]);
+                    Close(map_server[0]);
+                    Close(map_server[1]);
+                    Close(server_map[0]);
+                    Close(server_map[1]);
+                    Close(target_server[0]);
+                    Close(target_server[1]);
+                    Close(server_target[0]);
+                    Close(server_target[1]);
+                    Close(obstacles_server[0]);
+                    Close(obstacles_server[1]);
+                    Close(server_obstacles[0]);
+                    Close(server_obstacles[1]);
                     spawn(arg_list);
                     break;
                 case 2:
@@ -144,6 +162,20 @@ int main(int argc, char *argv[]) {
                     Close(input_drone[0]);
                     Close(input_server[0]);
                     Close(server_input[1]);
+
+                    Close(map_server[0]);
+                    Close(map_server[1]);
+                    Close(server_map[0]);
+                    Close(server_map[1]);
+                    Close(target_server[0]);
+                    Close(target_server[1]);
+                    Close(server_target[0]);
+                    Close(server_target[1]);
+                    Close(obstacles_server[0]);
+                    Close(obstacles_server[1]);
+                    Close(server_obstacles[0]);
+                    Close(server_obstacles[1]);
+
                     Execvp("konsole", konsole_arg_list);
                     exit(EXIT_FAILURE);
                     break;
@@ -155,6 +187,16 @@ int main(int argc, char *argv[]) {
                     konsole_arg_list[4] = server_map_str;
                     Close(map_server[0]);
                     Close(server_map[1]);
+
+                    Close(target_server[0]);
+                    Close(target_server[1]);
+                    Close(server_target[0]);
+                    Close(server_target[1]);
+                    Close(obstacles_server[0]);
+                    Close(obstacles_server[1]);
+                    Close(server_obstacles[0]);
+                    Close(server_obstacles[1]);
+
                     Execvp("konsole", konsole_arg_list);
                     exit(EXIT_FAILURE);
                     break;
@@ -166,6 +208,12 @@ int main(int argc, char *argv[]) {
                     arg_list[2] = server_target_str;
                     Close(target_server[0]);
                     Close(server_target[1]);
+
+                    Close(obstacles_server[0]);
+                    Close(obstacles_server[1]);
+                    Close(server_obstacles[0]);
+                    Close(server_obstacles[1]);
+
                     spawn(arg_list);
                     break;
                 case 5:
@@ -176,6 +224,7 @@ int main(int argc, char *argv[]) {
                     arg_list[2] = server_obstacles_str;
                     Close(obstacles_server[0]);
                     Close(server_obstacles[1]);
+
                     spawn(arg_list);
                     break;
             }
@@ -188,8 +237,46 @@ int main(int argc, char *argv[]) {
                 // Sending as arguments to the WD all the processes PIDs
                 char *arg_list[] = {programs[i],       child_pids_str[0],
                                     child_pids_str[1], child_pids_str[2],
-                                    child_pids_str[3], child_pids_str[4], child_pids_str[5], NULL};
+                                    child_pids_str[3], child_pids_str[4],
+                                    child_pids_str[5], NULL};
                 spawn(arg_list);
+            }
+        } else {
+            switch (i) {
+                case 1:
+                    // Drone has spawned
+                    Close(server_drone[0]);
+                    Close(server_drone[1]);
+                    Close(drone_server[0]);
+                    Close(drone_server[1]);
+                    break;
+                case 2:
+                    Close(server_input[0]);
+                    Close(server_input[1]);
+                    Close(input_server[0]);
+                    Close(input_server[1]);
+                    Close(input_drone[0]);
+                    Close(input_drone[1]);
+                    break;
+                case 3:
+                    Close(server_map[0]);
+                    Close(server_map[1]);
+                    Close(map_server[0]);
+                    Close(map_server[1]);
+                    break;
+                case 4:
+                    Close(target_server[0]);
+                    Close(target_server[1]);
+                    Close(server_target[0]);
+                    Close(server_target[1]);
+                    break;
+                case 5:
+                    Close(obstacles_server[0]);
+                    Close(obstacles_server[1]);
+                    Close(server_obstacles[0]);
+                    Close(server_obstacles[1]);
+                    break;
+                    break;
             }
         }
     }

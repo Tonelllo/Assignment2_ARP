@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
 
     // seeding the random nymber generator with the current time, so that it
     // starts with a different state every time the programs is executed
-    srandom((unsigned int)time(NULL)*33);
+    srandom((unsigned int)time(NULL) * 33);
 
     fd_set reader, master;
     FD_ZERO(&reader);
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
     FD_SET(from_server_pipe, &master);
 
     struct timeval select_timeout;
-    select_timeout.tv_sec = PERIOD;
+    select_timeout.tv_sec  = PERIOD;
     select_timeout.tv_usec = 0;
     while (1) {
         // spawn random coordinates in map field range and send it to the
@@ -85,8 +85,8 @@ int main(int argc, char *argv[]) {
         sprintf(aux_to_send, "[%d]", N_TARGETS);
         strcat(to_send, aux_to_send);
         for (int i = 0; i < N_OBSTACLES; i++) {
-            if(i != 0){
-                strcat(to_send,"|");
+            if (i != 0) {
+                strcat(to_send, "|");
             }
             obstacle_x = random() % SIMULATION_WIDTH;
             obstacle_y = random() % SIMULATION_HEIGHT;
@@ -101,10 +101,21 @@ int main(int argc, char *argv[]) {
         logging(LOG_INFO, "Obstacles process generated a new set of obstacles");
 
         reader = master;
-        Select(from_server_pipe+1, &reader, NULL, NULL, &select_timeout);
-        if(FD_ISSET(from_server_pipe, &reader)){
-            Read(from_server_pipe, received, MAX_MSG_LEN);
-            if(!strcmp(received, "STOP")){
+        int ret;
+        do {
+            ret = Select(from_server_pipe + 1, &reader, NULL, NULL,
+                         &select_timeout);
+        } while (ret == -1);
+        select_timeout.tv_sec  = PERIOD;
+        select_timeout.tv_usec = 0;
+        if (FD_ISSET(from_server_pipe, &reader)) {
+            int read_ret = Read(from_server_pipe, received, MAX_MSG_LEN);
+            if(read_ret == 0){
+                Close(from_server_pipe);
+                FD_CLR(from_server_pipe, &master);
+                logging(LOG_WARN, "Pipe to obstacles closed");
+            }
+            if (!strcmp(received, "STOP")) {
                 break;
             }
         }
