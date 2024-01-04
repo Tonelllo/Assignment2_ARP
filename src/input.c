@@ -400,15 +400,15 @@ int main(int argc, char *argv[]) {
 
         // Setting the initial values for the cells of the matrix containing
         // the arrows
-        tl_win = input_display_setup(5, 7, LINES / 3, COLS / 6);
-        tc_win = input_display_setup(5, 7, LINES / 3, COLS / 6 + 6);
-        tr_win = input_display_setup(5, 7, LINES / 3, COLS / 6 + 12);
-        cl_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6);
-        cc_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6 + 6);
-        cr_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6 + 12);
-        bl_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6);
-        bc_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6 + 6);
-        br_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6 + 12);
+        tl_win = input_display_setup(5, 7, LINES / 4, COLS / 6);
+        tc_win = input_display_setup(5, 7, LINES / 4, COLS / 6 + 6);
+        tr_win = input_display_setup(5, 7, LINES / 4, COLS / 6 + 12);
+        cl_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6);
+        cc_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6 + 6);
+        cr_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6 + 12);
+        bl_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6);
+        bc_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6 + 6);
+        br_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6 + 12);
 
         // Setting the "titles" of the splits
         mvwprintw(left_split, 0, 1, "INPUT DISPLAY");
@@ -471,6 +471,9 @@ int main(int argc, char *argv[]) {
         mvwprintw(br_win, 0, 6, "+");
         mvwprintw(bc_win, 4, 0, "'");
         mvwprintw(br_win, 4, 0, "'");
+
+        // Signaling what's the button to close everything
+        mvwprintw(left_split, LINES - 3, 3, "Press p to close everything");
 
         /// Right split
 

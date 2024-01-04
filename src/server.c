@@ -102,7 +102,6 @@ int main(int argc, char *argv[]) {
             if (FD_ISSET(i, &reader)) {
                 int ret = Read(i, received, MAX_MSG_LEN);
                 if (ret == 0) {
-                    // TODO does not work
                     printf("Pipe to server closed\n");
                     Close(i);
                     FD_CLR(i, &master);

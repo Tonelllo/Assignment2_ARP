@@ -83,6 +83,9 @@ int main(int argc, char *argv[]) {
                                 NULL,        NULL, NULL, NULL, NULL, NULL};
             char *konsole_arg_list[] = {"konsole", "-e", programs[i], NULL,
                                         NULL,      NULL, NULL};
+            // char *debug_konsole_arg_list[] = {"konsole", "-e","gdb", "--args", programs[i], NULL,
+            //                             NULL,      NULL, NULL};
+
 
             switch (i) {
                 case 0:

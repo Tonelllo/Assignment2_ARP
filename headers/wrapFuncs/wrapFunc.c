@@ -1,10 +1,14 @@
 #include "wrapFuncs/wrapFunc.h"
+#include "constants.h"
+#include "utils/utils.h"
 #include <curses.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <signal.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -60,6 +64,7 @@ int Read(int fd, void *buf, size_t nbytes) {
     if (ret < 0) {
         perror("Error on reading from file descriptor");
         fflush(stdout);
+        logging(LOG_ERROR, "Error on read");
         getchar();
         exit(EXIT_FAILURE);
     }
@@ -67,11 +72,21 @@ int Read(int fd, void *buf, size_t nbytes) {
 }
 
 int Write(int fd, void *buf, size_t nbytes) {
+    struct sigaction ignore_pipesig;
+    ignore_pipesig.sa_handler = SIG_IGN;
+    // sigemptyset(&ignore_pipesig.sa_mask);
+    // sigaddset(&ignore_pipesig.sa_mask, SIGPIPE);
+    sigaction(SIGPIPE, &ignore_pipesig, NULL);
     int ret = write(fd, buf, nbytes);
+    ignore_pipesig.sa_handler = SIG_DFL;
+    sigaction(SIGPIPE, &ignore_pipesig, NULL);
+    // unblock SIGUSR1
     if (ret < 0) {
-        perror("Error on writing to file descriptor");
+        printf("%s from: %d, awaiting termination from WD\n", strerror(errno), getpid());
         fflush(stdout);
+        logging(LOG_ERROR, "Error on write");
         getchar();
+        sleep(30);
         exit(EXIT_FAILURE);
     }
     return ret;

@@ -26,6 +26,8 @@ target_include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../headers>
     )
 
+target_link_libraries(wrapFunc utils)
+
 # Adding header only libraries
 add_library(constants INTERFACE)
 add_library(datastructs INTERFACE)
