@@ -277,16 +277,20 @@ int main(int argc, char *argv[]) {
         }
 
         int obst_x, obst_y;
+        bool can_display_drone = true;
         for (int i = 0; i < obstacles_num; i++) {
             obst_x = round(1 + obstacles_pos[i].x * (getmaxx(map_window) - 3) /
                                    SIMULATION_WIDTH);
             obst_y = round(1 + obstacles_pos[i].y * (getmaxy(map_window) - 3) /
                                    SIMULATION_HEIGHT);
+            if (obst_y == drone_y && obst_x == drone_x)
+                can_display_drone = false;
             mvwprintw(map_window, obst_y, obst_x, "O");
         }
 
         // The drone is now displayed on the screen
-        mvwprintw(map_window, drone_y, drone_x, "+");
+        if (can_display_drone)
+            mvwprintw(map_window, drone_y, drone_x, "+");
 
         // The map_window is refreshed
         wrefresh(map_window);
