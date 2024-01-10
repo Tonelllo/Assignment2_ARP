@@ -21,6 +21,13 @@
 // WD pid
 pid_t WD_pid;
 
+// This array keeps the position of all the targets and obstacles in order to
+// perform collision checking
+int target_obstacles_screen_position[N_TARGETS + N_OBSTACLES][2];
+
+// Index for keeping track of the previous array that is handled like a stack
+int tosp_top = -1;
+
 // Once the SIGUSR1 is received send back the SIGUSR2 signal
 void signal_handler(int signo, siginfo_t *info, void *context) {
     // Specifying that context is unused
@@ -94,6 +101,66 @@ void remove_target(int index, struct pos *target_arr, int target_num) {
     for (int i = index; i < target_num - 1; i++) {
         target_arr[index].x = target_arr[index + 1].x;
         target_arr[index].y = target_arr[index + 1].y;
+    }
+}
+
+bool is_overlapping(int y, int x) {
+    // This is not strictly overlapping checking but here allows for less code
+    // repetition
+    if (y < 1 || x < 1 || y > LINES - 3 || x > COLS - 2)
+        return true;
+
+    // Checking for overlapping
+    for (int i = 0; i <= tosp_top; i++) {
+        if (y == target_obstacles_screen_position[i][0] &&
+            x == target_obstacles_screen_position[i][1])
+            return true;
+    }
+    return false;
+}
+
+void find_spot(int *old_y, int *old_x) {
+    int x = *old_x;
+    int y = *old_y;
+
+    for (int index = 1;; index++) {
+        y = *old_y - index;
+        for (int x = *old_x - index; x <= *old_x + index; x++) {
+            if (!is_overlapping(y, x)) {
+                *old_y = y;
+                *old_x = x;
+                return;
+            }
+        }
+        y = *old_y + index;
+        for (int x = *old_x - index; x <= *old_x + index; x++) {
+            if (!is_overlapping(y, x)) {
+                *old_y = y;
+                *old_x = x;
+                return;
+            }
+        }
+        x = *old_x - index;
+        for (int y = *old_y - index + 1; y <= *old_y + index - 1; y++) {
+            if (!is_overlapping(y, x)) {
+                *old_y = y;
+                *old_x = x;
+                return;
+            }
+        }
+        x = *old_x + index;
+        for (int y = *old_y - index + 1; y <= *old_y + index - 1; y++) {
+            if (!is_overlapping(y, x)) {
+                *old_y = y;
+                *old_x = x;
+                return;
+            }
+        }
+        if (index > 100) {
+            logging(LOG_ERROR,
+                    "Unable to find a spot on the screen to print on map");
+            exit(EXIT_FAILURE);
+        }
     }
 }
 
@@ -262,12 +329,16 @@ int main(int argc, char *argv[]) {
                                      SIMULATION_HEIGHT);
             if (target_x == drone_x && target_y == drone_y) {
                 score++;
-                remove_target(i, targets_pos, target_num);
                 sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,
                         targets_pos[i].y);
+                remove_target(i, targets_pos, target_num);
                 Write(to_server, to_send, MAX_MSG_LEN);
                 to_decrease = true;
             } else {
+                if (is_overlapping(target_y, target_x))
+                    find_spot(&target_y, &target_x);
+                target_obstacles_screen_position[++tosp_top][0] = target_y;
+                target_obstacles_screen_position[tosp_top][1]   = target_x;
                 mvwprintw(map_window, target_y, target_x, "T");
             }
         }
@@ -283,9 +354,14 @@ int main(int argc, char *argv[]) {
                                    SIMULATION_WIDTH);
             obst_y = round(1 + obstacles_pos[i].y * (getmaxy(map_window) - 3) /
                                    SIMULATION_HEIGHT);
+            if (is_overlapping(obst_y, obst_x))
+                find_spot(&obst_y, &obst_x);
+            target_obstacles_screen_position[++tosp_top][0] = obst_y;
+            target_obstacles_screen_position[tosp_top][1] = obst_x;
+            mvwprintw(map_window, obst_y, obst_x, "O");
+
             if (obst_y == drone_y && obst_x == drone_x)
                 can_display_drone = false;
-            mvwprintw(map_window, obst_y, obst_x, "O");
         }
 
         // The drone is now displayed on the screen
@@ -294,6 +370,7 @@ int main(int argc, char *argv[]) {
 
         // The map_window is refreshed
         wrefresh(map_window);
+        tosp_top = -1;
     }
 
     /// Clean up

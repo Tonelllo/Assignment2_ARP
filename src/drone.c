@@ -206,7 +206,6 @@ int main(int argc, char *argv[]) {
         // given by the user in the input process
         // get drone current x and y
 
-
         // perform the select
         char received[MAX_MSG_LEN];
         reader = master;
@@ -236,6 +235,11 @@ int main(int argc, char *argv[]) {
                                    &target_x, &target_y);
                             if (targets_arr[target_index].x != target_x ||
                                 targets_arr[target_index].y != target_y) {
+                                printf("%f %f %f %f\n",
+                                       targets_arr[target_index].x,
+                                       targets_arr[target_index].y, target_x,
+                                       target_y);
+                                fflush(stdout);
                                 logging(LOG_ERROR,
                                         "Mismatched target and array in drone");
                             } else {
@@ -272,7 +276,7 @@ int main(int argc, char *argv[]) {
             if (distance < area_of_effect) {
                 double x_distance = obstacles_arr[i].x - xt_1;
                 double y_distance = obstacles_arr[i].y - yt_1;
-                double force      = -repulsive_force(distance, 100000, 200);
+                double force      = -repulsive_force(distance, 1000, 20);
                 double angle      = atan2(y_distance, x_distance);
 
                 total_obstacles_forces.x_component += cos(angle) * force;
@@ -289,7 +293,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        float target_of_effect = 500;
+        float target_of_effect = 10;
         // Calculating repulsive force for every target
         total_targets_forces.x_component = 0;
         total_targets_forces.y_component = 0;
@@ -299,20 +303,21 @@ int main(int argc, char *argv[]) {
             if (distance < target_of_effect) {
                 double x_distance = targets_arr[i].x - xt_1;
                 double y_distance = targets_arr[i].y - yt_1;
-                double force = repulsive_force(distance, 10, target_of_effect);
+                double force =
+                    repulsive_force(distance, 1000, target_of_effect);
                 double angle = atan2(y_distance, x_distance);
                 // printf("X: %f, Y: %f\n", cosf(angle) * force,
                 //        sinf(angle) * force);
-                total_obstacles_forces.x_component += cos(angle) * force;
-                total_obstacles_forces.y_component += sin(angle) * force;
-                if (total_obstacles_forces.x_component > 100)
-                    total_obstacles_forces.x_component = 100;
-                if (total_obstacles_forces.x_component < -100)
-                    total_obstacles_forces.x_component = -100;
-                if (total_obstacles_forces.y_component > 100)
-                    total_obstacles_forces.y_component = 100;
-                if (total_obstacles_forces.y_component < -100)
-                    total_obstacles_forces.y_component = -100;
+                total_targets_forces.x_component += cos(angle) * force;
+                total_targets_forces.y_component += sin(angle) * force;
+                if (total_targets_forces.x_component > 100)
+                    total_targets_forces.x_component = 100;
+                if (total_targets_forces.x_component < -100)
+                    total_targets_forces.x_component = -100;
+                if (total_targets_forces.y_component > 100)
+                    total_targets_forces.y_component = 100;
+                if (total_targets_forces.y_component < -100)
+                    total_targets_forces.y_component = -100;
             }
         }
 
