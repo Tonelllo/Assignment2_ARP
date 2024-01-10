@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-Wall, -Wpedantic, -Wextra]
+  Add: [-Wall, -Wpedantic, -Wextra, -Wunreachable-code]
   Compiler: clang
 Diagnostics:
   UnusedIncludes: Strict

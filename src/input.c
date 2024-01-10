@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 // WD pid
-pid_t WD_pid;
+pid_t WD_pid = -1;
 
 // Once the SIGUSR1 is received send back the SIGUSR2 signal
 void signal_handler(int signo, siginfo_t *info, void *context) {
@@ -216,17 +216,6 @@ bool update_force(struct force *to_update, int input, float step,
 }
 
 int main(int argc, char *argv[]) {
-    // Specifying that argc and argv are unused variables
-    int to_drone_pipe, to_server_pipe, from_server_pipe;
-    if (argc == 4) {
-        sscanf(argv[1], "%d", &to_drone_pipe);
-        sscanf(argv[2], "%d", &to_server_pipe);
-        sscanf(argv[3], "%d", &from_server_pipe);
-    } else {
-        printf("Wrong number of arguments in input\n");
-        getchar();
-        exit(1);
-    }
 
     // Signal declaration
     struct sigaction sa;
@@ -242,6 +231,18 @@ int main(int argc, char *argv[]) {
 
     // Enabling the handler with the specified flags
     Sigaction(SIGUSR1, &sa, NULL);
+
+    // Specifying that argc and argv are unused variables
+    int to_drone_pipe, to_server_pipe, from_server_pipe;
+    if (argc == 4) {
+        sscanf(argv[1], "%d", &to_drone_pipe);
+        sscanf(argv[2], "%d", &to_server_pipe);
+        sscanf(argv[3], "%d", &from_server_pipe);
+    } else {
+        printf("Wrong number of arguments in input\n");
+        getchar();
+        exit(1);
+    }
 
     // Named pipe (fifo) to send the pid to the WD
     int fd;
@@ -336,27 +337,9 @@ int main(int argc, char *argv[]) {
     FD_ZERO(&master);
     FD_SET(from_server_pipe, &master);
 
-    char aux[MAX_STR_LEN];
+    char aux[MAX_MSG_LEN];
 
     while (1) {
-        // Updating values to show in the interface. First the position
-        // is updated
-        // reader = master;
-        // struct timeval select_timeout;
-        // select_timeout.tv_sec  = 0;
-        // select_timeout.tv_usec = 0;
-        // Select(from_server_pipe + 1, &reader, NULL, NULL, &select_timeout);
-        // if (FD_ISSET(from_server_pipe, &reader)) {
-        //     int ret = Read(from_server_pipe, aux, MAX_STR_LEN);
-        //     if (ret == 0) {
-        //         logging(LOG_WARN, "Server input pipe has been closed");
-        //         Close(from_server_pipe);
-        //     }
-        //     sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x,
-        //            &drone_current_pos.y, &drone_current_velocity.x_component,
-        //            &drone_current_velocity.y_component);
-        // }
-
         // Updating constants at runtime when the reading_params_interval goes
         // to 0
         if (!reading_params_interval--) {
@@ -371,8 +354,15 @@ int main(int argc, char *argv[]) {
 
         // Getting user input if present
         input = getch();
-        if (input == '?')
-            logging(LOG_INFO, "banana");
+        if (input == 'p'){
+            // TEMPORARY TODO
+            if(WD_pid != -1)
+                Kill(WD_pid, SIGKILL);
+            // TEMPORARY TODO
+            
+            Write(to_server_pipe, "STOP", MAX_MSG_LEN);
+            break;
+        }
 
         // Calculate the currently acting force on the drone by sending the
         // currently pressed key to the update_force function
@@ -385,12 +375,14 @@ int main(int argc, char *argv[]) {
             char aux_force[MAX_STR_LEN];
             sprintf(aux_force, "%f|%f", drone_current_force.x_component,
                     drone_current_force.y_component);
-            Write(to_drone_pipe, aux_force, strlen(aux_force) + 1);
+            Write(to_drone_pipe, aux_force, MAX_MSG_LEN);
         }
 
         // Send update request to server
-        Write(to_server_pipe, "U", 2);
-        Read(from_server_pipe, aux, MAX_STR_LEN);
+        Write(to_server_pipe, "U", MAX_MSG_LEN);
+        int read_ret = Read(from_server_pipe, aux, MAX_MSG_LEN);
+        if(read_ret == 0)
+            break;
         sscanf(aux, "%f,%f|%f,%f", &drone_current_pos.x, &drone_current_pos.y,
                &drone_current_velocity.x_component,
                &drone_current_velocity.y_component);
@@ -408,15 +400,15 @@ int main(int argc, char *argv[]) {
 
         // Setting the initial values for the cells of the matrix containing
         // the arrows
-        tl_win = input_display_setup(5, 7, LINES / 3, COLS / 6);
-        tc_win = input_display_setup(5, 7, LINES / 3, COLS / 6 + 6);
-        tr_win = input_display_setup(5, 7, LINES / 3, COLS / 6 + 12);
-        cl_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6);
-        cc_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6 + 6);
-        cr_win = input_display_setup(5, 7, LINES / 3 + 4, COLS / 6 + 12);
-        bl_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6);
-        bc_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6 + 6);
-        br_win = input_display_setup(5, 7, LINES / 3 + 8, COLS / 6 + 12);
+        tl_win = input_display_setup(5, 7, LINES / 4, COLS / 6);
+        tc_win = input_display_setup(5, 7, LINES / 4, COLS / 6 + 6);
+        tr_win = input_display_setup(5, 7, LINES / 4, COLS / 6 + 12);
+        cl_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6);
+        cc_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6 + 6);
+        cr_win = input_display_setup(5, 7, LINES / 4 + 4, COLS / 6 + 12);
+        bl_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6);
+        bc_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6 + 6);
+        br_win = input_display_setup(5, 7, LINES / 4 + 8, COLS / 6 + 12);
 
         // Setting the "titles" of the splits
         mvwprintw(left_split, 0, 1, "INPUT DISPLAY");
@@ -479,6 +471,9 @@ int main(int argc, char *argv[]) {
         mvwprintw(br_win, 0, 6, "+");
         mvwprintw(bc_win, 4, 0, "'");
         mvwprintw(br_win, 4, 0, "'");
+
+        // Signaling what's the button to close everything
+        mvwprintw(left_split, LINES - 3, 3, "Press p to close everything");
 
         /// Right split
 

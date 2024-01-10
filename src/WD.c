@@ -19,10 +19,10 @@
 #define SLEEP_FOR 1
 
 // Array for processes' pids
-int p_pids[NUM_PROCESSES + 2];
+int p_pids[NUM_PROCESSES];
 
 // Pid of the konsole executing input and the map processes
-int pid_konsole_input, map_konsole_input;
+int pid_konsole_input, pid_konsole_map;
 
 // Count to check whether process has replied to WD
 int count = 0;
@@ -64,11 +64,15 @@ int main(int argc, char *argv[]) {
     // argv[2] -> drone
     // argv[3] -> konsole of input
     // argv[4] -> konsole of map
+    // argv[5] -> target
+    // argv[6] -> obstacles
     if (argc == NUM_PROCESSES) {
         for (int i = 0; i < 2; i++)
             sscanf(argv[i + 1], "%d", &p_pids[i + 2]);
         sscanf(argv[3], "%d", &pid_konsole_input);
-        sscanf(argv[4], "%d", &map_konsole_input);
+        sscanf(argv[4], "%d", &pid_konsole_map);
+        sscanf(argv[5], "%d", &p_pids[4]);
+        sscanf(argv[6], "%d", &p_pids[5]);
     } else {
         perror("arg_list error");
         exit(1);
@@ -161,7 +165,7 @@ int main(int argc, char *argv[]) {
 
                 /// Killing Konsole's
                 Kill2(pid_konsole_input, SIGKILL);
-                Kill2(map_konsole_input, SIGKILL);
+                Kill2(pid_konsole_map, SIGKILL);
 
                 // Exiting with success
                 return EXIT_SUCCESS;

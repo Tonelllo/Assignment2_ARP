@@ -4,6 +4,7 @@
 #include "wrapFuncs/wrapFunc.h"
 #include <fcntl.h>
 #include <signal.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,37 +60,35 @@ int main(int argc, char *argv[]) {
     // Enabling the handler with the specified flags
     Sigaction(SIGUSR1, &sa, NULL);
 
-    // Father process
-    // Initialize semaphores for each drone information
-    sem_t *sem_force = Sem_open(SEM_PATH_FORCE, O_CREAT, S_IRUSR | S_IWUSR, 1);
-    sem_t *sem_position =
-        Sem_open(SEM_PATH_POSITION, O_CREAT, S_IRUSR | S_IWUSR, 1);
-    sem_t *sem_velocity =
-        Sem_open(SEM_PATH_VELOCITY, O_CREAT, S_IRUSR | S_IWUSR, 1);
+    // Specifying that argc and argv are unused variables
+    int from_drone_pipe, to_drone_pipe, from_input_pipe, to_input_pipe,
+        from_map_pipe, to_map_pipe, from_target_pipe, to_target_pipe,
+        from_obstacles_pipe, to_obstacle_pipe;
 
-    // Setting the semaphores value to 1
-    Sem_init(sem_force, 1, 1);
-    Sem_init(sem_position, 1, 1);
-    Sem_init(sem_velocity, 1, 1);
-
-    // Create shared memory object
-    int shm = Shm_open(SHMOBJ_PATH, O_CREAT | O_RDWR, S_IRWXU | S_IRWXG);
-
-    // Truncate size of shared memory
-    Ftruncate(shm, MAX_SHM_SIZE);
-
-    // Map pointer to shared memory area
-    void *shm_ptr =
-        Mmap(NULL, MAX_SHM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm, 0);
-    memset(shm_ptr, 0, MAX_SHM_SIZE);
+    if (argc == 11) {
+        sscanf(argv[1], "%d", &from_drone_pipe);
+        sscanf(argv[2], "%d", &to_drone_pipe);
+        sscanf(argv[3], "%d", &from_input_pipe);
+        sscanf(argv[4], "%d", &to_input_pipe);
+        sscanf(argv[5], "%d", &from_map_pipe);
+        sscanf(argv[6], "%d", &to_map_pipe);
+        sscanf(argv[7], "%d", &from_target_pipe);
+        sscanf(argv[8], "%d", &to_target_pipe);
+        sscanf(argv[9], "%d", &from_obstacles_pipe);
+        sscanf(argv[10], "%d", &to_obstacle_pipe);
+    } else {
+        printf("Server: wrong number of arguments in input\n");
+        getchar();
+        exit(1);
+    }
 
     // Structs for each drone information
     struct pos drone_current_pos           = {0};
     struct velocity drone_current_velocity = {0};
 
     // Declaring the logfile aux buffer
-    char received[MAX_STR_LEN];
-    char to_send[MAX_STR_LEN];
+    char received[MAX_MSG_LEN];
+    char to_send[MAX_MSG_LEN];
 
     fd_set reader;
     fd_set master;
@@ -98,65 +97,85 @@ int main(int argc, char *argv[]) {
     FD_SET(from_drone_pipe, &master);
     FD_SET(from_input_pipe, &master);
     FD_SET(from_map_pipe, &master);
-    
-    int maxfd = (from_drone_pipe > from_input_pipe) ? from_drone_pipe : from_input_pipe;
-    maxfd = (from_map_pipe > maxfd) ? from_map_pipe : maxfd;
-    
+    FD_SET(from_obstacles_pipe, &master);
+    FD_SET(from_target_pipe, &master);
+    FD_SET(from_map_pipe, &master);
+
+    int maxfd = max(max(max(from_drone_pipe, from_input_pipe),
+                        max(from_map_pipe, from_obstacles_pipe)),
+                    max(from_target_pipe, from_map_pipe));
+
+
+    bool to_exit = false;
     while (1) {
-        //Temporarily blocking the SIGUSR1 signal to correctly perform the select() syscall without being interrupted
-        //Since the time taken from the select to execute is significantly lower than the WD period for sending signals,
-        //this mask should not affect the WD behaviour
-        sigset_t block_mask;
-        sigemptyset(&block_mask);
-        sigaddset(&block_mask, SIGUSR1);
-        Sigprocmask(SIG_BLOCK, &block_mask, NULL);
-
-        //perform the select
+        // perform the select
         reader = master;
-        Select(maxfd + 1, &reader, NULL, NULL, NULL);
+        Select_wmask(maxfd + 1, &reader, NULL, NULL, NULL);
 
-        //unblock SIGUSR1
-        Sigprocmask(SIG_UNBLOCK, &block_mask, NULL);
-
-        //check the value returned by the select and perform actions consequently
+        // check the value returned by the select and perform actions
+        // consequently
         for (int i = 0; i <= maxfd; i++) {
             if (FD_ISSET(i, &reader)) {
-                int ret = Read(i, received, MAX_STR_LEN);
+                int ret = Read(i, received, MAX_MSG_LEN);
                 if (ret == 0) {
-                    logging(LOG_WARN, "Pipe to server closed");
+                    printf("Pipe to server closed\n");
+                    Close(i);
+                    FD_CLR(i, &master);
                 } else {
                     if (i == from_input_pipe) {
-                        sprintf(to_send, "%f,%f|%f,%f", drone_current_pos.x,
-                                drone_current_pos.y,
-                                drone_current_velocity.x_component,
-                                drone_current_velocity.y_component);
-                        Write(to_input_pipe, to_send, MAX_STR_LEN);
+                        if (!strcmp(received, "STOP")) {
+                            Write(to_drone_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_map_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_obstacle_pipe, "STOP", MAX_MSG_LEN);
+                            Write(to_target_pipe, "STOP", MAX_MSG_LEN);
+                            to_exit = true;
+                            break;
+                        } else {
+                            sprintf(to_send, "%f,%f|%f,%f", drone_current_pos.x,
+                                    drone_current_pos.y,
+                                    drone_current_velocity.x_component,
+                                    drone_current_velocity.y_component);
+                            Write(to_input_pipe, to_send, MAX_MSG_LEN);
+                        }
                     } else if (i == from_drone_pipe) {
                         sscanf(received, "%f,%f|%f,%f", &drone_current_pos.x,
                                &drone_current_pos.y,
                                &drone_current_velocity.x_component,
                                &drone_current_velocity.y_component);
-                    } else if(i == from_map_pipe){
-                        sprintf(to_send, "%f|%f", drone_current_pos.x, drone_current_pos.y);
-                        Write(to_map_pipe, to_send, MAX_STR_LEN);
+                        sprintf(to_send, "D%f|%f", drone_current_pos.x,
+                                drone_current_pos.y);
+                        Write(to_map_pipe, to_send, MAX_MSG_LEN);
+                    } else if (i == from_map_pipe) {
+                        logging(LOG_INFO, received);
+                        if (!strcmp(received, "GE")) {
+                            Write(to_target_pipe, "GE", MAX_MSG_LEN);
+                        } else if (received[0] == 'T' && received[1] == 'H') {
+                            logging(LOG_INFO, received);
+                            Write(to_drone_pipe, received, MAX_MSG_LEN);
+                        }
+                    } else if (i == from_obstacles_pipe) {
+                        Write(to_map_pipe, received, MAX_MSG_LEN);
+                        Write(to_drone_pipe, received, MAX_MSG_LEN);
+                    } else if (i == from_target_pipe) {
+                        Write(to_map_pipe, received, MAX_MSG_LEN);
+                        Write(to_drone_pipe, received, MAX_MSG_LEN);
                     }
                 }
             }
         }
+        if(to_exit)
+            break;
     }
-
-    /// Clean up
-    // Unlinking the shared memory area
-    Shm_unlink(SHMOBJ_PATH);
-    // Closing the semaphors
-    Sem_close(sem_velocity);
-    Sem_close(sem_force);
-    Sem_close(sem_position);
-    // Unlinking the semaphors files
-    Sem_unlink(SEM_PATH_FORCE);
-    Sem_unlink(SEM_PATH_POSITION);
-    Sem_unlink(SEM_PATH_VELOCITY);
-    // Unmapping the shared memory pointer
-    Munmap(shm_ptr, MAX_SHM_SIZE);
+    // TODO close pipes
+    Close(from_drone_pipe);
+    Close(from_input_pipe);
+    Close(from_map_pipe);
+    Close(from_obstacles_pipe);
+    Close(from_target_pipe);
+    Close(to_drone_pipe);
+    Close(to_map_pipe);
+    Close(to_obstacle_pipe);
+    Close(to_target_pipe);
+    Close(to_input_pipe);
     return EXIT_SUCCESS;
 }

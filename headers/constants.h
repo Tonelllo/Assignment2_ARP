@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define NUM_PROCESSES 5
+#define NUM_PROCESSES 7
 
 #define SHMOBJ_PATH "/shm_server"
 #define SEM_PATH_POSITION "/sem_position"
@@ -26,5 +26,10 @@
 #define LOG_ERROR "ERROR"
 
 #define MAX_STR_LEN 100
+#define MAX_MSG_LEN 1024
+
+#define N_TARGETS 1
+#define N_OBSTACLES 10
+#define MAX_NUMBER 500
 
 #endif // !CONSTANTS_H

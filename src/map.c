@@ -62,17 +62,42 @@ void destroy_map_win(WINDOW *local_win) {
     delwin(local_win);
 }
 
-int main(int argc, char *argv[]) {
-    int to_server, from_server;
-    if (argc == 3) {
-        sscanf(argv[1], "%d", &to_server);
-        sscanf(argv[2], "%d", &from_server);
-    } else {
-        printf("Wrong number of arguments in map\n");
-        getchar();
-        exit(1);
+void tokenization(struct pos *arr_to_fill, char *to_tokenize,
+                  int *objects_num) {
+    int index_of;
+    char *char_pointer;
+    char *aux_ptr;
+    char *token;
+    char_pointer = strchr(to_tokenize, ']');
+    index_of     = (int)(char_pointer - to_tokenize);
+    token        = strtok_r(to_tokenize + index_of + 1, "|", &aux_ptr);
+    int index    = 1;
+    if (token != NULL) {
+        float aux_x, aux_y;
+        index = 1;
+        sscanf(token, "%f,%f", &aux_x, &aux_y);
+        arr_to_fill[0].x = aux_x;
+        arr_to_fill[0].y = aux_y;
+        logging(LOG_INFO, token);
+        while ((token = strtok_r(NULL, "|", &aux_ptr)) != NULL) {
+            sscanf(token, "%f,%f", &aux_x, &aux_y);
+            logging(LOG_INFO, token);
+            arr_to_fill[index].x = aux_x;
+            arr_to_fill[index].y = aux_y;
+            index++;
+        }
     }
+    *objects_num = index;
+}
 
+void remove_target(int index, struct pos *target_arr, int target_num) {
+    for (int i = index; i < target_num - 1; i++) {
+        target_arr[index].x = target_arr[index + 1].x;
+        target_arr[index].y = target_arr[index + 1].y;
+    }
+}
+
+int main(int argc, char *argv[]) {
     // Signal declaration
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
@@ -87,6 +112,18 @@ int main(int argc, char *argv[]) {
 
     // Enabling the handler with the specified flags
     Sigaction(SIGUSR1, &sa, NULL);
+
+    int to_server, from_server;
+    if (argc == 3) {
+        sscanf(argv[1], "%d", &to_server);
+        sscanf(argv[2], "%d", &from_server);
+    } else {
+        printf("Wrong number of arguments in map\n");
+        getchar();
+        exit(1);
+    }
+
+    int score = 0;
 
     // Named pipe (fifo) to send the pid to the WD
     Mkfifo(FIFO1_PATH, 0666);
@@ -106,7 +143,11 @@ int main(int argc, char *argv[]) {
 
     // Setting up the struct in which to store the position of the drone
     // in order to calculate the current position on the screen of the drone
-    struct pos drone_pos;
+    struct pos drone_pos = {0, 0};
+    struct pos targets_pos[N_TARGETS];
+    int target_num = 0;
+    struct pos obstacles_pos[N_OBSTACLES];
+    int obstacles_num = 0;
 
     // Setting up ncurses
     initscr();
@@ -118,20 +159,72 @@ int main(int argc, char *argv[]) {
     WINDOW *map_window =
         create_map_win(getmaxy(stdscr) - 2, getmaxx(stdscr), 1, 0);
 
-    char received[MAX_STR_LEN];
+    char received[MAX_MSG_LEN];
     // Setting up structures needed for terminal resizing
+
+    struct timeval select_timeout;
+    select_timeout.tv_sec  = 5;
+    select_timeout.tv_usec = 0;
+    fd_set reader, master;
+    FD_ZERO(&reader);
+    FD_ZERO(&master);
+    FD_SET(from_server, &master);
     while (1) {
         // Updating the drone position by reading from the shared memory, and
-        // taking the semaphors
+        // taking the semaphores
+        reader = master;
+        int ret;
+        do {
+            ret = Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
+            // The only reason to get an erorr is if Select gets interrupted by
+            // a signal. In that case the function should be restarted if the
+            // SA_RESTART flag didn't do its job
+        } while (ret == -1);
 
-        Write(to_server, "U", 2);
-        Read(from_server, received, MAX_STR_LEN);
-        sscanf(received, "%f|%f", &drone_pos.x, &drone_pos.y);
+        select_timeout.tv_sec  = 5;
+        select_timeout.tv_usec = 0;
 
-        // Displaying the title of the window.
-        mvprintw(0, 0, "MAP DISPLAY");
+        if (FD_ISSET(from_server, &reader)) {
+            int read_ret = Read(from_server, received, MAX_MSG_LEN);
+            if (read_ret == 0) {
+                Close(from_server);
+                FD_CLR(from_server, &master);
+                logging(LOG_WARN, "Pipe to map closed");
+            } else {
+                char aux[100];
+                if (!strcmp(received, "STOP")) {
+                    break;
+                }
+                switch (received[0]) {
+                    case 'D':
+                        sscanf(received, "D%f|%f", &drone_pos.x, &drone_pos.y);
+                        break;
+                    case 'O':
+                        logging(LOG_INFO,
+                                "vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv");
+                        tokenization(obstacles_pos, received, &obstacles_num);
+                        logging(LOG_INFO,
+                                "^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^");
+                        sprintf(aux, "Obtacles %d", obstacles_num);
+                        logging(LOG_INFO, aux);
+                        break;
+                    case 'T':
+                        logging(LOG_INFO, "vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv");
+                        tokenization(targets_pos, received, &target_num);
+                        logging(LOG_INFO, "^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^");
+                        sprintf(aux, "Targets %d", target_num);
+                        logging(LOG_INFO, aux);
+                        break;
+                }
+            }
+        }
+
         // Display the menu text
         refresh();
+        // Displaying the title of the window.
+        mvprintw(0, 0, "MAP DISPLAY");
+
+        mvprintw(0, COLS / 3, "Score: %d", score);
 
         // Deleting the old window that is encapsulating the map in order to
         // create the animation, and to allow the resizing of the window in case
@@ -139,6 +232,7 @@ int main(int argc, char *argv[]) {
         delwin(map_window);
         // Redrawing the window. This is useful if the screen is resized
         map_window = create_map_win(LINES - 1, COLS, 1, 0);
+
         // In order to correctly handle the drone position calculation all
         // the simulations are done in a 500x500 square. Then the position of
         // the drone is converted to the dimension of the window by doing a
@@ -153,19 +247,53 @@ int main(int argc, char *argv[]) {
         // from 1. With this we mean that if we have an array of dimension 3.
         // The highest index of an element in the arry will be 2, not 3. This
         // explains why -3 instead of -2.
-        int x = round(1 + drone_pos.x * (getmaxx(map_window) - 3) /
-                              SIMULATION_WIDTH);
-        int y = round(1 + drone_pos.y * (getmaxy(map_window) - 3) /
-                              SIMULATION_HEIGHT);
+        int drone_x = round(1 + drone_pos.x * (getmaxx(map_window) - 3) /
+                                    SIMULATION_WIDTH);
+        int drone_y = round(1 + drone_pos.y * (getmaxy(map_window) - 3) /
+                                    SIMULATION_HEIGHT);
+
+        int target_x, target_y;
+        bool to_decrease = false;
+        char to_send[MAX_MSG_LEN];
+        for (int i = 0; i < target_num; i++) {
+            target_x = round(1 + targets_pos[i].x * (getmaxx(map_window) - 3) /
+                                     SIMULATION_WIDTH);
+            target_y = round(1 + targets_pos[i].y * (getmaxy(map_window) - 3) /
+                                     SIMULATION_HEIGHT);
+            if (target_x == drone_x && target_y == drone_y) {
+                score++;
+                remove_target(i, targets_pos, target_num);
+                sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,
+                        targets_pos[i].y);
+                Write(to_server, to_send, MAX_MSG_LEN);
+                to_decrease = true;
+            } else {
+                mvwprintw(map_window, target_y, target_x, "T");
+            }
+        }
+        // check whether all the targets have been hit
+        if (to_decrease && !--target_num) {
+            Write(to_server, "GE", MAX_MSG_LEN);
+        }
+
+        int obst_x, obst_y;
+        bool can_display_drone = true;
+        for (int i = 0; i < obstacles_num; i++) {
+            obst_x = round(1 + obstacles_pos[i].x * (getmaxx(map_window) - 3) /
+                                   SIMULATION_WIDTH);
+            obst_y = round(1 + obstacles_pos[i].y * (getmaxy(map_window) - 3) /
+                                   SIMULATION_HEIGHT);
+            if (obst_y == drone_y && obst_x == drone_x)
+                can_display_drone = false;
+            mvwprintw(map_window, obst_y, obst_x, "O");
+        }
 
         // The drone is now displayed on the screen
-        mvwprintw(map_window, y, x, "+");
+        if (can_display_drone)
+            mvwprintw(map_window, drone_y, drone_x, "+");
 
         // The map_window is refreshed
         wrefresh(map_window);
-        // The process sleeps for the time needed to have an almost 30fps
-        // animation
-        usleep(3000);
     }
 
     /// Clean up
