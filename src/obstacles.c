@@ -15,7 +15,7 @@
 #include <utils/utils.h>
 
 // loop for sending new obstacles to spawn
-#define PERIOD 60
+#define PERIOD 20
 
 // WD pid
 pid_t WD_pid;

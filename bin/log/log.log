@@ -1,1 +1,3306 @@
 
+[ERROR] - Error on executing execvp: No such file or directory from: 6492, awaiting termination from WD
+[ERROR] - Error on executing execvp: No such file or directory from: 6493, awaiting termination from WD
+[ERROR] - Error on executing execvp: No such file or directory from: 6491, awaiting termination from WD
+[ERROR] - Error on executing write: Broken pipe from: 6487, awaiting termination from WD
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 365.000,473.000
+[INFO] - 409.000,277.000
+[INFO] - 303.000,166.000
+[INFO] - 111.000,154.000
+[INFO] - 307.000,417.000
+[INFO] - 377.000,479.000
+[INFO] - 359.000,470.000
+[INFO] - 148.000,35.000
+[INFO] - 497.000,48.000
+[INFO] - 166.000,72.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 469.000,305.000
+[INFO] - 163.000,10.000
+[INFO] - 283.000,105.000
+[INFO] - 454.000,43.000
+[INFO] - 51.000,460.000
+[INFO] - 469.000,278.000
+[INFO] - 323.000,326.000
+[INFO] - 454.000,298.000
+[INFO] - 454.000,270.000
+[INFO] - 389.000,123.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 365.000,473.000
+[INFO] - 409.000,277.000
+[INFO] - 303.000,166.000
+[INFO] - 111.000,154.000
+[INFO] - 307.000,417.000
+[INFO] - 377.000,479.000
+[INFO] - 359.000,470.000
+[INFO] - 148.000,35.000
+[INFO] - 497.000,48.000
+[INFO] - 166.000,72.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - WD sending signal to 7145
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 469.000,305.000
+[INFO] - 163.000,10.000
+[INFO] - 283.000,105.000
+[INFO] - 454.000,43.000
+[INFO] - 51.000,460.000
+[INFO] - 469.000,278.000
+[INFO] - 323.000,326.000
+[INFO] - 454.000,298.000
+[INFO] - 454.000,270.000
+[INFO] - 389.000,123.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - Input has updated its parameters
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - TH|7|148.000,35.000
+[INFO] - TH|7|148.000,35.000
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 147.000,306.000
+[INFO] - 152.000,197.000
+[INFO] - 174.000,146.000
+[INFO] - 355.000,126.000
+[INFO] - 175.000,382.000
+[INFO] - 446.000,144.000
+[INFO] - 39.000,109.000
+[INFO] - 7.000,323.000
+[INFO] - 67.000,313.000
+[INFO] - 218.000,118.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 147.000,306.000
+[INFO] - 152.000,197.000
+[INFO] - 174.000,146.000
+[INFO] - 355.000,126.000
+[INFO] - 175.000,382.000
+[INFO] - 446.000,144.000
+[INFO] - 39.000,109.000
+[INFO] - 7.000,323.000
+[INFO] - 67.000,313.000
+[INFO] - 218.000,118.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - Input has updated its parameters
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - WD sending signal to 7083
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 125.000,187.000
+[INFO] - 248.000,448.000
+[INFO] - 365.000,54.000
+[INFO] - 247.000,320.000
+[INFO] - 324.000,488.000
+[INFO] - 295.000,324.000
+[INFO] - 294.000,447.000
+[INFO] - 21.000,469.000
+[INFO] - 445.000,228.000
+[INFO] - 447.000,121.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 125.000,187.000
+[INFO] - 248.000,448.000
+[INFO] - 365.000,54.000
+[INFO] - 247.000,320.000
+[INFO] - 324.000,488.000
+[INFO] - 295.000,324.000
+[INFO] - 294.000,447.000
+[INFO] - 21.000,469.000
+[INFO] - 445.000,228.000
+[INFO] - 447.000,121.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7086
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7087
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - WD sending signal to 7086
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 110.000,246.000
+[INFO] - 117.000,2.000
+[INFO] - 207.000,476.000
+[INFO] - 325.000,274.000
+[INFO] - 141.000,43.000
+[INFO] - 245.000,266.000
+[INFO] - 82.000,345.000
+[INFO] - 67.000,448.000
+[INFO] - 400.000,166.000
+[INFO] - 120.000,76.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 110.000,246.000
+[INFO] - 117.000,2.000
+[INFO] - 207.000,476.000
+[INFO] - 325.000,274.000
+[INFO] - 141.000,43.000
+[INFO] - 245.000,266.000
+[INFO] - 82.000,345.000
+[INFO] - 67.000,448.000
+[INFO] - 400.000,166.000
+[INFO] - 120.000,76.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7087
+[INFO] - WD sending signal to 7145
+[INFO] - WD sending signal to 7143
+[INFO] - WD sending signal to 7082
+[INFO] - WD sending signal to 7083
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7086
+[INFO] - WD sending signal to 7087
+[WARN] - Pipe to map closed
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 436.000,134.000
+[INFO] - 123.000,276.000
+[INFO] - 339.000,161.000
+[INFO] - 375.000,488.000
+[INFO] - 213.000,231.000
+[INFO] - 247.000,8.000
+[INFO] - 208.000,461.000
+[INFO] - 127.000,281.000
+[INFO] - 497.000,162.000
+[INFO] - 81.000,379.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 361.000,180.000
+[INFO] - 151.000,420.000
+[INFO] - 297.000,358.000
+[INFO] - 131.000,192.000
+[INFO] - 360.000,283.000
+[INFO] - 215.000,360.000
+[INFO] - 202.000,386.000
+[INFO] - 353.000,83.000
+[INFO] - 222.000,60.000
+[INFO] - 426.000,183.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 436.000,134.000
+[INFO] - 123.000,276.000
+[INFO] - 339.000,161.000
+[INFO] - 375.000,488.000
+[INFO] - 213.000,231.000
+[INFO] - 247.000,8.000
+[INFO] - 208.000,461.000
+[INFO] - 127.000,281.000
+[INFO] - 497.000,162.000
+[INFO] - 81.000,379.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 361.000,180.000
+[INFO] - 151.000,420.000
+[INFO] - 297.000,358.000
+[INFO] - 131.000,192.000
+[INFO] - 360.000,283.000
+[INFO] - 215.000,360.000
+[INFO] - 202.000,386.000
+[INFO] - 353.000,83.000
+[INFO] - 222.000,60.000
+[INFO] - 426.000,183.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - TH|3|131.000,192.000
+[INFO] - TH|3|131.000,192.000
+[INFO] - WD sending signal to 7469
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 316.000,352.000
+[INFO] - 464.000,224.000
+[INFO] - 388.000,186.000
+[INFO] - 37.000,423.000
+[INFO] - 230.000,448.000
+[INFO] - 445.000,18.000
+[INFO] - 434.000,69.000
+[INFO] - 294.000,126.000
+[INFO] - 230.000,21.000
+[INFO] - 114.000,296.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 316.000,352.000
+[INFO] - 464.000,224.000
+[INFO] - 388.000,186.000
+[INFO] - 37.000,423.000
+[INFO] - 230.000,448.000
+[INFO] - 445.000,18.000
+[INFO] - 434.000,69.000
+[INFO] - 294.000,126.000
+[INFO] - 230.000,21.000
+[INFO] - 114.000,296.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 253.000,213.000
+[INFO] - 304.000,461.000
+[INFO] - 175.000,283.000
+[INFO] - 243.000,24.000
+[INFO] - 446.000,324.000
+[INFO] - 403.000,262.000
+[INFO] - 176.000,219.000
+[INFO] - 339.000,417.000
+[INFO] - 405.000,376.000
+[INFO] - 192.000,488.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 253.000,213.000
+[INFO] - 304.000,461.000
+[INFO] - 175.000,283.000
+[INFO] - 243.000,24.000
+[INFO] - 446.000,324.000
+[INFO] - 403.000,262.000
+[INFO] - 176.000,219.000
+[INFO] - 339.000,417.000
+[INFO] - 405.000,376.000
+[INFO] - 192.000,488.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - TH|7|353.000,83.000
+[INFO] - TH|7|353.000,83.000
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - TH|7|222.000,60.000
+[INFO] - TH|7|222.000,60.000
+[INFO] - WD sending signal to 7408
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 177.000,138.000
+[INFO] - 6.000,463.000
+[INFO] - 207.000,301.000
+[INFO] - 89.000,289.000
+[INFO] - 322.000,204.000
+[INFO] - 437.000,427.000
+[INFO] - 417.000,94.000
+[INFO] - 241.000,444.000
+[INFO] - 377.000,484.000
+[INFO] - 468.000,323.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 177.000,138.000
+[INFO] - 6.000,463.000
+[INFO] - 207.000,301.000
+[INFO] - 89.000,289.000
+[INFO] - 322.000,204.000
+[INFO] - 437.000,427.000
+[INFO] - 417.000,94.000
+[INFO] - 241.000,444.000
+[INFO] - 377.000,484.000
+[INFO] - 468.000,323.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 160.000,223.000
+[INFO] - 438.000,189.000
+[INFO] - 295.000,277.000
+[INFO] - 458.000,52.000
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 5.000,150.000
+[INFO] - 160.000,223.000
+[INFO] - 392.000,34.000
+[INFO] - 438.000,189.000
+[INFO] - 140.000,399.000
+[INFO] - 295.000,277.000
+[INFO] - 498.000,199.000
+[INFO] - 458.000,52.000
+[INFO] - 52.000,87.000
+[INFO] - 5.000,150.000
+[INFO] - 392.000,34.000
+[INFO] - 341.000,226.000
+[INFO] - 140.000,399.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - 498.000,199.000
+[INFO] - Obtacles 10
+[INFO] - 52.000,87.000
+[INFO] - 341.000,226.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 291.000,278.000
+[INFO] - 6.000,61.000
+[INFO] - 224.000,247.000
+[INFO] - 5.000,102.000
+[INFO] - 83.000,326.000
+[INFO] - 277.000,243.000
+[INFO] - 401.000,215.000
+[INFO] - 284.000,48.000
+[INFO] - 344.000,242.000
+[INFO] - 101.000,202.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 291.000,278.000
+[INFO] - 6.000,61.000
+[INFO] - 224.000,247.000
+[INFO] - 5.000,102.000
+[INFO] - 83.000,326.000
+[INFO] - 277.000,243.000
+[INFO] - 401.000,215.000
+[INFO] - 284.000,48.000
+[INFO] - 344.000,242.000
+[INFO] - 101.000,202.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 245.000,493.000
+[INFO] - 236.000,385.000
+[INFO] - 244.000,234.000
+[INFO] - 437.000,148.000
+[INFO] - 322.000,278.000
+[INFO] - 375.000,465.000
+[INFO] - 408.000,233.000
+[INFO] - 378.000,133.000
+[INFO] - 480.000,236.000
+[INFO] - 235.000,63.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 245.000,493.000
+[INFO] - 236.000,385.000
+[INFO] - 244.000,234.000
+[INFO] - 437.000,148.000
+[INFO] - 322.000,278.000
+[INFO] - 375.000,465.000
+[INFO] - 408.000,233.000
+[INFO] - 378.000,133.000
+[INFO] - 480.000,236.000
+[INFO] - 235.000,63.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 62.000,364.000
+[INFO] - 158.000,315.000
+[INFO] - 80.000,443.000
+[INFO] - 364.000,276.000
+[INFO] - 37.000,317.000
+[INFO] - 478.000,134.000
+[INFO] - 162.000,67.000
+[INFO] - 20.000,407.000
+[INFO] - 301.000,309.000
+[INFO] - 407.000,475.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 62.000,364.000
+[INFO] - 158.000,315.000
+[INFO] - 80.000,443.000
+[INFO] - 364.000,276.000
+[INFO] - 37.000,317.000
+[INFO] - 478.000,134.000
+[INFO] - 162.000,67.000
+[INFO] - 20.000,407.000
+[INFO] - 301.000,309.000
+[INFO] - 407.000,475.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - TH|5|215.000,360.000
+[INFO] - TH|5|215.000,360.000
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 87.000,282.000
+[INFO] - 293.000,495.000
+[INFO] - 367.000,171.000
+[INFO] - 128.000,347.000
+[INFO] - 407.000,215.000
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 262.000,321.000
+[INFO] - 80.000,273.000
+[INFO] - 489.000,12.000
+[INFO] - 87.000,282.000
+[INFO] - 68.000,205.000
+[INFO] - 288.000,105.000
+[INFO] - 293.000,495.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - 367.000,171.000
+[INFO] - 128.000,347.000
+[INFO] - 407.000,215.000
+[INFO] - 262.000,321.000
+[INFO] - 80.000,273.000
+[INFO] - 489.000,12.000
+[INFO] - 68.000,205.000
+[INFO] - 288.000,105.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - TH|5|202.000,386.000
+[INFO] - TH|5|202.000,386.000
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 22.000,119.000
+[INFO] - 240.000,184.000
+[INFO] - 38.000,112.000
+[INFO] - 443.000,339.000
+[INFO] - 421.000,351.000
+[INFO] - 167.000,360.000
+[INFO] - 485.000,312.000
+[INFO] - 355.000,353.000
+[INFO] - 483.000,336.000
+[INFO] - 52.000,243.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 22.000,119.000
+[INFO] - 240.000,184.000
+[INFO] - 38.000,112.000
+[INFO] - 443.000,339.000
+[INFO] - 421.000,351.000
+[INFO] - 167.000,360.000
+[INFO] - 485.000,312.000
+[INFO] - 355.000,353.000
+[INFO] - 483.000,336.000
+[INFO] - 52.000,243.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 51.000,167.000
+[INFO] - 64.000,483.000
+[INFO] - 440.000,405.000
+[INFO] - 495.000,360.000
+[INFO] - 110.000,136.000
+[INFO] - 317.000,132.000
+[INFO] - 107.000,409.000
+[INFO] - 169.000,145.000
+[INFO] - 21.000,464.000
+[INFO] - 336.000,294.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 51.000,167.000
+[INFO] - 64.000,483.000
+[INFO] - 440.000,405.000
+[INFO] - 495.000,360.000
+[INFO] - 110.000,136.000
+[INFO] - 317.000,132.000
+[INFO] - 107.000,409.000
+[INFO] - 169.000,145.000
+[INFO] - 21.000,464.000
+[INFO] - 336.000,294.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - TH|1|151.000,420.000
+[INFO] - TH|1|151.000,420.000
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 167.000,355.000
+[INFO] - 6.000,5.000
+[INFO] - 167.000,362.000
+[INFO] - 210.000,151.000
+[INFO] - 50.000,262.000
+[INFO] - 246.000,101.000
+[INFO] - 281.000,162.000
+[INFO] - 437.000,73.000
+[INFO] - 68.000,432.000
+[INFO] - 433.000,178.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 167.000,355.000
+[INFO] - 6.000,5.000
+[INFO] - 167.000,362.000
+[INFO] - 210.000,151.000
+[INFO] - 50.000,262.000
+[INFO] - 246.000,101.000
+[INFO] - 281.000,162.000
+[INFO] - 437.000,73.000
+[INFO] - 68.000,432.000
+[INFO] - 433.000,178.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 420.000,103.000
+[INFO] - 163.000,379.000
+[INFO] - 12.000,332.000
+[INFO] - 24.000,386.000
+[INFO] - 148.000,361.000
+[INFO] - 180.000,316.000
+[INFO] - 68.000,187.000
+[INFO] - 321.000,236.000
+[INFO] - 401.000,31.000
+[INFO] - 239.000,451.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 420.000,103.000
+[INFO] - 163.000,379.000
+[INFO] - 12.000,332.000
+[INFO] - 24.000,386.000
+[INFO] - 148.000,361.000
+[INFO] - 180.000,316.000
+[INFO] - 68.000,187.000
+[INFO] - 321.000,236.000
+[INFO] - 401.000,31.000
+[INFO] - 239.000,451.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - TH|1|297.000,358.000
+[INFO] - TH|1|297.000,358.000
+[INFO] - TH|2|297.000,358.000
+[INFO] - TH|2|297.000,358.000
+[INFO] - TH|1|297.000,358.000
+[INFO] - TH|1|297.000,358.000
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 145.000,485.000
+[INFO] - 404.000,279.000
+[INFO] - 147.000,193.000
+[INFO] - 352.000,215.000
+[INFO] - 478.000,138.000
+[INFO] - 246.000,398.000
+[INFO] - 241.000,409.000
+[INFO] - 278.000,253.000
+[INFO] - 93.000,154.000
+[INFO] - 139.000,241.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 145.000,485.000
+[INFO] - 404.000,279.000
+[INFO] - 147.000,193.000
+[INFO] - 352.000,215.000
+[INFO] - 478.000,138.000
+[INFO] - 246.000,398.000
+[INFO] - 241.000,409.000
+[INFO] - 278.000,253.000
+[INFO] - 93.000,154.000
+[INFO] - 139.000,241.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 367.000,172.000
+[INFO] - 409.000,436.000
+[INFO] - 211.000,230.000
+[INFO] - 172.000,464.000
+[INFO] - 113.000,263.000
+[INFO] - 267.000,111.000
+[INFO] - 248.000,171.000
+[INFO] - 242.000,247.000
+[INFO] - 365.000,446.000
+[INFO] - 315.000,343.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 367.000,172.000
+[INFO] - 409.000,436.000
+[INFO] - 211.000,230.000
+[INFO] - 172.000,464.000
+[INFO] - 113.000,263.000
+[INFO] - 267.000,111.000
+[INFO] - 248.000,171.000
+[INFO] - 242.000,247.000
+[INFO] - 365.000,446.000
+[INFO] - 315.000,343.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - TH|1|360.000,283.000
+[INFO] - TH|1|360.000,283.000
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 84.000,61.000
+[INFO] - 93.000,177.000
+[INFO] - 470.000,223.000
+[INFO] - 283.000,63.000
+[INFO] - 378.000,274.000
+[INFO] - 304.000,245.000
+[INFO] - 298.000,214.000
+[INFO] - 33.000,9.000
+[INFO] - 296.000,205.000
+[INFO] - 325.000,262.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 84.000,61.000
+[INFO] - 93.000,177.000
+[INFO] - 470.000,223.000
+[INFO] - 283.000,63.000
+[INFO] - 378.000,274.000
+[INFO] - 304.000,245.000
+[INFO] - 298.000,214.000
+[INFO] - 33.000,9.000
+[INFO] - 296.000,205.000
+[INFO] - 325.000,262.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 468.000,92.000
+[INFO] - 468.000,92.000
+[INFO] - 225.000,68.000
+[INFO] - 225.000,68.000
+[INFO] - 116.000,467.000
+[INFO] - 116.000,467.000
+[INFO] - 316.000,481.000
+[INFO] - 316.000,481.000
+[INFO] - 413.000,131.000
+[INFO] - 413.000,131.000
+[INFO] - 176.000,350.000
+[INFO] - 176.000,350.000
+[INFO] - 192.000,121.000
+[INFO] - 192.000,121.000
+[INFO] - 27.000,162.000
+[INFO] - 27.000,162.000
+[INFO] - 345.000,162.000
+[INFO] - 345.000,162.000
+[INFO] - 77.000,75.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - 77.000,75.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 437.000,381.000
+[INFO] - 320.000,87.000
+[INFO] - 447.000,354.000
+[INFO] - 449.000,96.000
+[INFO] - 411.000,274.000
+[INFO] - 210.000,232.000
+[INFO] - 367.000,435.000
+[INFO] - 300.000,483.000
+[INFO] - 402.000,468.000
+[INFO] - 316.000,167.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 437.000,381.000
+[INFO] - 320.000,87.000
+[INFO] - 447.000,354.000
+[INFO] - 449.000,96.000
+[INFO] - 411.000,274.000
+[INFO] - 210.000,232.000
+[INFO] - 367.000,435.000
+[INFO] - 300.000,483.000
+[INFO] - 402.000,468.000
+[INFO] - 316.000,167.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 7469
+[INFO] - WD sending signal to 7404
+[INFO] - WD sending signal to 7405
+[INFO] - WD sending signal to 7408
+[INFO] - WD sending signal to 7409
+[INFO] - WD sending signal to 7467
+[INFO] - WD sending signal to 7469
+[ERROR] - Error on executing execvp: No such file or directory from: 19317, awaiting termination from WD
+[ERROR] - Error on executing execvp: No such file or directory from: 19319, awaiting termination from WD
+[ERROR] - Error on executing execvp: No such file or directory from: 19318, awaiting termination from WD
+[ERROR] - Error on executing write: Broken pipe from: 19313, awaiting termination from WD
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 403.000,214.000
+[INFO] - 302.000,135.000
+[INFO] - 279.000,108.000
+[INFO] - 101.000,239.000
+[INFO] - 427.000,162.000
+[INFO] - 484.000,255.000
+[INFO] - 86.000,49.000
+[INFO] - 35.000,384.000
+[INFO] - 347.000,175.000
+[INFO] - 146.000,128.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 200.000,425.000
+[INFO] - 276.000,173.000
+[INFO] - 361.000,154.000
+[INFO] - 317.000,17.000
+[INFO] - 356.000,402.000
+[INFO] - 107.000,217.000
+[INFO] - 178.000,42.000
+[INFO] - 234.000,369.000
+[INFO] - 390.000,256.000
+[INFO] - 43.000,248.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 20236
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 403.000,214.000
+[INFO] - 302.000,135.000
+[INFO] - 279.000,108.000
+[INFO] - 101.000,239.000
+[INFO] - 427.000,162.000
+[INFO] - 484.000,255.000
+[INFO] - 86.000,49.000
+[INFO] - 35.000,384.000
+[INFO] - 347.000,175.000
+[INFO] - 146.000,128.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 200.000,425.000
+[INFO] - 276.000,173.000
+[INFO] - 361.000,154.000
+[INFO] - 317.000,17.000
+[INFO] - 356.000,402.000
+[INFO] - 107.000,217.000
+[INFO] - 178.000,42.000
+[INFO] - 234.000,369.000
+[INFO] - 390.000,256.000
+[INFO] - 43.000,248.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 93.000,68.000
+[INFO] - 225.000,370.000
+[INFO] - 266.000,210.000
+[INFO] - 117.000,351.000
+[INFO] - 291.000,445.000
+[INFO] - 280.000,491.000
+[INFO] - 222.000,408.000
+[INFO] - 17.000,83.000
+[INFO] - 63.000,334.000
+[INFO] - 100.000,271.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 93.000,68.000
+[INFO] - 225.000,370.000
+[INFO] - 266.000,210.000
+[INFO] - 117.000,351.000
+[INFO] - 291.000,445.000
+[INFO] - 280.000,491.000
+[INFO] - 222.000,408.000
+[INFO] - 17.000,83.000
+[INFO] - 63.000,334.000
+[INFO] - 100.000,271.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20238
+[INFO] - Input has updated its parameters
+[INFO] - TH|6|86.000,49.000
+[INFO] - TH|6|86.000,49.000
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - WD sending signal to 20236
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 88.000,59.000
+[INFO] - 488.000,118.000
+[INFO] - 453.000,222.000
+[INFO] - 488.000,343.000
+[INFO] - 478.000,31.000
+[INFO] - 444.000,424.000
+[INFO] - 99.000,169.000
+[INFO] - 146.000,218.000
+[INFO] - 379.000,115.000
+[INFO] - 421.000,23.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - Obtacles 10
+[INFO] - 88.000,59.000
+[INFO] - 488.000,118.000
+[INFO] - 453.000,222.000
+[INFO] - 488.000,343.000
+[INFO] - 478.000,31.000
+[INFO] - 444.000,424.000
+[INFO] - 99.000,169.000
+[INFO] - 146.000,218.000
+[INFO] - 379.000,115.000
+[INFO] - 421.000,23.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 20238
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20178
+[INFO] - WD sending signal to 20179
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20236
+[INFO] - WD sending signal to 20238
+[INFO] - TH|2|279.000,108.000
+[INFO] - TH|2|279.000,108.000
+[INFO] - WD sending signal to 20174
+[INFO] - WD sending signal to 20175
+[INFO] - WD sending signal to 20178
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 472.000,189.000
+[INFO] - 425.000,464.000
+[INFO] - 496.000,273.000
+[INFO] - 344.000,37.000
+[INFO] - 414.000,441.000
+[INFO] - 351.000,242.000
+[INFO] - 167.000,349.000
+[INFO] - 27.000,377.000
+[INFO] - 220.000,90.000
+[INFO] - 114.000,391.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 298.000,485.000
+[INFO] - 26.000,195.000
+[INFO] - 27.000,447.000
+[INFO] - 157.000,201.000
+[INFO] - 54.000,399.000
+[INFO] - 41.000,456.000
+[INFO] - 17.000,444.000
+[INFO] - 259.000,359.000
+[INFO] - 222.000,141.000
+[INFO] - 301.000,310.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 472.000,189.000
+[INFO] - 425.000,464.000
+[INFO] - 496.000,273.000
+[INFO] - 344.000,37.000
+[INFO] - 414.000,441.000
+[INFO] - 351.000,242.000
+[INFO] - 167.000,349.000
+[INFO] - 27.000,377.000
+[INFO] - 220.000,90.000
+[INFO] - 114.000,391.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 298.000,485.000
+[INFO] - 26.000,195.000
+[INFO] - 27.000,447.000
+[INFO] - 157.000,201.000
+[INFO] - 54.000,399.000
+[INFO] - 41.000,456.000
+[INFO] - 17.000,444.000
+[INFO] - 259.000,359.000
+[INFO] - 222.000,141.000
+[INFO] - 301.000,310.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20680
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 441.000,64.000
+[INFO] - 317.000,140.000
+[INFO] - 119.000,104.000
+[INFO] - 71.000,394.000
+[INFO] - 422.000,77.000
+[INFO] - 377.000,72.000
+[INFO] - 62.000,255.000
+[INFO] - 268.000,441.000
+[INFO] - 202.000,425.000
+[INFO] - 142.000,108.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 441.000,64.000
+[INFO] - 317.000,140.000
+[INFO] - 119.000,104.000
+[INFO] - 71.000,394.000
+[INFO] - 422.000,77.000
+[INFO] - 377.000,72.000
+[INFO] - 62.000,255.000
+[INFO] - 268.000,441.000
+[INFO] - 202.000,425.000
+[INFO] - 142.000,108.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 20738
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20680
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - TH|8|220.000,90.000
+[INFO] - TH|8|220.000,90.000
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 324.000,35.000
+[INFO] - 65.000,194.000
+[INFO] - 332.000,176.000
+[INFO] - 53.000,54.000
+[INFO] - 317.000,354.000
+[INFO] - 216.000,110.000
+[INFO] - 271.000,34.000
+[INFO] - 251.000,390.000
+[INFO] - 490.000,174.000
+[INFO] - 136.000,264.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 324.000,35.000
+[INFO] - 65.000,194.000
+[INFO] - 332.000,176.000
+[INFO] - 53.000,54.000
+[INFO] - 317.000,354.000
+[INFO] - 216.000,110.000
+[INFO] - 271.000,34.000
+[INFO] - 251.000,390.000
+[INFO] - 490.000,174.000
+[INFO] - 136.000,264.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - Drone has updated its parameters
+[INFO] - TH|6|167.000,349.000
+[INFO] - TH|6|167.000,349.000
+[INFO] - WD sending signal to 20739
+[INFO] - WD sending signal to 20738
+[INFO] - WD sending signal to 20675
+[INFO] - WD sending signal to 20676
+[INFO] - WD sending signal to 20679
+[INFO] - WD sending signal to 20680
+[INFO] - WD sending signal to 20739
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 25.000,173.000
+[INFO] - 374.000,162.000
+[INFO] - 271.000,224.000
+[INFO] - 460.000,197.000
+[INFO] - 32.000,178.000
+[INFO] - 191.000,389.000
+[INFO] - 437.000,292.000
+[INFO] - 233.000,80.000
+[INFO] - 402.000,6.000
+[INFO] - 387.000,154.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 480.000,497.000
+[INFO] - 305.000,124.000
+[INFO] - 23.000,96.000
+[INFO] - 167.000,66.000
+[INFO] - 413.000,242.000
+[INFO] - 457.000,226.000
+[INFO] - 365.000,324.000
+[INFO] - 454.000,434.000
+[INFO] - 186.000,17.000
+[INFO] - 339.000,179.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21197
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 25.000,173.000
+[INFO] - 374.000,162.000
+[INFO] - 271.000,224.000
+[INFO] - 460.000,197.000
+[INFO] - 32.000,178.000
+[INFO] - 191.000,389.000
+[INFO] - 437.000,292.000
+[INFO] - 233.000,80.000
+[INFO] - 402.000,6.000
+[INFO] - 387.000,154.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 480.000,497.000
+[INFO] - 305.000,124.000
+[INFO] - 23.000,96.000
+[INFO] - 167.000,66.000
+[INFO] - 413.000,242.000
+[INFO] - 457.000,226.000
+[INFO] - 365.000,324.000
+[INFO] - 454.000,434.000
+[INFO] - 186.000,17.000
+[INFO] - 339.000,179.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21197
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 343.000,147.000
+[INFO] - 209.000,18.000
+[INFO] - 93.000,114.000
+[INFO] - 254.000,117.000
+[INFO] - 121.000,405.000
+[INFO] - 219.000,453.000
+[INFO] - 402.000,25.000
+[INFO] - 77.000,278.000
+[INFO] - 121.000,96.000
+[INFO] - 344.000,387.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 343.000,147.000
+[INFO] - 209.000,18.000
+[INFO] - 93.000,114.000
+[INFO] - 254.000,117.000
+[INFO] - 121.000,405.000
+[INFO] - 219.000,453.000
+[INFO] - 402.000,25.000
+[INFO] - 77.000,278.000
+[INFO] - 121.000,96.000
+[INFO] - 344.000,387.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - TH|4|32.000,178.000
+[INFO] - TH|4|32.000,178.000
+[INFO] - TH|0|25.000,173.000
+[INFO] - TH|0|25.000,173.000
+[INFO] - WD sending signal to 21137
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21197
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21137
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 190.000,153.000
+[INFO] - 113.000,407.000
+[INFO] - 478.000,67.000
+[INFO] - 341.000,16.000
+[INFO] - 436.000,180.000
+[INFO] - 195.000,132.000
+[INFO] - 179.000,405.000
+[INFO] - 150.000,124.000
+[INFO] - 19.000,404.000
+[INFO] - 242.000,492.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 190.000,153.000
+[INFO] - 113.000,407.000
+[INFO] - 478.000,67.000
+[INFO] - 341.000,16.000
+[INFO] - 436.000,180.000
+[INFO] - 195.000,132.000
+[INFO] - 179.000,405.000
+[INFO] - 150.000,124.000
+[INFO] - 19.000,404.000
+[INFO] - 242.000,492.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21197
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[INFO] - WD sending signal to 21136
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21137
+[INFO] - WD sending signal to 21197
+[INFO] - WD sending signal to 21195
+[INFO] - WD sending signal to 21132
+[INFO] - WD sending signal to 21133
+[WARN] - Pipe to map closed
+[ERROR] - Error on executing write: Broken pipe from: 21197, awaiting termination from WD
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 98.000,145.000
+[INFO] - 19.000,267.000
+[INFO] - 157.000,309.000
+[INFO] - 283.000,186.000
+[INFO] - 303.000,86.000
+[INFO] - 297.000,367.000
+[INFO] - 204.000,339.000
+[INFO] - 151.000,189.000
+[INFO] - 13.000,306.000
+[INFO] - 385.000,303.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 56.000,440.000
+[INFO] - 240.000,140.000
+[INFO] - 247.000,84.000
+[INFO] - 347.000,431.000
+[INFO] - 200.000,48.000
+[INFO] - 97.000,102.000
+[INFO] - 228.000,144.000
+[INFO] - 8.000,242.000
+[INFO] - 427.000,52.000
+[INFO] - 490.000,92.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 98.000,145.000
+[INFO] - 19.000,267.000
+[INFO] - 157.000,309.000
+[INFO] - 283.000,186.000
+[INFO] - 303.000,86.000
+[INFO] - 297.000,367.000
+[INFO] - 204.000,339.000
+[INFO] - 151.000,189.000
+[INFO] - 13.000,306.000
+[INFO] - 385.000,303.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 56.000,440.000
+[INFO] - 240.000,140.000
+[INFO] - 247.000,84.000
+[INFO] - 347.000,431.000
+[INFO] - 200.000,48.000
+[INFO] - 97.000,102.000
+[INFO] - 228.000,144.000
+[INFO] - 8.000,242.000
+[INFO] - 427.000,52.000
+[INFO] - 490.000,92.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21475
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 248.000,367.000
+[INFO] - 427.000,46.000
+[INFO] - 463.000,447.000
+[INFO] - 358.000,263.000
+[INFO] - 221.000,252.000
+[INFO] - 212.000,277.000
+[INFO] - 193.000,304.000
+[INFO] - 270.000,440.000
+[INFO] - 240.000,469.000
+[INFO] - 372.000,440.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 248.000,367.000
+[INFO] - 427.000,46.000
+[INFO] - 463.000,447.000
+[INFO] - 358.000,263.000
+[INFO] - 221.000,252.000
+[INFO] - 212.000,277.000
+[INFO] - 193.000,304.000
+[INFO] - 270.000,440.000
+[INFO] - 240.000,469.000
+[INFO] - 372.000,440.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21476
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - TH|0|98.000,145.000
+[INFO] - TH|0|98.000,145.000
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 18.000,469.000
+[INFO] - 394.000,246.000
+[INFO] - 465.000,255.000
+[INFO] - 340.000,245.000
+[INFO] - 307.000,183.000
+[INFO] - 337.000,407.000
+[INFO] - 50.000,116.000
+[INFO] - 453.000,365.000
+[INFO] - 63.000,163.000
+[INFO] - 129.000,285.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 18.000,469.000
+[INFO] - 394.000,246.000
+[INFO] - 465.000,255.000
+[INFO] - 340.000,245.000
+[INFO] - 307.000,183.000
+[INFO] - 337.000,407.000
+[INFO] - 50.000,116.000
+[INFO] - 453.000,365.000
+[INFO] - 63.000,163.000
+[INFO] - 129.000,285.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21476
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21475
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[INFO] - TH|4|303.000,86.000
+[INFO] - TH|4|303.000,86.000
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21475
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21476
+[INFO] - WD sending signal to 21532
+[INFO] - WD sending signal to 21534
+[INFO] - WD sending signal to 21471
+[INFO] - WD sending signal to 21472
+[INFO] - WD sending signal to 21475
+[WARN] - Pipe to map closed
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 286.000,219.000
+[INFO] - 479.000,322.000
+[INFO] - 28.000,367.000
+[INFO] - 78.000,318.000
+[INFO] - 311.000,451.000
+[INFO] - 459.000,273.000
+[INFO] - 55.000,421.000
+[INFO] - 489.000,476.000
+[INFO] - 487.000,103.000
+[INFO] - 472.000,469.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 57.000,257.000
+[INFO] - 113.000,53.000
+[INFO] - 161.000,24.000
+[INFO] - 15.000,454.000
+[INFO] - 331.000,479.000
+[INFO] - 248.000,300.000
+[INFO] - 179.000,375.000
+[INFO] - 100.000,130.000
+[INFO] - 315.000,393.000
+[INFO] - 410.000,393.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 286.000,219.000
+[INFO] - 479.000,322.000
+[INFO] - 28.000,367.000
+[INFO] - 78.000,318.000
+[INFO] - 311.000,451.000
+[INFO] - 459.000,273.000
+[INFO] - 55.000,421.000
+[INFO] - 489.000,476.000
+[INFO] - 487.000,103.000
+[INFO] - 472.000,469.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 57.000,257.000
+[INFO] - 113.000,53.000
+[INFO] - 161.000,24.000
+[INFO] - 15.000,454.000
+[INFO] - 331.000,479.000
+[INFO] - 248.000,300.000
+[INFO] - 179.000,375.000
+[INFO] - 100.000,130.000
+[INFO] - 315.000,393.000
+[INFO] - 410.000,393.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 279.000,107.000
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 179.000,320.000
+[INFO] - 279.000,107.000
+[INFO] - 179.000,320.000
+[INFO] - 72.000,399.000
+[INFO] - 72.000,399.000
+[INFO] - 333.000,209.000
+[INFO] - 333.000,209.000
+[INFO] - 166.000,436.000
+[INFO] - 28.000,223.000
+[INFO] - 166.000,436.000
+[INFO] - 46.000,493.000
+[INFO] - 128.000,207.000
+[INFO] - 28.000,223.000
+[INFO] - 369.000,495.000
+[INFO] - 13.000,200.000
+[INFO] - 46.000,493.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - 128.000,207.000
+[INFO] - 369.000,495.000
+[INFO] - 13.000,200.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 21867
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - TH|2|28.000,367.000
+[INFO] - TH|2|28.000,367.000
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 475.000,113.000
+[INFO] - 352.000,6.000
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 489.000,452.000
+[INFO] - 475.000,113.000
+[INFO] - 488.000,156.000
+[INFO] - 352.000,6.000
+[INFO] - 346.000,398.000
+[INFO] - 489.000,452.000
+[INFO] - 401.000,477.000
+[INFO] - 488.000,156.000
+[INFO] - 358.000,80.000
+[INFO] - 346.000,398.000
+[INFO] - 149.000,282.000
+[INFO] - 401.000,477.000
+[INFO] - 479.000,483.000
+[INFO] - 358.000,80.000
+[INFO] - 344.000,145.000
+[INFO] - 149.000,282.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - 479.000,483.000
+[INFO] - Obtacles 10
+[INFO] - 344.000,145.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21869
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - Drone has updated its parameters
+[INFO] - TH|4|311.000,451.000
+[INFO] - TH|4|311.000,451.000
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 271.000,372.000
+[INFO] - 220.000,317.000
+[INFO] - 365.000,349.000
+[INFO] - 376.000,87.000
+[INFO] - 196.000,390.000
+[INFO] - 287.000,171.000
+[INFO] - 355.000,492.000
+[INFO] - 30.000,196.000
+[INFO] - 444.000,18.000
+[INFO] - 352.000,142.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 271.000,372.000
+[INFO] - 220.000,317.000
+[INFO] - 365.000,349.000
+[INFO] - 376.000,87.000
+[INFO] - 196.000,390.000
+[INFO] - 287.000,171.000
+[INFO] - 355.000,492.000
+[INFO] - 30.000,196.000
+[INFO] - 444.000,18.000
+[INFO] - 352.000,142.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[INFO] - WD sending signal to 21802
+[INFO] - WD sending signal to 21803
+[INFO] - WD sending signal to 21867
+[INFO] - WD sending signal to 21869
+[INFO] - WD sending signal to 21798
+[INFO] - WD sending signal to 21799
+[WARN] - Pipe to map closed
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 108.000,115.000
+[INFO] - 381.000,489.000
+[INFO] - 92.000,113.000
+[INFO] - 463.000,490.000
+[INFO] - 352.000,162.000
+[INFO] - 365.000,146.000
+[INFO] - 88.000,461.000
+[INFO] - 352.000,60.000
+[INFO] - 227.000,353.000
+[INFO] - 385.000,442.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 32.000,102.000
+[INFO] - 176.000,472.000
+[INFO] - 324.000,151.000
+[INFO] - 227.000,383.000
+[INFO] - 263.000,443.000
+[INFO] - 207.000,57.000
+[INFO] - 29.000,297.000
+[INFO] - 294.000,133.000
+[INFO] - 369.000,115.000
+[INFO] - 56.000,324.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 108.000,115.000
+[INFO] - 381.000,489.000
+[INFO] - 92.000,113.000
+[INFO] - 463.000,490.000
+[INFO] - 352.000,162.000
+[INFO] - 365.000,146.000
+[INFO] - 88.000,461.000
+[INFO] - 352.000,60.000
+[INFO] - 227.000,353.000
+[INFO] - 385.000,442.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 32.000,102.000
+[INFO] - 176.000,472.000
+[INFO] - 324.000,151.000
+[INFO] - 227.000,383.000
+[INFO] - 263.000,443.000
+[INFO] - 207.000,57.000
+[INFO] - 29.000,297.000
+[INFO] - 294.000,133.000
+[INFO] - 369.000,115.000
+[INFO] - 56.000,324.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - TH|0|32.000,102.000
+[INFO] - TH|0|32.000,102.000
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 385.000,291.000
+[INFO] - 426.000,135.000
+[INFO] - 485.000,279.000
+[INFO] - 233.000,70.000
+[INFO] - 147.000,101.000
+[INFO] - 407.000,256.000
+[INFO] - 216.000,288.000
+[INFO] - 245.000,161.000
+[INFO] - 254.000,60.000
+[INFO] - 151.000,106.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 385.000,291.000
+[INFO] - 426.000,135.000
+[INFO] - 485.000,279.000
+[INFO] - 233.000,70.000
+[INFO] - 147.000,101.000
+[INFO] - 407.000,256.000
+[INFO] - 216.000,288.000
+[INFO] - 245.000,161.000
+[INFO] - 254.000,60.000
+[INFO] - 151.000,106.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - TH|6|29.000,297.000
+[INFO] - TH|6|29.000,297.000
+[INFO] - WD sending signal to 22153
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 222.000,368.000
+[INFO] - 104.000,162.000
+[INFO] - 182.000,456.000
+[INFO] - 222.000,409.000
+[INFO] - 161.000,460.000
+[INFO] - 203.000,46.000
+[INFO] - 251.000,129.000
+[INFO] - 33.000,89.000
+[INFO] - 260.000,267.000
+[INFO] - 159.000,407.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 222.000,368.000
+[INFO] - 104.000,162.000
+[INFO] - 182.000,456.000
+[INFO] - 222.000,409.000
+[INFO] - 161.000,460.000
+[INFO] - 203.000,46.000
+[INFO] - 251.000,129.000
+[INFO] - 33.000,89.000
+[INFO] - 260.000,267.000
+[INFO] - 159.000,407.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22149
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 368.000,418.000
+[INFO] - 15.000,437.000
+[INFO] - 58.000,112.000
+[INFO] - 98.000,312.000
+[INFO] - 172.000,249.000
+[INFO] - 271.000,247.000
+[INFO] - 469.000,375.000
+[INFO] - 409.000,151.000
+[INFO] - 184.000,132.000
+[INFO] - 60.000,197.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 368.000,418.000
+[INFO] - 15.000,437.000
+[INFO] - 58.000,112.000
+[INFO] - 98.000,312.000
+[INFO] - 172.000,249.000
+[INFO] - 271.000,247.000
+[INFO] - 469.000,375.000
+[INFO] - 409.000,151.000
+[INFO] - 184.000,132.000
+[INFO] - 60.000,197.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22153
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 92.000,115.000
+[INFO] - 96.000,195.000
+[INFO] - 96.000,129.000
+[INFO] - 284.000,208.000
+[INFO] - 248.000,295.000
+[INFO] - 468.000,469.000
+[INFO] - 65.000,483.000
+[INFO] - 406.000,124.000
+[INFO] - 96.000,356.000
+[INFO] - 288.000,120.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 92.000,115.000
+[INFO] - 96.000,195.000
+[INFO] - 96.000,129.000
+[INFO] - 284.000,208.000
+[INFO] - 248.000,295.000
+[INFO] - 468.000,469.000
+[INFO] - 65.000,483.000
+[INFO] - 406.000,124.000
+[INFO] - 96.000,356.000
+[INFO] - 288.000,120.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22213
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 457.000,411.000
+[INFO] - 367.000,426.000
+[INFO] - 139.000,129.000
+[INFO] - 78.000,323.000
+[INFO] - 261.000,490.000
+[INFO] - 372.000,205.000
+[INFO] - 106.000,468.000
+[INFO] - 400.000,54.000
+[INFO] - 450.000,37.000
+[INFO] - 263.000,50.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 457.000,411.000
+[INFO] - 367.000,426.000
+[INFO] - 139.000,129.000
+[INFO] - 78.000,323.000
+[INFO] - 261.000,490.000
+[INFO] - 372.000,205.000
+[INFO] - 106.000,468.000
+[INFO] - 400.000,54.000
+[INFO] - 450.000,37.000
+[INFO] - 263.000,50.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - 332.000,83.000
+[INFO] - 19.000,398.000
+[INFO] - 418.000,277.000
+[INFO] - 374.000,366.000
+[INFO] - 133.000,162.000
+[INFO] - 487.000,90.000
+[INFO] - 426.000,206.000
+[INFO] - 17.000,65.000
+[INFO] - 335.000,95.000
+[INFO] - 240.000,96.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 332.000,83.000
+[INFO] - 19.000,398.000
+[INFO] - 418.000,277.000
+[INFO] - 374.000,366.000
+[INFO] - 133.000,162.000
+[INFO] - 487.000,90.000
+[INFO] - 426.000,206.000
+[INFO] - 17.000,65.000
+[INFO] - 335.000,95.000
+[INFO] - 240.000,96.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22154
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22213
+[INFO] - WD sending signal to 22211
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22149
+[INFO] - WD sending signal to 22150
+[INFO] - WD sending signal to 22153
+[INFO] - WD sending signal to 22154
+[INFO] - WD sending signal to 22213
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 486.000,427.000
+[INFO] - 371.000,57.000
+[INFO] - 208.000,387.000
+[INFO] - 201.000,237.000
+[INFO] - 419.000,437.000
+[INFO] - 299.000,331.000
+[INFO] - 290.000,74.000
+[INFO] - 253.000,142.000
+[INFO] - 467.000,173.000
+[INFO] - 492.000,440.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 88.000,381.000
+[INFO] - 81.000,369.000
+[INFO] - 173.000,191.000
+[INFO] - 58.000,26.000
+[INFO] - 93.000,176.000
+[INFO] - 118.000,395.000
+[INFO] - 397.000,238.000
+[INFO] - 264.000,441.000
+[INFO] - 96.000,193.000
+[INFO] - 381.000,4.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22563
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 486.000,427.000
+[INFO] - 371.000,57.000
+[INFO] - 208.000,387.000
+[INFO] - 201.000,237.000
+[INFO] - 419.000,437.000
+[INFO] - 299.000,331.000
+[INFO] - 290.000,74.000
+[INFO] - 253.000,142.000
+[INFO] - 467.000,173.000
+[INFO] - 492.000,440.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 88.000,381.000
+[INFO] - 81.000,369.000
+[INFO] - 173.000,191.000
+[INFO] - 58.000,26.000
+[INFO] - 93.000,176.000
+[INFO] - 118.000,395.000
+[INFO] - 397.000,238.000
+[INFO] - 264.000,441.000
+[INFO] - 96.000,193.000
+[INFO] - 381.000,4.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 57.000,271.000
+[INFO] - 481.000,59.000
+[INFO] - 318.000,10.000
+[INFO] - 495.000,75.000
+[INFO] - 463.000,98.000
+[INFO] - 310.000,403.000
+[INFO] - 331.000,244.000
+[INFO] - 272.000,4.000
+[INFO] - 287.000,182.000
+[INFO] - 382.000,380.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 57.000,271.000
+[INFO] - 481.000,59.000
+[INFO] - 318.000,10.000
+[INFO] - 495.000,75.000
+[INFO] - 463.000,98.000
+[INFO] - 310.000,403.000
+[INFO] - 331.000,244.000
+[INFO] - 272.000,4.000
+[INFO] - 287.000,182.000
+[INFO] - 382.000,380.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22504
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22504
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - Input has updated its parameters
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 358.000,352.000
+[INFO] - 275.000,107.000
+[INFO] - 90.000,39.000
+[INFO] - 49.000,38.000
+[INFO] - 84.000,282.000
+[INFO] - 42.000,494.000
+[INFO] - 405.000,376.000
+[INFO] - 53.000,75.000
+[INFO] - 386.000,49.000
+[INFO] - 150.000,349.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 358.000,352.000
+[INFO] - 275.000,107.000
+[INFO] - 90.000,39.000
+[INFO] - 49.000,38.000
+[INFO] - 84.000,282.000
+[INFO] - 42.000,494.000
+[INFO] - 405.000,376.000
+[INFO] - 53.000,75.000
+[INFO] - 386.000,49.000
+[INFO] - 150.000,349.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22504
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 499.000,461.000
+[INFO] - 104.000,330.000
+[INFO] - 205.000,376.000
+[INFO] - 186.000,492.000
+[INFO] - 58.000,420.000
+[INFO] - 225.000,268.000
+[INFO] - 272.000,0.000
+[INFO] - 376.000,214.000
+[INFO] - 392.000,277.000
+[INFO] - 253.000,328.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 499.000,461.000
+[INFO] - 104.000,330.000
+[INFO] - 205.000,376.000
+[INFO] - 186.000,492.000
+[INFO] - 58.000,420.000
+[INFO] - 225.000,268.000
+[INFO] - 272.000,0.000
+[INFO] - 376.000,214.000
+[INFO] - 392.000,277.000
+[INFO] - 253.000,328.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22503
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - WD sending signal to 22565
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22503
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 411.000,147.000
+[INFO] - 322.000,317.000
+[INFO] - 23.000,376.000
+[INFO] - 392.000,409.000
+[INFO] - 277.000,395.000
+[INFO] - 110.000,276.000
+[INFO] - 356.000,214.000
+[INFO] - 458.000,413.000
+[INFO] - 442.000,496.000
+[INFO] - 257.000,0.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 411.000,147.000
+[INFO] - 322.000,317.000
+[INFO] - 23.000,376.000
+[INFO] - 392.000,409.000
+[INFO] - 277.000,395.000
+[INFO] - 110.000,276.000
+[INFO] - 356.000,214.000
+[INFO] - 458.000,413.000
+[INFO] - 442.000,496.000
+[INFO] - 257.000,0.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22504
+[INFO] - WD sending signal to 22563
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22565
+[INFO] - TH|1|371.000,57.000
+[INFO] - TH|1|371.000,57.000
+[INFO] - WD sending signal to 22499
+[INFO] - WD sending signal to 22500
+[INFO] - WD sending signal to 22503
+[INFO] - WD sending signal to 22504
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 72.000,406.000
+[INFO] - 164.000,429.000
+[INFO] - 94.000,15.000
+[INFO] - 156.000,343.000
+[INFO] - 109.000,262.000
+[INFO] - 194.000,201.000
+[INFO] - 251.000,187.000
+[INFO] - 235.000,105.000
+[INFO] - 456.000,417.000
+[INFO] - 407.000,299.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 312.000,7.000
+[INFO] - 177.000,315.000
+[INFO] - 57.000,382.000
+[INFO] - 186.000,37.000
+[INFO] - 114.000,120.000
+[INFO] - 428.000,303.000
+[INFO] - 475.000,191.000
+[INFO] - 313.000,444.000
+[INFO] - 99.000,43.000
+[INFO] - 209.000,226.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 72.000,406.000
+[INFO] - 164.000,429.000
+[INFO] - 94.000,15.000
+[INFO] - 156.000,343.000
+[INFO] - 109.000,262.000
+[INFO] - 194.000,201.000
+[INFO] - 251.000,187.000
+[INFO] - 235.000,105.000
+[INFO] - 456.000,417.000
+[INFO] - 407.000,299.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 312.000,7.000
+[INFO] - 177.000,315.000
+[INFO] - 57.000,382.000
+[INFO] - 186.000,37.000
+[INFO] - 114.000,120.000
+[INFO] - 428.000,303.000
+[INFO] - 475.000,191.000
+[INFO] - 313.000,444.000
+[INFO] - 99.000,43.000
+[INFO] - 209.000,226.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - TH|2|94.000,15.000
+[INFO] - TH|2|94.000,15.000
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - WD sending signal to 22843
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 31.000,439.000
+[INFO] - 27.000,352.000
+[INFO] - 81.000,379.000
+[INFO] - 481.000,172.000
+[INFO] - 408.000,463.000
+[INFO] - 240.000,220.000
+[INFO] - 322.000,417.000
+[INFO] - 387.000,232.000
+[INFO] - 151.000,425.000
+[INFO] - 121.000,117.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 31.000,439.000
+[INFO] - 27.000,352.000
+[INFO] - 81.000,379.000
+[INFO] - 481.000,172.000
+[INFO] - 408.000,463.000
+[INFO] - 240.000,220.000
+[INFO] - 322.000,417.000
+[INFO] - 387.000,232.000
+[INFO] - 151.000,425.000
+[INFO] - 121.000,117.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - WD sending signal to 22902
+[INFO] - WD sending signal to 22839
+[INFO] - WD sending signal to 22840
+[INFO] - TH|7|235.000,105.000
+[INFO] - TH|7|235.000,105.000
+[INFO] - WD sending signal to 22843
+[INFO] - WD sending signal to 22844
+[INFO] - WD sending signal to 22904
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvDRONE-TARGvvvvvvv
+[INFO] - 73.000,157.000
+[INFO] - 450.000,117.000
+[INFO] - 438.000,143.000
+[INFO] - 167.000,229.000
+[INFO] - 367.000,233.000
+[INFO] - 68.000,107.000
+[INFO] - 11.000,138.000
+[INFO] - 339.000,383.000
+[INFO] - 456.000,192.000
+[INFO] - 34.000,173.000
+[INFO] - ^^^^^^^^DRONE-TARG^^^^^^^
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 79.000,468.000
+[INFO] - 355.000,260.000
+[INFO] - 49.000,395.000
+[INFO] - 14.000,268.000
+[INFO] - 238.000,492.000
+[INFO] - 22.000,166.000
+[INFO] - 406.000,241.000
+[INFO] - 333.000,18.000
+[INFO] - 110.000,288.000
+[INFO] - 366.000,362.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv
+[INFO] - 73.000,157.000
+[INFO] - 450.000,117.000
+[INFO] - 438.000,143.000
+[INFO] - 167.000,229.000
+[INFO] - 367.000,233.000
+[INFO] - 68.000,107.000
+[INFO] - 11.000,138.000
+[INFO] - 339.000,383.000
+[INFO] - 456.000,192.000
+[INFO] - 34.000,173.000
+[INFO] - ^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^
+[INFO] - Targets 10
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - WD sending signal to 23229
+[INFO] - 79.000,468.000
+[INFO] - 355.000,260.000
+[INFO] - 49.000,395.000
+[INFO] - 14.000,268.000
+[INFO] - 238.000,492.000
+[INFO] - 22.000,166.000
+[INFO] - 406.000,241.000
+[INFO] - 333.000,18.000
+[INFO] - 110.000,288.000
+[INFO] - 366.000,362.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - Drone has updated its parameters
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - TH|5|68.000,107.000
+[INFO] - TH|5|68.000,107.000
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 23227
+[INFO] - Obstacles process generated a new set of obstacles
+[INFO] - vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv
+[INFO] - 255.000,156.000
+[INFO] - 54.000,265.000
+[INFO] - 152.000,342.000
+[INFO] - 17.000,226.000
+[INFO] - 55.000,344.000
+[INFO] - 7.000,134.000
+[INFO] - 313.000,214.000
+[INFO] - 394.000,214.000
+[INFO] - 462.000,260.000
+[INFO] - 335.000,200.000
+[INFO] - ^^^^^^^^^^^OBSTACLES^^^^^^^^^^^^^^^
+[INFO] - Obtacles 10
+[INFO] - vvvvvvvvDRONE-OBSTvvvvvvv
+[INFO] - 255.000,156.000
+[INFO] - 54.000,265.000
+[INFO] - 152.000,342.000
+[INFO] - 17.000,226.000
+[INFO] - 55.000,344.000
+[INFO] - 7.000,134.000
+[INFO] - 313.000,214.000
+[INFO] - 394.000,214.000
+[INFO] - 462.000,260.000
+[INFO] - 335.000,200.000
+[INFO] - ^^^^^^^^DRONE-OBST^^^^^^^
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - Drone has updated its parameters
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - WD sending signal to 23229
+[INFO] - WD sending signal to 23227
+[INFO] - WD sending signal to 23166
+[INFO] - WD sending signal to 23167
+[INFO] - TH|3|167.000,229.000
+[INFO] - TH|3|167.000,229.000
+[INFO] - WD sending signal to 23170
+[INFO] - WD sending signal to 23171
+[INFO] - Input has updated its parameters
+[INFO] - WD sending signal to 23229
