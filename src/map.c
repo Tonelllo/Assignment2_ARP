@@ -17,6 +17,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <time.h>
 
 // WD pid
 pid_t WD_pid;
@@ -190,7 +191,11 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
+    //score variables
     int score = 0;
+    int score_increment = 0;
+    //time when the target are spawned
+    time_t start_time;
 
     // Named pipe (fifo) to send the pid to the WD
     Mkfifo(FIFO1_PATH, 0666);
@@ -281,6 +286,7 @@ int main(int argc, char *argv[]) {
                         logging(LOG_INFO, "^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^");
                         sprintf(aux, "Targets %d", target_num);
                         logging(LOG_INFO, aux);
+                        start_time = time(NULL);
                         break;
                 }
             }
@@ -328,7 +334,19 @@ int main(int argc, char *argv[]) {
             target_y = round(1 + targets_pos[i].y * (getmaxy(map_window) - 3) /
                                      SIMULATION_HEIGHT);
             if (target_x == drone_x && target_y == drone_y) {
-                score++;
+                time_t impact_time = time(NULL) - start_time;
+                //If a target is reached in the first 20 seconds, the score increases of
+                //20 - the number of seconds taken to reach it. For example, if a target is reached
+                //in 5 or more seconds, but less than 6, the score increases by 20-5=15.
+                //In general, the score increases of:
+                //- 20 - (integer part of impact_time), if impact_time < 20
+                //- 1, if impact_time >= 20
+                if (impact_time < 20.0)
+                    score_increment = 20 - (int)ceil(impact_time);
+                else
+                    score_increment = 1;
+                score = score + score_increment;
+
                 sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,
                         targets_pos[i].y);
                 remove_target(i, targets_pos, target_num);
