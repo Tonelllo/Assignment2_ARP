@@ -25,7 +25,7 @@
 #define LOG_WARN "WARN"
 #define LOG_ERROR "ERROR"
 
-#define MAX_STR_LEN 100
+#define MAX_STR_LEN 300
 #define MAX_MSG_LEN 1024
 
 #define N_TARGETS 10

@@ -293,7 +293,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        float target_of_effect = 10;
+        float target_of_effect = 30;
         // Calculating repulsive force for every target
         total_targets_forces.x_component = 0;
         total_targets_forces.y_component = 0;

@@ -343,8 +343,9 @@ int main(int argc, char *argv[]) {
             }
         }
         // check whether all the targets have been hit
-        if (to_decrease && !--target_num) {
-            Write(to_server, "GE", MAX_MSG_LEN);
+        if (to_decrease) {
+            if(!--target_num)
+                Write(to_server, "GE", MAX_MSG_LEN);
         }
 
         int obst_x, obst_y;
