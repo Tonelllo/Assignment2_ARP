@@ -151,9 +151,10 @@ int Select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
 int Select_wmask(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
                  struct timeval *timeout) {
     // Temporarily blocking the SIGUSR1 signal to correctly perform the
-    // select() syscall without being interrupted Since the time taken from
+    // select() syscall without being interrupted. Since the time taken from
     // the select to execute is significantly lower than the WD period for
     // sending signals, this mask should not affect the WD behaviour
+    
     // Block SIGUSR1
     sigset_t block_mask;
     sigemptyset(&block_mask);

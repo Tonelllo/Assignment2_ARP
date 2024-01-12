@@ -435,13 +435,11 @@ int main(int argc, char *argv[]) {
         // interface, and the map to show the drone on screen. To do that
         // firstly the semaphore needs to be taken
 
-        // position
+        // position and velocity
         sprintf(to_send, "%f,%f|%f,%f", drone_current_position.x,
                 drone_current_position.y, drone_current_velocity.x_component,
                 drone_current_velocity.y_component);
         Write(to_server_pipe, to_send, MAX_MSG_LEN);
-
-        // velocity
 
         // The process needs to wait T seconds before computing again the
         // position as specified in the paramaters file. Here usleep needs
