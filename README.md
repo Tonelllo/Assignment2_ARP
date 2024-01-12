@@ -1,6 +1,6 @@
 # Table of contents
 - [Creators](#creators)
-- [ARP: Assignment 1](#arp--assignment-1)
+- [ARP: Assignment 2](#arp--assignment-2)
   * [How to run](#how-to-run)
     + [Building dependencies](#building-dependencies)
     + [Command to run the program](#command-to-run-the-program)
@@ -23,7 +23,7 @@ Valentina Condorelli - S4945679
 
 Group name: ConTo
 
-# ARP: Assignment 1
+# ARP: Assignment 2
 ## How to run
 ### Building dependencies
 To build this project the following dependencies are needed:
@@ -38,7 +38,7 @@ Simply execute the run.sh script in the main folder by typing in the shell:
 
 ## How does it work
 ### Architecture
-![architecture-image-placeholder](docs/Schema_assignment1_ARP.png?raw=true)
+![architecture-image-placeholder](docs/Schema_assignment2_ARP.png?raw=true)
 ### Active components
 The active components of this project are:
 - Server
@@ -46,6 +46,8 @@ The active components of this project are:
 - Drone
 - Input
 - Watchdog (WD)
+- Target
+- Obstacles
 #### Server
 The main role of the **server** process is to read from the shared memory areas in
 order to periodically update the log file with the drone info. For this purpose, the server is responsible for initializing the semaphores to access the shared memory areas. Moreover, by means of a *fork()*, it spawns the **map** process. 
@@ -112,15 +114,16 @@ is applying through the input.
 
 The keys available for the user are:
 ```
-+-+-+---+---+
-| q | w | e |
-+---+---+---+
-| a | s | d |
++-+-+---+---+        +---+
+| q | w | e |        | p |
++---+---+---+        +---+
+| a | s | d |  --->  
 +---+---+---+
 | z | x | c |
 +-+-+---+---+
 ```
-The eight external keys can be used to move the drone by adding a force in the respective direction (top, top-right, right and so on). On the other hand, the S key in used to instantly zero all the forces, in order to see the inertia on the drone. The space key dose the same thing as the s key.
+The eight external keys can be used to move the drone by adding a force in the respective direction (top, top-right, right and so on). On the other hand, the 's' key in used to instantly zero all the forces, in order to see the inertia on the drone. The space key does the same thing as the s key. Lastly, the 'p' key can be used to safely close the program.
+Please note that, for the keys to work, you should select the Input window when it appears.
 
 The primitives used by the input are:
 - Kill(): used to send a signal to the WD to tell that it's alive
