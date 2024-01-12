@@ -247,7 +247,7 @@ int main(int argc, char *argv[]) {
         reader = master;
         int ret;
         do {
-            ret = Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
+            ret = Select_wmask(from_server + 1, &reader, NULL, NULL, &select_timeout);
             // The only reason to get an erorr is if Select gets interrupted by
             // a signal. In that case the function should be restarted if the
             // SA_RESTART flag didn't do its job
