@@ -49,29 +49,30 @@ The active components of this project are:
 - Target
 - Obstacles
 #### Server
-The main role of the **server** process is to read from the shared memory areas in
-order to periodically update the log file with the drone info. For this purpose, the server is responsible for initializing the semaphores to access the shared memory areas. Moreover, by means of a *fork()*, it spawns the **map** process. 
+As it can be seen in the architecture scheme, the main role of the **server** process is to read from the pipes coming from all the processes and distribute messages and information accordingly. Moreover, by means of a *fork()*, it spawns the **map** process. 
+
 The primitives used by the server are:
 - Kill(): used to send a signal to the WD to tell that it's alive
 - Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
 - Fork(): used to create a child process which can spawn the map
-- Sem_open(), Sem_init(), Sem_wait(), Sem_post(), Sem_unlink(), Sem_close(): used to manage the semaphores
-- Shm_open(), Ftruncate(), Mmap(), Shm_unlink(), Munmap(): used to manage the shared memory
-- Fopen(), Fclose: used to open and close a file located in a specific path (in this case, the log file)
-- Flock(): used to lock/unlock the file when multiple processes can access it
+- Select_wmask(): select() used to check the pipes with data and select one of them to read from. It additionally implements a temporary sigmask for SIGUSR1, so that the syscall can be executed without interrupts. Since the execution time of the select() is significantly lower than the WD period for sending signals, this mask should not affect the WD behaviour
+- Fopen(), Fclose(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
 - Execvp(): used to spawn the map
+- Close(): used to safely close the pipes before exiting the process
 
 #### Map
-The **map** process reads the position data of the drone from the shared memory and
-displays it on the screen. As a consequence, the drone can be seen moving in the map following its dynamics, with the borders as limits.
+The **map** process reads the position data of the drone and the coordinates of the targets and obstacles sets from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving in the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
+
 The primitives used by the map are:
 - Kill(): used to send a signal to the WD to tell that it's alive
 - Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
-- Mkfifo(): used to create a FIFO (named pipe) to send its PID 
+- Mkfifo(): used to create a FIFO (named pipe) to send its PID to the WD
 - Open(), Close(): used to open and close the file descriptor associated to the FIFO
-- Write(): used to write in the FIFO
-- Sem_open() Sem_wait(), Sem_post(), Sem_unlink(), Sem_close(): used to manage the semaphores declared in the server
-- Shm_open(), Ftruncate(), Mmap(), Shm_unlink(), munmap(): used to manage the shared memory
+- Select(): used to check the server pipe and read from it when new data are available
+- Fopen(), Fclose(), Flock(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
+- Close(): also used to safely close the pipes before exiting the process
 
 #### Drone
 The **drone** process is the one responsible for calculating:
@@ -101,16 +102,15 @@ For the y coordinate the formula is the same. This describes the dynamics of the
 The primitives used by the drone are:
 - Kill(): used to send a signal to the WD to tell that it's alive
 - Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
-- Shm_open(), Ftruncate(), Mmap(), Shm_unlink(), Munmap(): used to manage the shared memory
-- Sem_open(), Sem_wait(), Sem_post(), Sem_unlink(), Sem_close(): used to manage the semaphores declared in the server
+- Select_wmask(): select() used to check the pipes with data and select one of them to read from. It additionally implements a temporary sigmask for SIGUSR1, so that the syscall can be executed without interrupts. Since the execution time of the select() is significantly lower than the WD period for sending signals, this mask should not affect the WD behaviour
+- Fopen(), Fclose(), Flock(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
+- Close(): used to safely close the pipes before exiting the process
 
 #### Input
-The **input** process takes the input from the user keyboard and calculates the current
-forces acting on the drone based on those inputs. The resulting forces are
-then written in the shared memory in order to be read from the drone process, which uses the forces to compute its dynamics.
-The input is also responsible for displaying all the parameters of the drone, such as position, velocity and forces acting on it. The displayed forces do not
-take into account repulsive forces of the walls, but only the ones that the user
-is applying through the input.
+The **input** process takes the input from the user keyboard and calculates the current forces acting on the drone based on those inputs. The resulting forces are then written to the server though a pipe, in order to be available for the drone process, which uses those forces to compute its dynamics.
+The input is also responsible for displaying all the parameters of the drone, such as position, velocity and forces acting on it. The displayed forces do not take into account repulsive forces of the walls, but only the ones that the user is applying through the input.
+Finally, the input has the task of sending a 'STOP' string if the 'P' key is pressed, so that all the processes will be safely closed. 
 
 The keys available for the user are:
 ```
@@ -122,7 +122,7 @@ The keys available for the user are:
 | z | x | c |
 +-+-+---+---+
 ```
-The eight external keys can be used to move the drone by adding a force in the respective direction (top, top-right, right and so on). On the other hand, the 's' key in used to instantly zero all the forces, in order to see the inertia on the drone. The space key does the same thing as the s key. Lastly, the 'p' key can be used to safely close the program.
+The eight external keys can be used to move the drone by adding a force in the respective direction (top, top-right, right and so on). On the other hand, the 'S' key in used to instantly zero all the forces, in order to see the inertia on the drone. The space key does the same thing as the s key. Lastly, the 'P' key can be used to safely close the program.
 Please note that, for the keys to work, you should select the Input window when it appears.
 
 The primitives used by the input are:
@@ -130,14 +130,39 @@ The primitives used by the input are:
 - Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
 - Mkfifo(): used to create a FIFO (named pipe) to send its PID to the WD
 - Open(), Close(): used to open and close the file descriptor associated to the FIFO
-- Write(): used to write in the FIFO
-- Sem_open() Sem_wait(), Sem_post(), Sem_unlink(), Sem_close(): used to manage the semaphores declared in the server
-- Shm_open(), Ftruncate(), Mmap(), Shm_unlink(), Munmap(): used to manage the shared memory
+- Fopen(), Fclose(), Flock(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
+- Close(): also used to safely close the pipes before exiting the process
+
+#### Target
+The **target** process generates a new set of targets to be spawned in the map. This happens in two different occasion: when the program in launched and whenever the server notifies, by sending the string 'GE' through a pipe, that all the targets have been reached by the drone. The new set of target coordinates is sent to the server, in order to be available for the other processes.
+
+The primitives used by the target are:
+- Kill(): used to send a signal to the WD to tell that it's alive
+- Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
+- Fopen(), Fclose(), Flock(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
+- Close(): also used to safely close the pipes before exiting the process
+
+#### Obstacles
+The **obstacles** process generates a new set of obstacles to be spawned in the map every period. The new set of obstacles coordinates is sent to the server, in order to be available for the other processes.
+
+The primitives used by the target are:
+- Kill(): used to send a signal to the WD to tell that it's alive
+- Sigaction(): used to initialize the signal handler to handle the signal sent by the WD
+- Select(): used to check the server pipe and read from it when new data are available
+- Fopen(), Fclose(), Flock(): used to open, close and lock/unlock a file located in a specific path (in this case, the log file). Included in our self-defined `logging()` function, whose details can be found in the `utils.c` file
+- Write(), Read(): used to write to and read from the pipes
+- Close(): also used to safely close the pipes before exiting the process
 
 #### Watchdog
 The **watchdog** is responsible for checking the correct execution of all the other processes. For this purpose, the WD sends the SIGUSR1 signal to all the processes. Then, two checks are made. Firstly, it verifies that the processes are alive by checking if the *kill* syscall returns an error and immediately kills all the processes if this happens.
 Secondly, it verifies that the processes are not frozen by waiting for a SIGUSR2 reply by each process. In case that this signal is not received, meaning
 that the process is frozen, the WD kills all the processes.
+
+### Configuration file
+The configuration file `drone_parameters.conf` contains all the necessary parameters for the drone dynamics and for the correct behaviour of the other processes.
+It has been built by following the [TOML standard](https://toml.io/en/)
 
 ## Other components, directories and files
 The project is structured as follows:
@@ -154,6 +179,7 @@ The project is structured as follows:
 │   ├── assignmentsv2.1.pdf
 │   ├── function.png
 │   └── Schema_assignment1_ARP.png
+│   └── Schema_assignment2_ARP.png
 ├── headers
 │   ├── CMakeLists.txt
 │   ├── constants.h ---------------------------> Contains all the constants used in the project
@@ -168,10 +194,12 @@ The project is structured as follows:
 ├── run.sh ------------------------------------> Script to run the project
 └── src ---------------------------------------> Contains all active components
     ├── CMakeLists.txt
+    ├── WD.c
     ├── drone.c
     ├── input.c
     ├── map.c
     ├── master.c
+    ├── obstacles.c
     ├── server.c
-    └── WD.c
+    └── target.c
 ```
