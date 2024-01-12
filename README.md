@@ -1,6 +1,6 @@
 # Table of contents
 - [Creators](#creators)
-- [ARP: Assignment 2](#arp--assignment-1)
+- [ARP: Assignment 2](#arp--assignment-2)
   * [How to run](#how-to-run)
     + [Building dependencies](#building-dependencies)
     + [Command to run the program](#command-to-run-the-program)
