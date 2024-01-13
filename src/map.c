@@ -16,8 +16,8 @@
 #include <sys/select.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <time.h>
+#include <unistd.h>
 
 // WD pid
 pid_t WD_pid;
@@ -70,48 +70,18 @@ void destroy_map_win(WINDOW *local_win) {
     delwin(local_win);
 }
 
-void tokenization(struct pos *arr_to_fill, char *to_tokenize,
-                  int *objects_num) {
-    int index_of;
-    char *char_pointer;
-    char *aux_ptr;
-    char *token;
-    char_pointer = strchr(to_tokenize, ']');
-    index_of     = (int)(char_pointer - to_tokenize);
-    token        = strtok_r(to_tokenize + index_of + 1, "|", &aux_ptr);
-    int index    = 1;
-    if (token != NULL) {
-        float aux_x, aux_y;
-        index = 1;
-        sscanf(token, "%f,%f", &aux_x, &aux_y);
-        arr_to_fill[0].x = aux_x;
-        arr_to_fill[0].y = aux_y;
-        logging(LOG_INFO, token);
-        while ((token = strtok_r(NULL, "|", &aux_ptr)) != NULL) {
-            sscanf(token, "%f,%f", &aux_x, &aux_y);
-            logging(LOG_INFO, token);
-            arr_to_fill[index].x = aux_x;
-            arr_to_fill[index].y = aux_y;
-            index++;
-        }
-    }
-    *objects_num = index;
-}
-
-void remove_target(int index, struct pos *target_arr, int target_num) {
-    for (int i = index; i < target_num - 1; i++) {
-        target_arr[i].x = target_arr[i + 1].x;
-        target_arr[i].y = target_arr[i + 1].y;
-    }
-}
-
-bool is_overlapping(int y, int x) {
+bool is_overlapping(int y, int x, int *drone_y, int *drone_x) {
     // This is not strictly overlapping checking but here allows for less code
-    // repetition
+    // repetition. This checks if the obstacle or target is inside the
+    // boundaries If not then it's not a valid position
     if (y < 1 || x < 1 || y > LINES - 3 || x > COLS - 2)
         return true;
 
-    // Checking for overlapping
+    // Checking for overlapping with drone if obstacle
+    if (drone_y != NULL && drone_x != NULL)
+        if (*drone_y == y && *drone_x == x)
+            return true;
+    // Checking for overlapping with other targets or obstacles
     for (int i = 0; i <= tosp_top; i++) {
         if (y == target_obstacles_screen_position[i][0] &&
             x == target_obstacles_screen_position[i][1])
@@ -120,43 +90,68 @@ bool is_overlapping(int y, int x) {
     return false;
 }
 
-void find_spot(int *old_y, int *old_x) {
+void find_spot(int *old_y, int *old_x, int drone_y, int drone_x) {
+    // Function to find a valid spot for the obstacles or targets to be
+    // positioned It searches arond the current position of the target/obstacle
+    // if the desired one it's not available. it keeps searching in squares
+    // around the original position. Follows a visual representation where X is
+    // the desired position that is not available and ? are the searched places.
+    //
+    //          ???????
+    //    ???   ?     ?
+    //    ?X?   ?  X  ?
+    //    ???   ?     ?
+    //          ???????
+    // It keeps searching expanding that square
     int x = *old_x;
     int y = *old_y;
 
+    // Index grows indeterminatelly and determines the size of the square
     for (int index = 1;; index++) {
+        // Check if there is a free spot on the row over the current position
         y = *old_y - index;
         for (int x = *old_x - index; x <= *old_x + index; x++) {
-            if (!is_overlapping(y, x)) {
+            if (!is_overlapping(y, x, &drone_y, &drone_x)) {
                 *old_y = y;
                 *old_x = x;
                 return;
             }
         }
+
+        // Check if there is a free spot on the row below the current position
         y = *old_y + index;
         for (int x = *old_x - index; x <= *old_x + index; x++) {
-            if (!is_overlapping(y, x)) {
+            if (!is_overlapping(y, x, &drone_y, &drone_x)) {
                 *old_y = y;
                 *old_x = x;
                 return;
             }
         }
+
+        // Check if there is a free spot on the column before the current
+        // position
         x = *old_x - index;
         for (int y = *old_y - index + 1; y <= *old_y + index - 1; y++) {
-            if (!is_overlapping(y, x)) {
+            if (!is_overlapping(y, x, &drone_y, &drone_x)) {
                 *old_y = y;
                 *old_x = x;
                 return;
             }
         }
+
+        // Check if there is a free spot on the column after the current
+        // position
         x = *old_x + index;
         for (int y = *old_y - index + 1; y <= *old_y + index - 1; y++) {
-            if (!is_overlapping(y, x)) {
+            if (!is_overlapping(y, x, &drone_y, &drone_x)) {
                 *old_y = y;
                 *old_x = x;
                 return;
             }
         }
+
+        // If the index is growing too much than it means that there is no more
+        // a free position available
         if (index > 100) {
             logging(LOG_ERROR,
                     "Unable to find a spot on the screen to print on map");
@@ -216,6 +211,9 @@ int main(int argc, char *argv[]) {
     // Setting up the struct in which to store the position of the drone
     // in order to calculate the current position on the screen of the drone
     struct pos drone_pos = {0, 0};
+
+    // Arrays managed as stacks where to save the position of targets and
+    // obstacles
     struct pos targets_pos[N_TARGETS];
     int target_num = 0;
     struct pos obstacles_pos[N_OBSTACLES];
@@ -231,10 +229,12 @@ int main(int argc, char *argv[]) {
     WINDOW *map_window =
         create_map_win(getmaxy(stdscr) - 2, getmaxx(stdscr), 1, 0);
 
+    // Array where to save received strings
     char received[MAX_MSG_LEN];
-    // Setting up structures needed for terminal resizing
 
+    // Setting up structs for select
     struct timeval select_timeout;
+    // Setting a sleep time of 5 seconds in case no update is needed
     select_timeout.tv_sec  = 5;
     select_timeout.tv_usec = 0;
     fd_set reader, master;
@@ -242,37 +242,39 @@ int main(int argc, char *argv[]) {
     FD_ZERO(&master);
     FD_SET(from_server, &master);
     while (1) {
-        // Updating the drone position by reading from the shared memory, and
-        // taking the semaphores
+        // resetting the fd_set
         reader = master;
         int ret;
         do {
-            ret = Select(from_server + 1, &reader, NULL, NULL,
-                               &select_timeout);
+            ret = Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
             // The only reason to get an erorr is if Select gets interrupted by
             // a signal. In that case the function should be restarted if the
             // SA_RESTART flag didn't do its job
         } while (ret == -1);
-
+        // Resetting the timeout
         select_timeout.tv_sec  = 5;
         select_timeout.tv_usec = 0;
 
         if (FD_ISSET(from_server, &reader)) {
             int read_ret = Read(from_server, received, MAX_MSG_LEN);
+            // Check if any pipe needs to be closed
             if (read_ret == 0) {
                 Close(from_server);
                 FD_CLR(from_server, &master);
                 logging(LOG_WARN, "Pipe to map closed");
             } else {
                 char aux[100];
+                // If STOP then this needs to be closed
                 if (!strcmp(received, "STOP")) {
                     break;
                 }
                 switch (received[0]) {
                     case 'D':
+                        // D indicates the drone position
                         sscanf(received, "D%f|%f", &drone_pos.x, &drone_pos.y);
                         break;
                     case 'O':
+                        // O indicates that new obstacles are available
                         logging(LOG_INFO,
                                 "vvvvvvvvvvvOBSTACLESvvvvvvvvvvvvvvv");
                         tokenization(obstacles_pos, received, &obstacles_num);
@@ -282,6 +284,7 @@ int main(int argc, char *argv[]) {
                         logging(LOG_INFO, aux);
                         break;
                     case 'T':
+                        // T means that new targets are available
                         logging(LOG_INFO, "vvvvvvvvvvvTARGETSvvvvvvvvvvvvvvv");
                         tokenization(targets_pos, received, &target_num);
                         logging(LOG_INFO, "^^^^^^^^^^^TARGETS^^^^^^^^^^^^^^^");
@@ -330,12 +333,16 @@ int main(int argc, char *argv[]) {
         bool to_decrease = false;
         char to_send[MAX_MSG_LEN];
         for (int i = 0; i < target_num; i++) {
+            // Here the targets are displayed in the window by resizing from the
+            // simulation window.
             target_x = round(1 + targets_pos[i].x * (getmaxx(map_window) - 3) /
                                      SIMULATION_WIDTH);
             target_y = round(1 + targets_pos[i].y * (getmaxy(map_window) - 3) /
                                      SIMULATION_HEIGHT);
-            if (is_overlapping(target_y, target_x))
-                find_spot(&target_y, &target_x);
+            // It's verified that no target overlaps with any of the previously
+            // set
+            if (is_overlapping(target_y, target_x, NULL, NULL))
+                find_spot(&target_y, &target_x, drone_y, drone_x);
             if (target_x == drone_x && target_y == drone_y) {
                 time_t impact_time = time(NULL) - start_time;
                 // If a target is reached in the first 20 seconds, the score
@@ -351,36 +358,54 @@ int main(int argc, char *argv[]) {
                     score_increment = 1;
                 score = score + score_increment;
 
+                // If the target position is the same as the drone then we have
+                // a hit
                 sprintf(to_send, "TH|%d|%.3f,%.3f", i, targets_pos[i].x,
                         targets_pos[i].y);
+                // The target is then removed from the array
                 remove_target(i, targets_pos, target_num);
                 Write(to_server, to_send, MAX_MSG_LEN);
                 to_decrease = true;
             } else {
+                // If no target has been hit then add it to this array that aims
+                // to simplify the checking for callisions
                 target_obstacles_screen_position[++tosp_top][0] = target_y;
                 target_obstacles_screen_position[tosp_top][1]   = target_x;
+                // And print the target on screen
                 mvwprintw(map_window, target_y, target_x, "T");
             }
         }
-        // check whether all the targets have been hit
+        // Check whether all the targets have been hit
         if (to_decrease) {
             if (!--target_num)
+                // And in that case Write to the server that we need new targets
                 Write(to_server, "GE", MAX_MSG_LEN);
         }
 
         int obst_x, obst_y;
+        // Boolean to indicate if the drone can be displayed or is corrently
+        // under an obstacle. Note that since the simulation window is 500x500
+        // the display on the terminal is resized and much resolution is lost.
+        // Because of this ever if in the terminal the two seem overlapping this
+        // DOES NOT mean that are really overlapping. It's just a visual thing.
+        // We decided that changing values to avoid this issue is not worth it
+        // because someone could use the terminal in a very small window and
+        // still have this problem.
         bool can_display_drone = true;
         for (int i = 0; i < obstacles_num; i++) {
             obst_x = round(1 + obstacles_pos[i].x * (getmaxx(map_window) - 3) /
                                    SIMULATION_WIDTH);
             obst_y = round(1 + obstacles_pos[i].y * (getmaxy(map_window) - 3) /
                                    SIMULATION_HEIGHT);
-            if (is_overlapping(obst_y, obst_x))
-                find_spot(&obst_y, &obst_x);
+            // Checking for overlapping with previous targets, obstecles and in
+            // this case also with the drone
+            if (is_overlapping(obst_y, obst_x, &drone_y, &drone_x))
+                find_spot(&obst_y, &obst_x, drone_y, drone_x);
             target_obstacles_screen_position[++tosp_top][0] = obst_y;
             target_obstacles_screen_position[tosp_top][1]   = obst_x;
             mvwprintw(map_window, obst_y, obst_x, "O");
-
+            
+            // If the drone is overlapped to an obstacle than it cannot be displayed
             if (obst_y == drone_y && obst_x == drone_x)
                 can_display_drone = false;
         }

@@ -1,5 +1,6 @@
 #include "constants.h"
 #include "dataStructs.h"
+#include "utils/utils.h"
 #include "wrapFuncs/wrapFunc.h"
 #include <curses.h>
 #include <fcntl.h>
@@ -14,7 +15,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-#include <utils/utils.h>
 
 // WD pid
 pid_t WD_pid;
@@ -39,41 +39,6 @@ float repulsive_force(float distance, float function_scale,
     // function_scale);
     return function_scale * ((1 / distance) - (1 / area_of_effect)) *
            (1 / (distance * distance)) * sqrt(pow(vel_x, 2) + pow(vel_y, 2));
-}
-
-void tokenization(struct pos *arr_to_fill, char *to_tokenize,
-                  int *objects_num) {
-    int index_of;
-    char *char_pointer;
-    char *aux_ptr;
-    char *token;
-    char_pointer = strchr(to_tokenize, ']');
-    index_of     = (int)(char_pointer - to_tokenize);
-    token        = strtok_r(to_tokenize + index_of + 1, "|", &aux_ptr);
-    int index    = 1;
-    if (token != NULL) {
-        float aux_x, aux_y;
-        index = 1;
-        sscanf(token, "%f,%f", &aux_x, &aux_y);
-        arr_to_fill[0].x = aux_x;
-        arr_to_fill[0].y = aux_y;
-        logging(LOG_INFO, token);
-        while ((token = strtok_r(NULL, "|", &aux_ptr)) != NULL) {
-            sscanf(token, "%f,%f", &aux_x, &aux_y);
-            logging(LOG_INFO, token);
-            arr_to_fill[index].x = aux_x;
-            arr_to_fill[index].y = aux_y;
-            index++;
-        }
-    }
-    *objects_num = index;
-}
-
-void remove_target(int index, struct pos *target_arr, int target_num) {
-    for (int i = index; i < target_num - 1; i++) {
-        target_arr[i].x = target_arr[i + 1].x;
-        target_arr[i].y = target_arr[i + 1].y;
-    }
 }
 
 int main(int argc, char *argv[]) {
@@ -126,6 +91,8 @@ int main(int argc, char *argv[]) {
     // object
     float function_scale = get_param("drone", "function_scale");
     float area_of_effect = get_param("drone", "area_of_effect");
+    float obst_of_effect = get_param("drone", "obst_of_effect");
+    float targ_of_effect = get_param("drone", "targ_of_effect");
 
     // Read a first time from the paramter file to set the constants
     float M = get_param("drone", "mass");
@@ -143,6 +110,7 @@ int main(int argc, char *argv[]) {
     // in the parameters file
     drone_current_position.x = xt_1 = xt_2 = get_param("drone", "init_pos_x");
     drone_current_position.y = yt_1 = yt_2 = get_param("drone", "init_pos_y");
+
     // The force and the velocity applied to the drone at t = 0 is 0
     drone_force.x_component            = 0;
     drone_force.y_component            = 0;
@@ -168,19 +136,30 @@ int main(int argc, char *argv[]) {
     FD_SET(from_input_pipe, &master);
     FD_SET(from_server_pipe, &master);
 
+    // Setting the sleep time to 0 because this has to be very reactive to keep
+    // the calculations as real time as possible
     struct timeval select_timeout;
     select_timeout.tv_sec  = 0;
     select_timeout.tv_usec = 0;
 
+    // to_send is the auxiliary buffer on where to save data before sending to
+    // the server
     char to_send[MAX_MSG_LEN];
 
+    // max_fd used for the select syscall
     int max_fd = max(from_input_pipe, from_server_pipe);
 
+    // Arrays used to store targets and obstacles in real world coordinates
     struct pos targets_arr[N_TARGETS];
     struct pos obstacles_arr[N_OBSTACLES];
+
+    // Counters to keep track of the dimension of the arrays
     int targets_num   = 0;
     int obstacles_num = 0;
-    bool to_exit      = false;
+
+    // boolean that indicates whether the program has to be terminated after a
+    // STOP request
+    bool to_exit = false;
 
     while (1) {
         // If reading_params_interval is equal to 0 is time to read again from
@@ -200,6 +179,8 @@ int main(int argc, char *argv[]) {
             K              = get_param("drone", "viscous_coefficient");
             function_scale = get_param("drone", "function_scale");
             area_of_effect = get_param("drone", "area_of_effect");
+            obst_of_effect = get_param("drone", "obst_of_effect");
+            targ_of_effect = get_param("drone", "targ_of_effect");
 
             // Logging
             logging(LOG_INFO, "Drone has updated its parameters");
@@ -208,33 +189,45 @@ int main(int argc, char *argv[]) {
         // given by the user in the input process
         // get drone current x and y
 
-        // perform the select
+        /// Perform the select
+        // Auxiliary array where to save the received string
         char received[MAX_MSG_LEN];
+
+        // resetting the fd_sets
         reader = master;
         Select_wmask(max_fd + 1, &reader, NULL, NULL, &select_timeout);
-
+        // Resetting timouts
         select_timeout.tv_sec  = 0;
         select_timeout.tv_usec = 0;
         for (int i = 0; i <= max_fd; i++) {
             if (FD_ISSET(i, &reader)) {
+                // Receiving data from the available sets
                 int ret = Read(i, received, MAX_MSG_LEN);
                 if (ret == 0) {
+                    // If a pipe gets closed then notify and remove it from
+                    // master
                     logging(LOG_WARN, "Pipe closed in drone");
                     Close(i);
                     FD_CLR(i, &master);
                 }
+                // If STOP is received then it's time to quit
                 if (!strcmp(received, "STOP")) {
                     to_exit = true;
                     break;
                 }
                 switch (received[0]) {
                     case 'T':
+                        // if TH is received that indicates a target hit
                         if (received[1] == 'H') {
                             int target_index = 0;
                             float target_x   = 0;
                             float target_y   = 0;
+                            // Identify the hit target
                             sscanf(received + 2, "|%d|%f,%f", &target_index,
                                    &target_x, &target_y);
+                            // If the indexes and the positions of the target
+                            // don't match it means that there was an error in
+                            // the creation of the messages, so notify
                             if (targets_arr[target_index].x != target_x ||
                                 targets_arr[target_index].y != target_y) {
                                 printf("%f %f %f %f\n",
@@ -245,28 +238,37 @@ int main(int argc, char *argv[]) {
                                 logging(LOG_ERROR,
                                         "Mismatched target and array in drone");
                             } else {
+                                // If index and positions match then remove it
+                                // from the array
                                 remove_target(target_index, targets_arr,
                                               targets_num);
+                                // Decrease the total number of targets
                                 targets_num--;
                             }
                         } else {
+                            // If only T is received then new targets have been
+                            // produced
                             logging(LOG_INFO, "vvvvvvvvDRONE-TARGvvvvvvv");
                             tokenization(targets_arr, received, &targets_num);
                             logging(LOG_INFO, "^^^^^^^^DRONE-TARG^^^^^^^");
                         }
                         break;
                     case 'O':
+                        // If O then new obstacles have been produced
                         logging(LOG_INFO, "vvvvvvvvDRONE-OBSTvvvvvvv");
                         tokenization(obstacles_arr, received, &obstacles_num);
                         logging(LOG_INFO, "^^^^^^^^DRONE-OBST^^^^^^^");
                         break;
                     default:
+                        // If none of the above then the input has sent the
+                        // components of the force applied to the drone
                         sscanf(received, "%f|%f", &drone_force.x_component,
                                &drone_force.y_component);
                         break;
                 }
             }
         }
+        // If the exit message has been sent then quit the loop
         if (to_exit)
             break;
 
@@ -276,56 +278,67 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < obstacles_num; i++) {
             float distance = sqrt(pow(obstacles_arr[i].x - xt_1, 2) +
                                   pow(obstacles_arr[i].y - yt_1, 2));
-            if (distance < area_of_effect && distance > 2) {
+            // If it's quite close but not too much then apply the force.
+            if (distance < obst_of_effect && distance > 1) {
                 double x_distance = obstacles_arr[i].x - xt_1;
                 double y_distance = obstacles_arr[i].y - yt_1;
+
+                // Compute the magnitude of the repulsive force
                 double force =
-                    -repulsive_force(distance, 10000, area_of_effect,
+                    -repulsive_force(distance, 10000, obst_of_effect,
                                      drone_current_velocity.x_component,
                                      drone_current_velocity.y_component);
+
+                // Compute the direction of the repulsive force
                 double angle = atan2(y_distance, x_distance);
 
+                // Add the force to the accumulation variable taking into
+                // consideration the direction
                 total_obstacles_forces.x_component += cos(angle) * force;
                 total_obstacles_forces.y_component += sin(angle) * force;
 
-                if (total_obstacles_forces.x_component > 1000)
-                    total_obstacles_forces.x_component = 1000;
-                if (total_obstacles_forces.x_component < -1000)
-                    total_obstacles_forces.x_component = -1000;
-                if (total_obstacles_forces.y_component > 1000)
-                    total_obstacles_forces.y_component = 1000;
-                if (total_obstacles_forces.y_component < -1000)
-                    total_obstacles_forces.y_component = -1000;
+                // Cap the force at a certain threshold. This paramater is not
+                // available in the configuartion file since it can be
+                // particularily distructive if set incorrectly
+                if (total_obstacles_forces.x_component > MAX_OBST_FORCES)
+                    total_obstacles_forces.x_component = MAX_OBST_FORCES;
+                if (total_obstacles_forces.x_component < -MAX_OBST_FORCES)
+                    total_obstacles_forces.x_component = -MAX_OBST_FORCES;
+                if (total_obstacles_forces.y_component > MAX_OBST_FORCES)
+                    total_obstacles_forces.y_component = MAX_OBST_FORCES;
+                if (total_obstacles_forces.y_component < -MAX_OBST_FORCES)
+                    total_obstacles_forces.y_component = -MAX_OBST_FORCES;
             }
         }
 
-        float target_of_effect = 30;
         // Calculating repulsive force for every target
         total_targets_forces.x_component = 0;
         total_targets_forces.y_component = 0;
         for (int i = 0; i < targets_num; i++) {
+            // Calculating distance
             float distance = sqrt(pow(targets_arr[i].x - xt_1, 2) +
                                   pow(targets_arr[i].y - yt_1, 2));
-            if (distance < target_of_effect) {
+            // If close enough to the target apply attractive forces
+            if (distance < targ_of_effect) {
                 double x_distance = targets_arr[i].x - xt_1;
                 double y_distance = targets_arr[i].y - yt_1;
                 double force =
-                    repulsive_force(distance, 1000, target_of_effect,
+                    repulsive_force(distance, 1000, targ_of_effect,
                                     drone_current_velocity.x_component,
                                     drone_current_velocity.y_component);
+                // Calculate direction
                 double angle = atan2(y_distance, x_distance);
-                // printf("X: %f, Y: %f\n", cosf(angle) * force,
-                //        sinf(angle) * force);
                 total_targets_forces.x_component += cos(angle) * force;
                 total_targets_forces.y_component += sin(angle) * force;
-                if (total_targets_forces.x_component > 100)
-                    total_targets_forces.x_component = 100;
-                if (total_targets_forces.x_component < -100)
-                    total_targets_forces.x_component = -100;
-                if (total_targets_forces.y_component > 100)
-                    total_targets_forces.y_component = 100;
-                if (total_targets_forces.y_component < -100)
-                    total_targets_forces.y_component = -100;
+                // Cap the combined forces from the targets
+                if (total_targets_forces.x_component > MAX_TARG_FORCES)
+                    total_targets_forces.x_component = MAX_TARG_FORCES;
+                if (total_targets_forces.x_component < -MAX_TARG_FORCES)
+                    total_targets_forces.x_component = -MAX_TARG_FORCES;
+                if (total_targets_forces.y_component > MAX_TARG_FORCES)
+                    total_targets_forces.y_component = MAX_TARG_FORCES;
+                if (total_targets_forces.y_component < -MAX_TARG_FORCES)
+                    total_targets_forces.y_component = -MAX_TARG_FORCES;
             }
         }
 
@@ -347,9 +360,11 @@ int main(int argc, char *argv[]) {
                 drone_current_velocity.x_component,
                 drone_current_velocity.y_component);
         } else {
+            // Otherwise set it to 0
             walls.x_component = 0;
         }
 
+        // Here the same calculation for the y axis is performed
         if (yt_1 < area_of_effect) {
             walls.y_component =
                 repulsive_force(yt_1, function_scale, area_of_effect,

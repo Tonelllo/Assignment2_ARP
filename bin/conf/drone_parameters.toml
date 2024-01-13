@@ -3,10 +3,13 @@
 # the project. The parser is very basic but handles comments and sections
 # A comment start with a #. A section is delimited by a title inside [] brackets
 # and a blank line. Comments inside a section are allowed as shown in [drone]
-# Please note that no space must be placed around '=' to make this work
+
+# *PLEASE NOTE* that no space must be placed around '=' to make this work
+
 # Every possible costomization parameter is shown. Note that if some error
 # is detected in the config file the calling process will immediately be killed
 # and a log will be written
+
 [drone]
 mass=1
 # It's advides to not lower the time step with a value 
@@ -21,6 +24,10 @@ init_pos_y=20
 reading_params_interval=10
 # Area of effect of the repulsive force of the walls
 area_of_effect=20
+# Area of effect of the repulsive force of the targets
+targ_of_effect=30
+# Area of effect of the repulsive force of the obstacles
+obst_of_effect=20
 # How much rapid the repulsive force from the wall 
 # rises while getting closer to it
 function_scale=10

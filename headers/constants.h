@@ -32,4 +32,15 @@
 #define N_OBSTACLES 10
 #define MAX_NUMBER 500
 
+// Maximum combined force from the obstacles
+#define MAX_OBST_FORCES 1000
+// Maximum combined force from the targets
+#define MAX_TARG_FORCES 1000
+
+#define OBSTACLES_SPAWN_PERIOD 20
+
+// Defining the amount to sleep between any two consequent signals to the
+// processes
+#define WD_SLEEP_PERIOD 1
+
 #endif // !CONSTANTS_H

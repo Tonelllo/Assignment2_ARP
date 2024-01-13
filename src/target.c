@@ -79,21 +79,26 @@ int main(int argc, char *argv[]) {
             if (i != 0) {
                 strcat(to_send, "|");
             }
+            // Targets need to be inside the simulation window
             target_x = random() % SIMULATION_WIDTH;
             target_y = random() % SIMULATION_HEIGHT;
             sprintf(aux_to_send, "%.3f,%.3f", target_x, target_y);
             strcat(to_send, aux_to_send);
         }
 
+        // Send new targets to server
         Write(to_server_pipe, to_send, MAX_MSG_LEN);
 
+        // Here Read is used instead of Select because it has to be blocking
+        // untill the server sends a new GE
         Read(from_server_pipe, received, MAX_MSG_LEN);
         if (!strcmp(received, "GE")) {
             logging(LOG_INFO, "Received GE");
-        }else if(!strcmp(received, "STOP")){
+        } else if (!strcmp(received, "STOP")) {
+            // Otherwise if it's STOP close everything
             break;
         }
-
+        // Log if new targets have been produced
         logging(LOG_INFO, "Target process generated a new set of targets");
     }
 

@@ -76,6 +76,7 @@ int main(int argc, char *argv[]) {
 
     fd_set reader;
     fd_set master;
+    // Resetting the fd_sets
     FD_ZERO(&reader);
     FD_ZERO(&master);
     FD_SET(from_drone_pipe, &master);
@@ -85,10 +86,10 @@ int main(int argc, char *argv[]) {
     FD_SET(from_target_pipe, &master);
     FD_SET(from_map_pipe, &master);
 
+    // Setting the maxfd
     int maxfd = max(max(max(from_drone_pipe, from_input_pipe),
                         max(from_map_pipe, from_obstacles_pipe)),
                     max(from_target_pipe, from_map_pipe));
-
 
     bool to_exit = false;
     while (1) {
@@ -107,6 +108,8 @@ int main(int argc, char *argv[]) {
                     FD_CLR(i, &master);
                 } else {
                     if (i == from_input_pipe) {
+                        // If the user wants to stop the processes then forward
+                        // it to all the others
                         if (!strcmp(received, "STOP")) {
                             Write(to_drone_pipe, "STOP", MAX_MSG_LEN);
                             Write(to_map_pipe, "STOP", MAX_MSG_LEN);
@@ -115,6 +118,8 @@ int main(int argc, char *argv[]) {
                             to_exit = true;
                             break;
                         } else {
+                            // Otherwise send the drone position and velocity
+                            // calculated from the drone process to the input
                             sprintf(to_send, "%f,%f|%f,%f", drone_current_pos.x,
                                     drone_current_pos.y,
                                     drone_current_velocity.x_component,
@@ -122,34 +127,45 @@ int main(int argc, char *argv[]) {
                             Write(to_input_pipe, to_send, MAX_MSG_LEN);
                         }
                     } else if (i == from_drone_pipe) {
+                        // The drone process sends the update speed and position
+                        // of the drone
                         sscanf(received, "%f,%f|%f,%f", &drone_current_pos.x,
                                &drone_current_pos.y,
                                &drone_current_velocity.x_component,
                                &drone_current_velocity.y_component);
+                        // Send the drone current position to the map
                         sprintf(to_send, "D%f|%f", drone_current_pos.x,
                                 drone_current_pos.y);
                         Write(to_map_pipe, to_send, MAX_MSG_LEN);
                     } else if (i == from_map_pipe) {
                         logging(LOG_INFO, received);
                         if (!strcmp(received, "GE")) {
+                            // If we have GE sent by the map then send to target
+                            // so it can produce new targets
                             Write(to_target_pipe, "GE", MAX_MSG_LEN);
                         } else if (received[0] == 'T' && received[1] == 'H') {
+                            // If TH then there has been a target hit, inform
+                            // the drone in order to remove it from the targets
+                            // to consider for the forces calculations
                             Write(to_drone_pipe, received, MAX_MSG_LEN);
                         }
                     } else if (i == from_obstacles_pipe) {
+                        // When new obstacles are ready inform map and drone
                         Write(to_map_pipe, received, MAX_MSG_LEN);
                         Write(to_drone_pipe, received, MAX_MSG_LEN);
                     } else if (i == from_target_pipe) {
+                        // When new targets are ready inform map and drone
                         Write(to_map_pipe, received, MAX_MSG_LEN);
                         Write(to_drone_pipe, received, MAX_MSG_LEN);
                     }
                 }
             }
         }
-        if(to_exit)
+        // If STOP sent then it needs to be closed
+        if (to_exit)
             break;
     }
-    // TODO close pipes
+    // Close pipes
     Close(from_drone_pipe);
     Close(from_input_pipe);
     Close(from_map_pipe);

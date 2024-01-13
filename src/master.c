@@ -35,8 +35,7 @@ int main(int argc, char *argv[]) {
     // String to contain all che children pids (except WD)
     char child_pids_str[NUM_PROCESSES - 1][80];
 
-    // Cycle neeeded to fork the correct number of childs
-
+    // Arrays to contain the pids
     int input_drone[2];
     int server_drone[2];
     int drone_server[2];
@@ -49,6 +48,7 @@ int main(int argc, char *argv[]) {
     int obstacles_server[2];
     int server_obstacles[2];
 
+    // Creating the pipes
     Pipe(input_drone);
     Pipe(server_drone);
     Pipe(drone_server);
@@ -83,9 +83,6 @@ int main(int argc, char *argv[]) {
                                 NULL,        NULL, NULL, NULL, NULL, NULL};
             char *konsole_arg_list[] = {"konsole", "-e", programs[i], NULL,
                                         NULL,      NULL, NULL};
-            // char *debug_konsole_arg_list[] = {"konsole", "-e","gdb", "--args", programs[i], NULL,
-            //                             NULL,      NULL, NULL};
-
 
             switch (i) {
                 case 0:
@@ -245,6 +242,8 @@ int main(int argc, char *argv[]) {
                 spawn(arg_list);
             }
         } else {
+            // If we are in the father we need to close all the unused pipes
+            // since they are duplicated every time
             switch (i) {
                 case 1:
                     // Drone has spawned
@@ -254,6 +253,7 @@ int main(int argc, char *argv[]) {
                     Close(drone_server[1]);
                     break;
                 case 2:
+                    // Input has spawned
                     Close(server_input[0]);
                     Close(server_input[1]);
                     Close(input_server[0]);
@@ -262,23 +262,25 @@ int main(int argc, char *argv[]) {
                     Close(input_drone[1]);
                     break;
                 case 3:
+                    // Map has spawned
                     Close(server_map[0]);
                     Close(server_map[1]);
                     Close(map_server[0]);
                     Close(map_server[1]);
                     break;
                 case 4:
+                    // Target has spawned
                     Close(target_server[0]);
                     Close(target_server[1]);
                     Close(server_target[0]);
                     Close(server_target[1]);
                     break;
                 case 5:
+                    // Obstacles has spawned
                     Close(obstacles_server[0]);
                     Close(obstacles_server[1]);
                     Close(server_obstacles[0]);
                     Close(server_obstacles[1]);
-                    break;
                     break;
             }
         }

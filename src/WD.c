@@ -14,10 +14,6 @@
 #include <time.h>
 #include <unistd.h>
 
-// Defining the amount to sleep between any two consequent signals to the
-// processes
-#define SLEEP_FOR 1
-
 // Array for processes' pids
 int p_pids[NUM_PROCESSES];
 
@@ -141,7 +137,7 @@ int main(int argc, char *argv[]) {
             // actually restarting the sleep in case it does not return 0. Now
             // it may seem a busy wait but it's actually not because of how
             // signals are handled
-            while (sleep(SLEEP_FOR))
+            while (sleep(WD_SLEEP_PERIOD))
                 ;
 
             // If either the process is dead, so the kill failed returning -1 to
