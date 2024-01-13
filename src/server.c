@@ -134,7 +134,6 @@ int main(int argc, char *argv[]) {
                         if (!strcmp(received, "GE")) {
                             Write(to_target_pipe, "GE", MAX_MSG_LEN);
                         } else if (received[0] == 'T' && received[1] == 'H') {
-                            logging(LOG_INFO, received);
                             Write(to_drone_pipe, received, MAX_MSG_LEN);
                         }
                     } else if (i == from_obstacles_pipe) {

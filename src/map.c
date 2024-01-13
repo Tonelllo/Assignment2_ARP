@@ -100,8 +100,8 @@ void tokenization(struct pos *arr_to_fill, char *to_tokenize,
 
 void remove_target(int index, struct pos *target_arr, int target_num) {
     for (int i = index; i < target_num - 1; i++) {
-        target_arr[index].x = target_arr[index + 1].x;
-        target_arr[index].y = target_arr[index + 1].y;
+        target_arr[i].x = target_arr[i + 1].x;
+        target_arr[i].y = target_arr[i + 1].y;
     }
 }
 
@@ -191,10 +191,10 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    //score variables
-    int score = 0;
+    // score variables
+    int score           = 0;
     int score_increment = 0;
-    //time when the target are spawned
+    // time when the target are spawned
     time_t start_time;
 
     // Named pipe (fifo) to send the pid to the WD
@@ -247,7 +247,8 @@ int main(int argc, char *argv[]) {
         reader = master;
         int ret;
         do {
-            ret = Select_wmask(from_server + 1, &reader, NULL, NULL, &select_timeout);
+            ret = Select(from_server + 1, &reader, NULL, NULL,
+                               &select_timeout);
             // The only reason to get an erorr is if Select gets interrupted by
             // a signal. In that case the function should be restarted if the
             // SA_RESTART flag didn't do its job
@@ -333,12 +334,15 @@ int main(int argc, char *argv[]) {
                                      SIMULATION_WIDTH);
             target_y = round(1 + targets_pos[i].y * (getmaxy(map_window) - 3) /
                                      SIMULATION_HEIGHT);
+            if (is_overlapping(target_y, target_x))
+                find_spot(&target_y, &target_x);
             if (target_x == drone_x && target_y == drone_y) {
                 time_t impact_time = time(NULL) - start_time;
-                //If a target is reached in the first 20 seconds, the score increases of
-                //20 - the number of seconds taken to reach it. For example, if a target is reached
-                //in 5 or more seconds, but less than 6, the score increases by 20-5=15.
-                //In general, the score increases of:
+                // If a target is reached in the first 20 seconds, the score
+                // increases of 20 - the number of seconds taken to reach it.
+                // For example, if a target is reached in 5 or more seconds, but
+                // less than 6, the score increases by 20-5=15. In general, the
+                // score increases of:
                 //- 20 - (integer part of impact_time), if impact_time < 20
                 //- 1, if impact_time >= 20
                 if (impact_time < 20.0)
@@ -353,8 +357,6 @@ int main(int argc, char *argv[]) {
                 Write(to_server, to_send, MAX_MSG_LEN);
                 to_decrease = true;
             } else {
-                if (is_overlapping(target_y, target_x))
-                    find_spot(&target_y, &target_x);
                 target_obstacles_screen_position[++tosp_top][0] = target_y;
                 target_obstacles_screen_position[tosp_top][1]   = target_x;
                 mvwprintw(map_window, target_y, target_x, "T");
@@ -362,7 +364,7 @@ int main(int argc, char *argv[]) {
         }
         // check whether all the targets have been hit
         if (to_decrease) {
-            if(!--target_num)
+            if (!--target_num)
                 Write(to_server, "GE", MAX_MSG_LEN);
         }
 
@@ -376,7 +378,7 @@ int main(int argc, char *argv[]) {
             if (is_overlapping(obst_y, obst_x))
                 find_spot(&obst_y, &obst_x);
             target_obstacles_screen_position[++tosp_top][0] = obst_y;
-            target_obstacles_screen_position[tosp_top][1] = obst_x;
+            target_obstacles_screen_position[tosp_top][1]   = obst_x;
             mvwprintw(map_window, obst_y, obst_x, "O");
 
             if (obst_y == drone_y && obst_x == drone_x)

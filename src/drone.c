@@ -35,8 +35,10 @@ void signal_handler(int signo, siginfo_t *info, void *context) {
 // modified from the configuration file.
 float repulsive_force(float distance, float function_scale,
                       float area_of_effect, float vel_x, float vel_y) {
-    //return function_scale * (area_of_effect - distance) / (distance / function_scale);
-    return function_scale * ((1/distance) - (1/area_of_effect)) * (1/(distance * distance)) * sqrt(pow(vel_x, 2) + pow(vel_y, 2));
+    // return function_scale * (area_of_effect - distance) / (distance /
+    // function_scale);
+    return function_scale * ((1 / distance) - (1 / area_of_effect)) *
+           (1 / (distance * distance)) * sqrt(pow(vel_x, 2) + pow(vel_y, 2));
 }
 
 void tokenization(struct pos *arr_to_fill, char *to_tokenize,
@@ -69,8 +71,8 @@ void tokenization(struct pos *arr_to_fill, char *to_tokenize,
 
 void remove_target(int index, struct pos *target_arr, int target_num) {
     for (int i = index; i < target_num - 1; i++) {
-        target_arr[index].x = target_arr[index + 1].x;
-        target_arr[index].y = target_arr[index + 1].y;
+        target_arr[i].x = target_arr[i + 1].x;
+        target_arr[i].y = target_arr[i + 1].y;
     }
 }
 
@@ -245,6 +247,7 @@ int main(int argc, char *argv[]) {
                             } else {
                                 remove_target(target_index, targets_arr,
                                               targets_num);
+                                targets_num--;
                             }
                         } else {
                             logging(LOG_INFO, "vvvvvvvvDRONE-TARGvvvvvvv");
@@ -276,8 +279,11 @@ int main(int argc, char *argv[]) {
             if (distance < area_of_effect && distance > 2) {
                 double x_distance = obstacles_arr[i].x - xt_1;
                 double y_distance = obstacles_arr[i].y - yt_1;
-                double force      = - repulsive_force(distance, 10000, area_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
-                double angle      = atan2(y_distance, x_distance);
+                double force =
+                    -repulsive_force(distance, 10000, area_of_effect,
+                                     drone_current_velocity.x_component,
+                                     drone_current_velocity.y_component);
+                double angle = atan2(y_distance, x_distance);
 
                 total_obstacles_forces.x_component += cos(angle) * force;
                 total_obstacles_forces.y_component += sin(angle) * force;
@@ -304,7 +310,9 @@ int main(int argc, char *argv[]) {
                 double x_distance = targets_arr[i].x - xt_1;
                 double y_distance = targets_arr[i].y - yt_1;
                 double force =
-                    repulsive_force(distance, 1000, target_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
+                    repulsive_force(distance, 1000, target_of_effect,
+                                    drone_current_velocity.x_component,
+                                    drone_current_velocity.y_component);
                 double angle = atan2(y_distance, x_distance);
                 // printf("X: %f, Y: %f\n", cosf(angle) * force,
                 //        sinf(angle) * force);
@@ -329,22 +337,30 @@ int main(int argc, char *argv[]) {
         // axis it will be affected by the force
         if (xt_1 < area_of_effect) {
             walls.x_component =
-                repulsive_force(xt_1, function_scale, area_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
+                repulsive_force(xt_1, function_scale, area_of_effect,
+                                drone_current_velocity.x_component,
+                                drone_current_velocity.y_component);
             // In the following if the right edge is checked
         } else if (xt_1 > SIMULATION_WIDTH - area_of_effect) {
             walls.x_component = -repulsive_force(
-                SIMULATION_WIDTH - xt_1, function_scale, area_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
+                SIMULATION_WIDTH - xt_1, function_scale, area_of_effect,
+                drone_current_velocity.x_component,
+                drone_current_velocity.y_component);
         } else {
             walls.x_component = 0;
         }
 
         if (yt_1 < area_of_effect) {
             walls.y_component =
-                repulsive_force(yt_1, function_scale, area_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
+                repulsive_force(yt_1, function_scale, area_of_effect,
+                                drone_current_velocity.x_component,
+                                drone_current_velocity.y_component);
             // In the following if the bottom edge is checked
         } else if (yt_1 > SIMULATION_HEIGHT - area_of_effect) {
             walls.y_component = -repulsive_force(
-                SIMULATION_HEIGHT - yt_1, function_scale, area_of_effect, drone_current_velocity.x_component, drone_current_velocity.y_component);
+                SIMULATION_HEIGHT - yt_1, function_scale, area_of_effect,
+                drone_current_velocity.x_component,
+                drone_current_velocity.y_component);
         } else {
             walls.y_component = 0;
         }
