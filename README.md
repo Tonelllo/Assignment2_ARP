@@ -232,7 +232,7 @@ The project is structured as follows:
     ├── server.c
     └── target.c
 ```
-# Known error cases
+## Known error cases
 By killing some processes it's possible to trigger a Broken pipe error signal
 that is caught from the `wrapfunc` file and printed on console. The most notable
 instance of this is when the map process is closed. The server process will
