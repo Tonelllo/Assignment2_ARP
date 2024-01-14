@@ -65,7 +65,13 @@ The primitives used by the server are:
 - Close(): used to safely close the pipes before exiting the process
 
 #### Map
-The **map** process reads the position data of the drone and the coordinates of the targets and obstacles sets from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving in the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
+The **map** process reads the position data of the drone and the coordinates of the targets and obstacles set from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving on the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
+Additionally, the score increment for the current game is calculated with the following formula:
+```math
+score_increment = 20 - ⌊t⌋, if t < 20
+socre_increment = 1, if t \geq 20
+```
+where ⌊t⌋ is the time taken by the drone to reach the target starting from the instant when the targets are spawned in the map.
 
 The primitives used by the map are:
 - Kill(): used to send a signal to the WD to tell that it's alive
