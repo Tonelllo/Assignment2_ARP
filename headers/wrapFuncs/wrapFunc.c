@@ -20,9 +20,10 @@ int Wait(int *wstatus) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing wait: %s, from: %s, line: %d, awaiting "
+                "Error on executing wait: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -37,10 +38,11 @@ int Waitpid(pid_t pid, int *wstatus, int options) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing waitpid: %s, from: %s, line: %d, awaiting "
+                "Error on executing waitpid: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -55,10 +57,11 @@ int Execvp(const char *file, char **args) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing execvp: %s from: %s, line: %d, awaiting "
+                "Error on executing execvp: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -73,10 +76,11 @@ int Fork(void) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing fork: %s, from: %s, line: %d, awaiting "
+                "Error on executing fork: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -101,10 +105,11 @@ int Read(int fd, void *buf, size_t nbytes) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing read: %s, from: %s, line: %d, awaiting "
+                "Error on executing read: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -129,10 +134,11 @@ int Write(int fd, void *buf, size_t nbytes) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing write: %s, from: %s, line: %d, awaiting "
+                "Error on executing write: %s, pid: %d, from: %s, line: %d, "
+                "awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -154,7 +160,7 @@ int Select_wmask(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
     // select() syscall without being interrupted. Since the time taken from
     // the select to execute is significantly lower than the WD period for
     // sending signals, this mask should not affect the WD behaviour
-    
+
     // Block SIGUSR1
     sigset_t block_mask;
     sigemptyset(&block_mask);
@@ -168,10 +174,10 @@ int Select_wmask(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing select: %s, from: %s, line: %d, awaiting "
+                "Error on executing select: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -186,10 +192,10 @@ int Open(const char *file, int oflag) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing open: %s, from: %s, line: %d, awaiting "
+                "Error on executing open: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -204,10 +210,10 @@ int Pipe(int *pipedes) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing pipe: %s, from: %s, line: %d, awaiting "
+                "Error on executing pipe: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -222,10 +228,10 @@ int Close(int fd) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing close: %s, from: %s, line: %d, awaiting "
+                "Error on executing close: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -240,9 +246,9 @@ int Shm_open(const char *name, int flag, mode_t mode) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing shm_open: %s, from: %s, line: %d, awaiting "
+                "Error on executing shm_open: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -258,9 +264,9 @@ int Ftruncate(int fd, __off_t length) {
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing ftruncate: %s, from: %s, line: %d, awaiting "
+            "Error on executing ftruncate: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -275,10 +281,10 @@ void *Mmap(void *addr, size_t len, int prot, int flags, int fd, off_t offset) {
     if (ret == MAP_FAILED) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing mmap: %s, from: %s, line: %d, awaiting "
+                "Error on executing mmap: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -292,9 +298,9 @@ sem_t *Sem_open(const char *name, int oflag, mode_t mode, unsigned int value) {
     if (ret == SEM_FAILED) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing sem_open: %s, from: %s, line: %d, awaiting "
+                "Error on executing sem_open: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -309,9 +315,9 @@ int Sem_init(sem_t *sem, int pshared, int value) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing sem_init: %s, from: %s, line: %d, awaiting "
+                "Error on executing sem_init: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -326,9 +332,9 @@ int Sem_wait(sem_t *sem) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing sem_wait: %s, from: %s, line: %d, awaiting "
+                "Error on executing sem_wait: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -343,9 +349,9 @@ int Sem_post(sem_t *sem) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing sem_post: %s, from: %s, line: %d, awaiting "
+                "Error on executing sem_post: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -361,9 +367,9 @@ int Sem_close(sem_t *sem) {
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing sem_close: %s, from: %s, line: %d, awaiting "
+            "Error on executing sem_close: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -379,9 +385,9 @@ int Sem_unlink(const char *name) {
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing sem_unlink: %s, from: %s, line: %d, awaiting "
+            "Error on executing sem_unlink: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -396,10 +402,10 @@ int Flock(int fd, int operation) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing flock: %s, from: %s, line: %d, awaiting "
+                "Error on executing flock: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -414,10 +420,10 @@ FILE *Fopen(const char *pathname, const char *mode) {
     if (ret == NULL) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing fopen: %s, from: %s, line: %d, awaiting "
+                "Error on executing fopen: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -432,10 +438,10 @@ void Kill(int pid, int signal) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing kill: %s, from: %s, line: %d, awaiting "
+                "Error on executing kill: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -456,9 +462,9 @@ void Mkfifo(const char *fifo_path, int permit) {
             char msg[MAX_STR_LEN];
             sprintf(
                 msg,
-                "Error on executing mkfifo: %s, from: %s, line: %d, awaiting "
+                "Error on executing mkfifo: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
             printf("%s\n", msg);
             fflush(stdout);
             logging(LOG_ERROR, msg);
@@ -475,9 +481,9 @@ void Sigaction(int signum, const struct sigaction *act,
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing sigaction: %s, from: %s, line: %d, awaiting "
+            "Error on executing sigaction: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -492,9 +498,9 @@ void Sigprocmask(int type, const sigset_t *mask, sigset_t *oldset) {
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing sigprocmask: %s, from: %s, line: %d, awaiting "
+            "Error on executing sigprocmask: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -508,10 +514,10 @@ void Fclose(FILE *stream) {
     if (ret == EOF) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing fclose: %s, from: %s, line: %d, awaiting "
+                "Error on executing fclose: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination "
                 "from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -525,9 +531,9 @@ void Shm_unlink(const char *name) {
         char msg[MAX_STR_LEN];
         sprintf(
             msg,
-            "Error on executing shm_unlink: %s, from: %s, line: %d, awaiting "
+            "Error on executing shm_unlink: %s, pid: %d, from: %s, line: %d, awaiting "
             "termination from WD",
-            strerror(errno), __FILE__, __LINE__);
+            strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);
@@ -541,9 +547,9 @@ void Munmap(void *addr, size_t len) {
     if (ret < 0) {
         char msg[MAX_STR_LEN];
         sprintf(msg,
-                "Error on executing munmap: %s, from: %s, line: %d, awaiting "
+                "Error on executing munmap: %s, pid: %d, from: %s, line: %d, awaiting "
                 "termination from WD",
-                strerror(errno), __FILE__, __LINE__);
+                strerror(errno), getpid(), __FILE__, __LINE__);
         printf("%s\n", msg);
         fflush(stdout);
         logging(LOG_ERROR, msg);

@@ -246,7 +246,14 @@ int main(int argc, char *argv[]) {
         reader = master;
         int ret;
         do {
+            // Note that no signal is ignored here because the signal that would
+            // be sent to this process is SIG_WINCH that is also a signal that
+            // has its own handler defined in ncurses. If here we would have set
+            // sig_ign of sig_winch and then after the select restored with
+            // sig_dfl then the resizing of the window would not have worked
+            // anymore and the gui would have kept its original size
             ret = Select(from_server + 1, &reader, NULL, NULL, &select_timeout);
+
             // The only reason to get an erorr is if Select gets interrupted by
             // a signal. In that case the function should be restarted if the
             // SA_RESTART flag didn't do its job
@@ -404,8 +411,9 @@ int main(int argc, char *argv[]) {
             target_obstacles_screen_position[++tosp_top][0] = obst_y;
             target_obstacles_screen_position[tosp_top][1]   = obst_x;
             mvwprintw(map_window, obst_y, obst_x, "O");
-            
-            // If the drone is overlapped to an obstacle than it cannot be displayed
+
+            // If the drone is overlapped to an obstacle than it cannot be
+            // displayed
             if (obst_y == drone_y && obst_x == drone_x)
                 can_display_drone = false;
         }
