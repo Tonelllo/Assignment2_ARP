@@ -189,7 +189,7 @@ Secondly, it verifies that the processes are not frozen by waiting for a SIGUSR2
 that the process is frozen, the WD kills all the processes.
 
 ### Configuration file
-The configuration file `drone_parameters.conf` contains all the necessary parameters for the drone dynamics and for the correct behaviour of the other processes.
+The configuration file `drone_parameters.toml` contains all the necessary parameters for the drone dynamics and for the correct behaviour of the other processes.
 It has been built by following the [TOML standard](https://toml.io/en/)
 
 ## Other components, directories and files
