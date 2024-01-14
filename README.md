@@ -11,8 +11,11 @@
       - [Map](#map)
       - [Drone](#drone)
       - [Input](#input)
+      - [Target](#target)
+      - [Obstacles](#obstacles)
       - [Watchdog](#watchdog)
-  * [Other components, directories and files](#other-components-directories-and-files)
+    + [Configuration file](#configuration-file)
+  * [Other components, directories and files](#other-components--directories-and-files)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
