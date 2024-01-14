@@ -11,8 +11,11 @@
       - [Map](#map)
       - [Drone](#drone)
       - [Input](#input)
+      - [Target](#target)
+      - [Obstacles](#obstacles)
       - [Watchdog](#watchdog)
-  * [Other components, directories and files](#other-components-directories-and-files)
+    + [Configuration file](#configuration-file)
+  * [Other components, directories and files](#other-components--directories-and-files)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -62,7 +65,16 @@ The primitives used by the server are:
 - Close(): used to safely close the pipes before exiting the process
 
 #### Map
-The **map** process reads the position data of the drone and the coordinates of the targets and obstacles sets from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving in the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
+The **map** process reads the position data of the drone and the coordinates of the targets and obstacles set from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving on the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
+Additionally, the score increment for the current game is calculated with the following formula:
+```math
+score\_increment =
+\begin{cases}
+    20 - ⌊t⌋, & \text{if } t < 20 \\
+    1, & \text{if } t \geq 20
+\end{cases}
+```
+where ⌊t⌋ is the time taken by the drone to reach the target starting from the instant when the targets are spawned in the map.
 
 The primitives used by the map are:
 - Kill(): used to send a signal to the WD to tell that it's alive
@@ -97,7 +109,23 @@ Where:
 + $x$, $x(t-1)$, $x(t-2)$ are the position of the drone at different time instants
 + $K$ is the viscous coefficient
 
-For the y coordinate the formula is the same. This describes the dynamics of the drone.
+The same formula is used for the y coordinate.
+
+On the other hand, the formula used to calculate the repulsive (and attractive, by means of a +/- sign) force applied to the drone is the Latombe repulsive force:
+```math
+\begin{align}
+    F_{rep}(q) = \begin{cases}
+        \eta \cdot (\frac{1}{\rho(q)} - \frac{1}{\rho_0}) \cdot \frac{1}{\rho^2(q)} \cdot vel & \text{if } \rho(q) \leq \rho_0 \land \rho(q) > min \\
+        \text{0} & \text{else}
+    \end{cases}
+\end{align}
+```
+Where:
++ $\eta$ is a constant to scale the intensity of the force
++ $\rho(q)$ is the distance between the drone and the closest obstacle/target
++ $\rho_0$ is the area of effect of the force
++ $vel$ is the velocity of the drone
++ $min$ is the minimum threshold for $\rho(q)$; if it's lower, the function nullifies, so that situations in which an obstacle is spawned in the exact same position as the drone are correctly handled
 
 The primitives used by the drone are:
 - Kill(): used to send a signal to the WD to tell that it's alive
@@ -161,7 +189,7 @@ Secondly, it verifies that the processes are not frozen by waiting for a SIGUSR2
 that the process is frozen, the WD kills all the processes.
 
 ### Configuration file
-The configuration file `drone_parameters.conf` contains all the necessary parameters for the drone dynamics and for the correct behaviour of the other processes.
+The configuration file `drone_parameters.toml` contains all the necessary parameters for the drone dynamics and for the correct behaviour of the other processes.
 It has been built by following the [TOML standard](https://toml.io/en/)
 
 ## Other components, directories and files
