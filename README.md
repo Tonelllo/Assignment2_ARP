@@ -68,8 +68,11 @@ The primitives used by the server are:
 The **map** process reads the position data of the drone and the coordinates of the targets and obstacles set from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving on the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
 Additionally, the score increment for the current game is calculated with the following formula:
 ```math
-score\_increment = 20 - ⌊t⌋, \text{ if } t < 20 \\
-score\_increment = 1, \text{ if } t \geq 20
+score\_increment =
+\begin{cases}
+    20 - ⌊t⌋, & \text{if } t < 20 \\
+    1, & \text{if } t \geq 20
+\end{cases}
 ```
 where ⌊t⌋ is the time taken by the drone to reach the target starting from the instant when the targets are spawned in the map.
 
@@ -112,13 +115,13 @@ On the other hand, the formula used to calculate the repulsive (and attractive, 
 ```math
 \begin{align}
     F_{rep}(q) = \begin{cases}
-        \eta \cdot (\frac{1}{\rho(q)} - \frac{1}{\rho_0}) \cdot \frac{1}{\rho^2(q)} \cdot vel^2 & \text{if } \rho(q) \leq \rho_0 \land \rho(q) > min \\
+        \eta \cdot (\frac{1}{\rho(q)} - \frac{1}{\rho_0}) \cdot \frac{1}{\rho^2(q)} \cdot vel & \text{if } \rho(q) \leq \rho_0 \land \rho(q) > min \\
         \text{0} & \text{else}
     \end{cases}
 \end{align}
 ```
 Where:
-+ $eta$ is a constant to scale the intensity of the force
++ $\eta$ is a constant to scale the intensity of the force
 + $\rho(q)$ is the distance between the drone and the closest obstacle/target
 + $\rho_0$ is the area of effect of the force
 + $vel$ is the velocity of the drone
