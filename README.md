@@ -68,8 +68,8 @@ The primitives used by the server are:
 The **map** process reads the position data of the drone and the coordinates of the targets and obstacles set from the server through a pipe and displays it on the screen. As a consequence, the drone can be seen moving on the map among attractive targets and repulsive obstacles. The movement is dictated by its dynamics, with the borders as limits considered like obstacles.
 Additionally, the score increment for the current game is calculated with the following formula:
 ```math
-score_increment = 20 - ⌊t⌋, if t < 20
-socre_increment = 1, if t \geq 20
+score\_increment = 20 - ⌊t⌋, \text{ if } t < 20 \\
+score\_increment = 1, \text{ if } t \geq 20
 ```
 where ⌊t⌋ is the time taken by the drone to reach the target starting from the instant when the targets are spawned in the map.
 
@@ -106,7 +106,23 @@ Where:
 + $x$, $x(t-1)$, $x(t-2)$ are the position of the drone at different time instants
 + $K$ is the viscous coefficient
 
-For the y coordinate the formula is the same. This describes the dynamics of the drone.
+The same formula is used for the y coordinate.
+
+On the other hand, the formula used to calculate the repulsive (and attractive, by means of a +/- sign) force applied to the drone is the Latombe repulsive force:
+```math
+\begin{align}
+    F_{rep}(q) = \begin{cases}
+        \eta \cdot (\frac{1}{\rho(q)} - \frac{1}{\rho_0}) \cdot \frac{1}{\rho^2(q)} \cdot vel^2 & \text{if } \rho(q) \leq \rho_0 \land \rho(q) > min \\
+        \text{0} & \text{else}
+    \end{cases}
+\end{align}
+```
+Where:
++ $eta$ is a constant to scale the intensity of the force
++ $\rho(q)$ is the distance between the drone and the closest obstacle/target
++ $\rho_0$ is the area of effect of the force
++ $vel$ is the velocity of the drone
++ $min$ is the minimum threshold for $\rho(q)$; if it's lower, the function nullifies, so that situations in which an obstacle is spawned in the exact same position as the drone are correctly handled
 
 The primitives used by the drone are:
 - Kill(): used to send a signal to the WD to tell that it's alive
