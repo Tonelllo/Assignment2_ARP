@@ -1,6 +1,6 @@
 # Table of contents
 - [Creators](#creators)
-- [ARP: Assignment 2](#arp--assignment-2)
+- [ARP: Assignment 2](#arp-assignment-2)
   * [How to run](#how-to-run)
     + [Building dependencies](#building-dependencies)
     + [Command to run the program](#command-to-run-the-program)
@@ -15,7 +15,8 @@
       - [Obstacles](#obstacles)
       - [Watchdog](#watchdog)
     + [Configuration file](#configuration-file)
-  * [Other components, directories and files](#other-components--directories-and-files)
+  * [Other components, directories and files](#other-components-directories-and-files)
+  * [Known error cases](#known-error-cases)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
@@ -231,3 +232,13 @@ The project is structured as follows:
     ├── server.c
     └── target.c
 ```
+# Known error cases
+By killing some processes it's possible to trigger a Broken pipe error signal
+that is caught from the `wrapfunc` file and printed on console. The most notable
+instance of this is when the map process is closed. The server process will
+throw a broken pipe error because the drone tries to inform the map passing
+through the server of the
+updated position but the `map-end` of the `server-map` pipe has been closed. This
+cannot be avoided in a "crash" event meaning when a process closes unexpectedly
+like in this case. We wanted to add this section in order to emphasize that this
+is not a not handled error but a known and not avoidable situation in this case.
